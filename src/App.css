@@ -12,7 +12,8 @@
 }
 
 .settings-panel-container {
-  width: 200px; 
+  padding: 15px 15px;
+  width: 170px; 
   height: 540px; 
   background-color: #282828;
   border-radius: 5px;
@@ -41,9 +42,16 @@
   border-radius: 100%;
 }
 
-#settings-panel-left {
-  
+#hexCodeLabel {
+  color: white;
+  font-size: 12px;
 }
+
+#hexCodeInput {
+  margin-top: 10px;
+  width: 160px;
+}
+
 
 #footer {
   position: fixed;

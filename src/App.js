@@ -9,6 +9,8 @@ function App() {
 
       <div className="playground-window">
         <div id="settings-panel-left" className="settings-panel-container">
+          <label id="hexCodeLabel">Enter Hex codes:</label>
+          <input id="hexCodeInput"></input>
         </div>
 
         <div className="style-guide">
