@@ -26,7 +26,10 @@ class Create extends Component {
                 </div>
       
                 <div className="playground-window">
-                    <Leftpanel></Leftpanel>
+                    <Leftpanel 
+                        changeHex={this.onChangeHex.bind(this)}
+                        defaultHex={this.state.color}
+                    />
 
                     <Styleguide color={this.state.color}></Styleguide>
 
