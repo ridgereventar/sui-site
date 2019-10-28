@@ -1,6 +1,8 @@
 import React, { Component, useContext } from 'react';
 import '../App.css';
 
+import Styleguide from '../components/Styleguide'
+
 class Create extends Component {
 
     constructor(props) {
@@ -19,23 +21,7 @@ class Create extends Component {
                         <input id="hexCodeInput"></input>
                     </div>
 
-                    <div className="style-guide">
-                        <h4>Color Palette</h4>
-                        <hr/>
-                        <div className="color-palette-container">
-                            <div className="color-container" id="color1"></div>
-                            <div className="color-container" id="color1"></div>
-                            <div className="color-container" id="color1"></div>
-                        </div>
-            
-                        <h4>Typography</h4>
-                        <hr/>
-                        <h1>Headline Large</h1>
-                        <h2>Headline Medium</h2>
-                        <h3>Headline</h3>
-                        <h5>Body</h5>
-                
-                    </div>
+                    <Styleguide></Styleguide>
 
                     <div id="settings-panel-right" className="settings-panel-container">
                     </div>
