@@ -1,14 +1,24 @@
 import React, { Component, useContext } from 'react';
 import '../App.css';
 
-import Styleguide from '../components/Styleguide'
+import Leftpanel from '../components/Leftpanel';
+import Styleguide from '../components/Styleguide';
 
 class Create extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            color: "#FD4041"
+        };
     }
     
+    onChangeHex(newHex) {
+        this.setState({
+            color: newHex
+        });
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -16,12 +26,9 @@ class Create extends Component {
                 </div>
       
                 <div className="playground-window">
-                    <div id="settings-panel-left" className="settings-panel-container">
-                        <label id="hexCodeLabel">Enter Hex codes:</label>
-                        <input id="hexCodeInput"></input>
-                    </div>
+                    <Leftpanel></Leftpanel>
 
-                    <Styleguide></Styleguide>
+                    <Styleguide color={this.state.color}></Styleguide>
 
                     <div id="settings-panel-right" className="settings-panel-container">
                     </div>

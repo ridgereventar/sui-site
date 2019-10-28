@@ -13,7 +13,7 @@ class Styleguide extends Component {
             <h4>Color Palette</h4>
             <hr/>
             <div className="color-palette-container">
-                <div className="color-container" id="color1"></div>
+                <div className="color-container" id="color1" style={{backgroundColor: `${this.props.color}`}}></div>
                 <div className="color-container" id="color1"></div>
                 <div className="color-container" id="color1"></div>
             </div>
