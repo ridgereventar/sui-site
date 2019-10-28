@@ -6,7 +6,7 @@ class Leftpanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            color: "#0EC9DF"
+            color: props.defaultHex
         };
     }
 
@@ -15,7 +15,9 @@ class Leftpanel extends Component {
     }
 
     onHandleInputChange(event) {
-
+        this.setState({
+            color: event.target.value
+        })
     }
 
     render() {
@@ -24,11 +26,11 @@ class Leftpanel extends Component {
                 <label id="hexCodeLabel">Enter Hex codes:</label>
                 <input id="hexCodeInput" 
                     type="text" 
-                    value={this.props.defaultHex} 
-                    onChange={this.onHandleInputChange}
+                    value={this.state.color} 
+                    onChange={(event) => this.onHandleInputChange(event)}
                 />
 
-                <button onClick={this.onChangeHex.bind(this)}>ADD</button>
+                <button onClick={this.onChangeHex.bind(this)}>Update</button>
             </div>
         );
     }

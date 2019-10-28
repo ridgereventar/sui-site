@@ -9,7 +9,7 @@ class Create extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            color: "#FD4041"
+            color: "#FFFFFF"
         };
     }
     
