@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import '../App.css';
 
+import Hex from '../components/Hex';
+
+
 class Styleguide extends Component {
 
   constructor(props) {
@@ -12,10 +15,15 @@ class Styleguide extends Component {
         <div className="style-guide">
             <h4>Color Palette</h4>
             <hr/>
+
             <div className="color-palette-container">
-                <div className="color-container" id="color1" style={{backgroundColor: `${this.props.color}`}}></div>
-                <div className="color-container" id="color1"></div>
-                <div className="color-container" id="color1"></div>
+              
+              {this.props.colors.map(color => {
+                return (
+                  <Hex color={color.hex}></Hex>
+                )
+              })}
+            
             </div>
 
             <h4>Typography</h4>

@@ -9,15 +9,43 @@ class Create extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            color: "#FFFFFF"
+            color: "#FFFFFF",
+            colors: [
+                {
+                    hex: "#FFFFFF"
+                }
+            ]
         };
     }
+
+    onChangeHex = (index) => {
+        return (e) => {
+            const value = e.target.value;
+            this.setState((state) => {
+                const newColors = state.colors;
+                newColors[index].hex = value;
     
-    onChangeHex(newHex) {
-        this.setState({
-            color: newHex
-        });
+                return {
+                    ...state,
+                    colors: newColors
+                }
+            })
+        }
     }
+
+    addHex = (value) => {
+        this.setState((state) => {
+            const newColors = state.colors;
+            newColors.push({hex: value})
+
+            return {
+                ...state,
+                colors: newColors
+            }
+        })
+    }
+    
+    
 
     render() {
         return (
@@ -27,11 +55,13 @@ class Create extends Component {
       
                 <div className="playground-window">
                     <Leftpanel 
-                        changeHex={this.onChangeHex.bind(this)}
+                        colors={this.state.colors}
+                        onChangeHex={this.onChangeHex}
                         defaultHex={this.state.color}
+                        addHex={this.addHex}
                     />
 
-                    <Styleguide color={this.state.color}></Styleguide>
+                    <Styleguide colors={this.state.colors}></Styleguide>
 
                     <div id="settings-panel-right" className="settings-panel-container">
                     </div>
