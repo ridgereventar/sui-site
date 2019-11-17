@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import './App.css';
 
 import Create from './pages/Create';
+import Login from './pages/Login';
 
 class App extends Component {
 
@@ -14,6 +15,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
+          <Route path="/login" exact component={Login}/>
           <Route path="/create" exact component={Create}/>
 
         </Switch>
