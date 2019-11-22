@@ -13,7 +13,7 @@ class Create extends Component {
             colors: [
                 {
                     hex: "#FFFFFF"
-                }
+                },
             ]
         };
     }
@@ -48,6 +48,8 @@ class Create extends Component {
     
 
     render() {
+
+        console.log(this.state.colors);
         return (
             <React.Fragment>
                 <div id="header">

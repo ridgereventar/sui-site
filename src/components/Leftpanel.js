@@ -12,8 +12,8 @@ class Leftpanel extends Component {
         };
     }
 
-    onChangeHex() {
-        this.props.changeHex(this.state.color);
+    onChangeHex = () => {
+        this.props.onChangeHex(this.state.color);
     }
 
     onHandleInputChange(event) {
@@ -46,7 +46,7 @@ class Leftpanel extends Component {
                                 value={color.hex} 
                                 onChange={this.props.onChangeHex(index)}
                             />
-                            <button onClick={this.onChangeHex.bind(this)}>Update</button>
+                            {/* <button onClick={this.onChangeHex.bind(this)}>Update</button> */}
                         </React.Fragment>
 
                     )
@@ -63,8 +63,6 @@ class Leftpanel extends Component {
                     <option value="Red Hat Display">Red Hat Display</option>
                     <option value="Alata">Alata</option>
                     <option value="Montserrat">Montserrat</option>
-
-
                 </select>
             </div>
         );

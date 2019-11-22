@@ -6,11 +6,13 @@ import Hex from '../components/Hex';
 
 class Styleguide extends Component {
 
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
+
+    console.log(this.props.colors);
     return (
         <div className="style-guide">
             <h4>Color Palette</h4>

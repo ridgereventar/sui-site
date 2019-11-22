@@ -5,6 +5,10 @@ class Hex extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+        colorfill: props.color,
+        type: props.type
+    };
   }
 
   render() {
