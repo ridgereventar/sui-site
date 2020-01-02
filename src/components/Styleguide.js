@@ -12,7 +12,6 @@ class Styleguide extends Component {
 
   render() {
 
-    console.log(this.props.colors);
     return (
         <div className="style-guide">
             <h4>Color Palette</h4>
@@ -22,7 +21,7 @@ class Styleguide extends Component {
               
               {this.props.colors.map(color => {
                 return (
-                  <Hex color={color.hex}></Hex>
+                  <Hex color={color.hex} type={color.type}></Hex>
                 )
               })}
             

@@ -37,10 +37,12 @@ class Leftpanel extends Component {
         return (
             <div id="settings-panel-left" className="settings-panel-container">
                 <label id="hexCodeLabel">Enter Hex codes:</label>
+                <br/>
 
                 {this.props.colors.map((color, index) => {
                     return (
                         <React.Fragment>
+                            <label class="color-type-label">{color.type}</label>
                             <input id="hexCodeInput" 
                                 type="text" 
                                 value={color.hex} 

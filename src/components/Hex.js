@@ -3,22 +3,19 @@ import '../App.css';
 
 class Hex extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-        colorfill: props.color,
-        type: props.type
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     return (
       <div className="hexContainer">
         <div className="color-container" id="color1" style={{backgroundColor: `${this.props.color}`}}></div>
-        <p>Primary</p>
+        <p> {this.props.type} </p>
       </div>
     );
   }
 }
+
 
 export default Hex;

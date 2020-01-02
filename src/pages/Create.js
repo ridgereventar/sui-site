@@ -12,8 +12,17 @@ class Create extends Component {
             color: "#FFFFFF",
             colors: [
                 {
-                    hex: "#FFFFFF"
+                    hex: "#",
+                    type: "Primary"
                 },
+                {
+                    hex: "#",
+                    type: "Secondary"
+                },
+                {
+                    hex: "#", 
+                    type: "Tertiary"
+                }
             ]
         };
     }
@@ -50,6 +59,7 @@ class Create extends Component {
     render() {
 
         console.log(this.state.colors);
+
         return (
             <React.Fragment>
                 <div id="header">
