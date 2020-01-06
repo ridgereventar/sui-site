@@ -13,7 +13,7 @@ class Login extends Component {
             
           <div id="login-container">
 
-            <div id="login-panel-container">
+            <div id="login-panel-container">  
               <div id="login-panel">
 
                 <div id="logo-container">

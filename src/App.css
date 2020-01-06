@@ -78,12 +78,15 @@
   align-items: center;
 }
 
+
+
 #login-panel {
-  height: 550px; 
-  width: 70%; 
-  border-radius: 20px;
+  height: 400px; 
+  width: 40%; 
+  border-radius: 10px;
   background-color: #282828;
-  /* box-shadow: 0px 0px 10px lightgray; */
+  transform: perspective(200px) rotateY(4deg) scale(1.5);
+  -webkit-font-smoothing: antialiased;
 }
 
 #logo-container {
@@ -95,8 +98,8 @@
 }
 
 #logo-img {
-  width: 60px;
-  height: 60px; 
+  width: 40px;
+  height: 40px; 
   background-image: url('./images/sui_logo.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -105,8 +108,8 @@
 #form-container {
   height:70%;
   width: auto; 
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: 50px;
+  padding-right: 50px;
 
 }
 
@@ -116,11 +119,11 @@
 
 #form-container label {
   color: white;
-  font-size: 12px;
+  font-size: 8px;
 }
 
 .fullwidth-input {
-  height: 20px;
+  height: 15px;
   width: 100%;
   display: block;
   border: none;
@@ -132,13 +135,13 @@
 }
 
 #login-btn {
-  width:100px;
+  width:80px;
   margin-top: 20px;
   float: right;
   background-color: #0EC9DF;
   padding-top: 5px;
   padding-bottom: 5px;
-  font-size: 12px;
+  font-size: 8px;
   color: white;
   border: none;
   border-radius: 5px;
