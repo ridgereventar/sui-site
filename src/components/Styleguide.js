@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 
 import Hex from '../components/Hex';
-
+import Gradient from '../components/Gradient';
 
 class Styleguide extends Component {
 
@@ -21,7 +21,12 @@ class Styleguide extends Component {
               
               {this.props.colors.map(color => {
                 return (
-                  <Hex color={color.hex} type={color.type}></Hex>
+                  <React.Fragment>
+                    <div className="hex-box">
+                      <Hex color={color.hex} type={color.type}></Hex>
+                      <Gradient color={color.hex} type={color.type}></Gradient>
+                    </div>
+                  </React.Fragment>
                 )
               })}
             

@@ -9,9 +9,9 @@ class Hex extends Component {
 
   render() {
     return (
-      <div className="hexContainer">
+      <div className="hex-container">
+        <p className="hex-type-label"> {this.props.type} </p>
         <div className="color-container" id="color1" style={{backgroundColor: `${this.props.color}`}}></div>
-        <p> {this.props.type} </p>
       </div>
     );
   }

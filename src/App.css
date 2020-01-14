@@ -28,11 +28,9 @@
 }
 
 .color-palette-container {
-  display: flex;
 }
 
 .color-container {
-  margin-right: 15px;
   width: 80px; 
   height: 80px; 
   background-color: white;
@@ -192,15 +190,37 @@
 }
 
 
+/* Style Guide style */
 
-/* #header1 {
-  font-size: 40px;
-  font-family: 'Red Hat Display', sans-serif; font-family: 'Alata', sans-serif; font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
+.hex-box {
+  width: 100%; 
+  height: 110px; 
+  margin-bottom: 10px;
+  background-color: #0EC9DF;
+  display: flex;
 }
 
-#header2 {
+/* hex style */
+
+.hex-container {
+  width: 15%;
 }
 
-#header3 {
-} */
+.hex-type-label {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* gradient style */
+
+.gradient-container {
+  width: 85%;
+  display: flex;
+  align-items: center;
+}
+
+.gradient-square {
+  width: 50px; 
+  height: 50px;
+  background-color: white;
+}
