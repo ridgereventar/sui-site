@@ -7,14 +7,16 @@ class Gradient extends Component {
   //   super(props);
   // }
 
+
   render() {
+    console.log(this.props.gradient);
     return (
       <div className="gradient-container">
-        <div className="gradient-square"></div>
-        <div className="gradient-square"></div>
-        <div className="gradient-square"></div>
-        <div className="gradient-square"></div>
-        <div className="gradient-square"></div>
+        {this.props.gradient.map(value => {
+          return(
+            <div className="gradient-square" style={{backgroundColor: `${value}`}}></div>
+          )
+        })}
       </div>
     );
   }

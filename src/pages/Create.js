@@ -13,18 +13,34 @@ class Create extends Component {
             colors: [
                 {
                     hex: "#",
-                    type: "Primary"
+                    type: "Primary",
+                    gradient: []
                 },
                 {
                     hex: "#",
-                    type: "Secondary"
+                    type: "Secondary",
+                    gradient: []
                 },
                 {
                     hex: "#", 
-                    type: "Tertiary"
+                    type: "Tertiary",
+                    gradient: []
                 }
             ]
         };
+    }
+
+    hextorgb = (hex) => {
+        return ['0x' + hex[1] + hex[2] | 0, '0x' + hex[3] + hex[4] | 0, '0x' + hex[5] + hex[6] | 0];
+    };
+
+    componentToHex = (c) => {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+      
+    rgbToHex = (r, g, b) => {
+        return "#" + this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
     }
 
     onChangeHex = (index) => {
@@ -34,6 +50,17 @@ class Create extends Component {
                 const newColors = state.colors;
                 newColors[index].hex = value;
     
+                const startcolor = this.hextorgb(newColors[index].hex); 
+                const newArray = [];
+                var nextcolor = startcolor;
+                
+                for(var i=0; i < 5; i++) {
+                    newArray.push(this.rgbToHex(nextcolor[0], nextcolor[1], nextcolor[2]));
+                    var nextcolor = [nextcolor[0] + 15, nextcolor[1] + 10, nextcolor[2] + 2];
+                }
+
+                newColors[index].gradient = newArray;
+
                 return {
                     ...state,
                     colors: newColors
@@ -45,7 +72,7 @@ class Create extends Component {
     addHex = (value) => {
         this.setState((state) => {
             const newColors = state.colors;
-            newColors.push({hex: value})
+            newColors.push({hex: value, type: "Extra"})
 
             return {
                 ...state,

@@ -24,7 +24,7 @@ class Styleguide extends Component {
                   <React.Fragment>
                     <div className="hex-box">
                       <Hex color={color.hex} type={color.type}></Hex>
-                      <Gradient color={color.hex} type={color.type}></Gradient>
+                      <Gradient gradient={color.gradient}></Gradient>
                     </div>
                   </React.Fragment>
                 )
