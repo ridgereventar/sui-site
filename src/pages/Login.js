@@ -1,5 +1,5 @@
 import React, { Component, useContext } from 'react';
-import '../App.css';
+import '../styles/Login.css';
 
 class Login extends Component {
 

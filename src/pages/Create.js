@@ -1,5 +1,5 @@
 import React, { Component, useContext } from 'react';
-import '../App.css';
+import '../styles/Create.css';
 
 import Leftpanel from '../components/Leftpanel';
 import Styleguide from '../components/Styleguide';
