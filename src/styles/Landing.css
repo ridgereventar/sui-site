@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+SC:100,300,400,500,700,900&display=swap');
+
+.landing-header {
+  width: 100%; 
+  height: 100px; 
+  /* background-color: aqua; */
+  display: flex;
+  align-items: center;
+}
+
+.landing-logo {
+  width: 40px; 
+  height: 40px; 
+  background-image: url('../images/suilogodark.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 30px;
+}
+
+.landing-nav {
+  width: 400px; 
+  height: 100%;
+  /* background-color: red; */
+  margin-left: auto; 
+  margin-right: 30px;
+  order: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.landing-nav-links {
+  list-style: none;
+}
+
+.landing-nav-links li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.nav-link {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+}
+
+#signupBtn {
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  padding: 9px 22px;
+  background-image: linear-gradient(#68D9EC, #2AAAE4);
+  border: none;
+  border-radius: 5px;
+}
