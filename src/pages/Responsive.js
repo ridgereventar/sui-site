@@ -11,7 +11,6 @@ class Responsive extends Component {
 
     render() {
 
-
         return (
             <React.Fragment>
               <div className="resp-banner"></div>
