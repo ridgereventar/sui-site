@@ -7,9 +7,10 @@ const bodyParser = require('body-parser');
 const app = express(); 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
 const db = "mongodb+srv://ridgereventar:ratnever21@sui-cluster-n8na3.azure.mongodb.net/test?retryWrites=true&w=majority";
 mongoose
-  .connect(db, {useNewUrlParser: true})
+  .connect(db, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => console.log('SuiDB Connected ...'))
   .catch(err => console.log(err));
 
