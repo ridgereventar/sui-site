@@ -1,6 +1,6 @@
 import React, { Component, useContext } from 'react';
 import $ from 'jquery';
-import '../App.css';
+import '../styles/Create.css';
 
 class Leftpanel extends Component {
 

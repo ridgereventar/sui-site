@@ -1,5 +1,7 @@
 import React, { Component, useContext } from 'react';
 import '../styles/Create.css';
+import Doc from '../DocService';
+import PdfContainer from '../PdfContainer';
 
 import Leftpanel from '../components/Leftpanel';
 import Styleguide from '../components/Styleguide';
@@ -81,7 +83,7 @@ class Create extends Component {
         })
     }
     
-    
+    createPdf = (html) => Doc.createPdf(html);
 
     render() {
 
@@ -99,8 +101,11 @@ class Create extends Component {
                         defaultHex={this.state.color}
                         addHex={this.addHex}
                     />
+                    
+                    <PdfContainer createPdf={this.createPdf}>
+                        <Styleguide colors={this.state.colors}></Styleguide>
 
-                    <Styleguide colors={this.state.colors}></Styleguide>
+                    </PdfContainer>
 
                     <div id="settings-panel-right" className="settings-panel-container">
                     </div>

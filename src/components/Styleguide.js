@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../styles/Create.css';
 
 import Hex from '../components/Hex';
 import Gradient from '../components/Gradient';
