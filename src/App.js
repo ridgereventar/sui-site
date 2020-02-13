@@ -8,24 +8,57 @@ import Login from './pages/Login';
 import Responsive from './pages/Responsive';
 import Pdf from './pages/Pdf'
 
+
+export const StyleContext = React.createContext();
+
 class App extends Component {
+
 
   constructor(props) {
     super(props);
+    this.state = {
+      style: {
+        button: {
+          primary: 'red'
+        }
+      }
+    }
+  }
+
+  setPrimary = (hex) => {
+    this.setState(state => {
+      return {
+        ...state,
+        style: {
+          ...state.style,
+          button: {
+            ...state.style.button,
+            primary: hex
+          }
+        }
+
+      }
+    })
   }
 
   render() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" exact component={Landing}/>
-          <Route path="/login" exact component={Login}/>
-          <Route path="/create" exact component={Create}/>
-          <Route path="/responsive" exact component={Responsive}/>
-          <Route path="/pdf" exact component={Pdf}/>
-
-        </Switch>
-      </BrowserRouter>
+      <StyleContext.Provider value={{
+          styles: this.state.style,
+          handlers: {
+            setPrimary: this.setPrimary
+          }
+        }}>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" exact component={Landing}/>
+            <Route path="/login" exact component={Login}/>
+            <Route path="/create" exact component={Create}/>
+            <Route path="/responsive" exact component={Responsive}/>
+            <Route path="/pdf" exact component={Pdf}/>
+          </Switch>
+        </BrowserRouter>
+      </StyleContext.Provider>
     );
   }
 }

@@ -1,32 +1,27 @@
 import React, { Component, useContext } from 'react';
 import $ from 'jquery';
 import '../styles/Create.css';
-
+import {StyleContext} from '../App';
 class Leftpanel extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            color: props.defaultHex,
-            newHexValue: ""
-        };
+            newValue: ""
+        }
     }
 
-    onChangeHex = () => {
-        this.props.onChangeHex(this.state.color);
-    }
-
-    onHandleInputChange(event) {
-        this.setState({
-            color: event.target.value
+    onChangeAddHex = (e) => {
+        var test = e.target.value;
+        this.setState(state => {
+            return {
+              ...state,
+              newValue: test
+            }
         })
+        this.props.setPrimary(test);
     }
 
-    addHex = (e) => {
-        console.log('add')
-        this.props.addHex(this.state.newHexValue)
-        this.setState({newHexValue: ""})
-    }
 
     onFontChange(event) {
         console.log(event.target.value);
@@ -55,11 +50,11 @@ class Leftpanel extends Component {
                 })}
 
                 <input id="addHexInput" 
-                    type="text" 
-                    value={this.state.newHexValue} 
-                    onChange={(event) => this.setState({newHexValue: event.target.value})}
+                    type="text"
+                    value={this.state.newValue}
+                    onChange={this.onChangeAddHex}
                 />
-                <button onClick={this.addHex}>Add</button>
+                <button onClick={this.props.addHex(this.state.newValue)}>Add</button>
 
                 <select onChange={this.onFontChange} name="defaultFonts">
                     <option value="Red Hat Display">Red Hat Display</option>

@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import {Button} from '../ui';
+
 import '../styles/Create.css';
 
-import Hex from '../components/Hex';
-import Gradient from '../components/Gradient';
+import Hex from './Hex';
+import Gradient from './Gradient';
+
+import {StyleContext} from '../App';
 
 class Styleguide extends Component {
 
@@ -17,6 +21,11 @@ class Styleguide extends Component {
             <h4>Color Palette</h4>
             <hr/>
 
+            <StyleContext.Consumer>
+              {(value) => {
+                  return <Button color={value.styles.button.primary}/>
+              }}
+            </StyleContext.Consumer>
             <div className="color-palette-container">
               
               {this.props.colors.map(color => {

@@ -5,7 +5,7 @@ import PdfContainer from '../PdfContainer';
 
 import Leftpanel from '../components/Leftpanel';
 import Styleguide from '../components/Styleguide';
-
+import {StyleContext} from '../App';
 class Create extends Component {
 
     constructor(props) {
@@ -72,15 +72,28 @@ class Create extends Component {
     }
 
     addHex = (value) => {
-        this.setState((state) => {
-            const newColors = state.colors;
-            newColors.push({hex: value, type: "Extra"})
+        return (e) => {
+            this.setState((state) => {
+                const newColors = state.colors;
+                
+                const startcolor = this.hextorgb(value); 
+                const newArray = [];
+                var nextcolor = startcolor;
+                    
+                for(var i=0; i < 5; i++) {
+                    newArray.push(this.rgbToHex(nextcolor[0], nextcolor[1], nextcolor[2]));
+                    var nextcolor = [nextcolor[0] + 15, nextcolor[1] + 10, nextcolor[2] + 2];
+                }
+    
+                newColors.push({hex: value, type: "Extra", gradient: newArray});
+    
+                return {
+                    ...state,
+                    colors: newColors
+                }
+            })
+        }
 
-            return {
-                ...state,
-                colors: newColors
-            }
-        })
     }
     
     createPdf = (html) => Doc.createPdf(html);
@@ -95,12 +108,18 @@ class Create extends Component {
                 </div>
       
                 <div className="playground-window">
-                    <Leftpanel 
-                        colors={this.state.colors}
-                        onChangeHex={this.onChangeHex}
-                        defaultHex={this.state.color}
-                        addHex={this.addHex}
-                    />
+                    <StyleContext.Consumer>
+                        {({handlers}) => 
+                            <Leftpanel 
+                                colors={this.state.colors}
+                                onChangeHex={this.onChangeHex}
+                                defaultHex={this.state.color}
+                                addHex={this.addHex}
+                                setPrimary={handlers.setPrimary}
+                            />
+                        }
+                    </StyleContext.Consumer>
+                 
                     
                     <PdfContainer createPdf={this.createPdf}>
                         <Styleguide colors={this.state.colors}></Styleguide>
