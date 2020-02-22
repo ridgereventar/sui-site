@@ -126,7 +126,7 @@ span {
   height: 90px; 
   margin-bottom: 10px;
   display: flex;
-  background-color: yellow;
+  /* background-color: yellow; */
   align-items: center;
 }
 
@@ -138,23 +138,14 @@ span {
 }
 
 .color-info-container {
-  background-color: lightgray;
-
+  margin-left: 20px;
+  width: 100px;
   height: 57px;
   
 }
-/* Hex Styles */
-
-.hex-container {
-  width: 15%;
-}
-
-
-
-/* Gradient Swatch Styles */
-
 .gradient-container {
-  width: 85%;
+  margin-left: 20px;
+  width: 250;
   display: flex;
   align-items: center;
 }

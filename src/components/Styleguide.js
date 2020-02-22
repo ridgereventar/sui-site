@@ -3,8 +3,6 @@ import {Button} from '../ui';
 
 import '../styles/Create.css';
 
-import Gradient from './Gradient';
-
 import {StyleContext} from '../App';
 
 class Styleguide extends Component {
@@ -26,14 +24,22 @@ class Styleguide extends Component {
                 return (
                   <React.Fragment>
                     <div className="hex-box">
+                      
                       <div className="color-container" id="color1" style={{backgroundColor: `${color.hex}`}}></div>
+                      
                       <div className="color-info-container">
                         <h2 className="hex-type-label"> {color.type} </h2>
                         <span style={{"margin-bottom": "5px"}}> {color.hex} </span>
                         <span> rgb({color.rgb[0]}, {color.rgb[1]}, {color.rgb[2]}) </span>
                       </div>
                       
-                      {/* <Gradient gradient={color.gradient}></Gradient> */}
+                      <div className="gradient-container">
+                        {color.gradient.map(value => {
+                          return(
+                            <div className="gradient-square" style={{backgroundColor: `${value}`}}></div>
+                          )
+                        })}
+                      </div>
                     </div>
                   </React.Fragment>
                 )
