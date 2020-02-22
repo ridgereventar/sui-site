@@ -3,7 +3,6 @@ import {Button} from '../ui';
 
 import '../styles/Create.css';
 
-import Hex from './Hex';
 import Gradient from './Gradient';
 
 import {StyleContext} from '../App';
@@ -18,22 +17,23 @@ class Styleguide extends Component {
 
     return (
         <div className="style-guide">
-            <h4>Color Palette</h4>
-            <hr/>
+            
+            <label className="settingsLabel"> Colors</label>
 
-            <StyleContext.Consumer>
-              {(value) => {
-                  return <Button color={value.styles.button.primary}/>
-              }}
-            </StyleContext.Consumer>
             <div className="color-palette-container">
               
               {this.props.colors.map(color => {
                 return (
                   <React.Fragment>
                     <div className="hex-box">
-                      <Hex color={color.hex} type={color.type}></Hex>
-                      <Gradient gradient={color.gradient}></Gradient>
+                      <div className="color-container" id="color1" style={{backgroundColor: `${color.hex}`}}></div>
+                      <div className="color-info-container">
+                        <h2 className="hex-type-label"> {color.type} </h2>
+                        <span style={{"margin-bottom": "5px"}}> {color.hex} </span>
+                        <span> rgb({color.rgb[0]}, {color.rgb[1]}, {color.rgb[2]}) </span>
+                      </div>
+                      
+                      {/* <Gradient gradient={color.gradient}></Gradient> */}
                     </div>
                   </React.Fragment>
                 )
@@ -48,6 +48,11 @@ class Styleguide extends Component {
             <h3 id="header3" class="headerFont">Headline</h3>
             <h5>Body</h5>
                 
+            <StyleContext.Consumer>
+              {(value) => {
+                  return <Button color={value.styles.button.primary}/>
+              }}
+            </StyleContext.Consumer>
         </div>
     );
   }

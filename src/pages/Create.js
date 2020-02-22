@@ -14,18 +14,21 @@ class Create extends Component {
             color: "#FFFFFF",
             colors: [
                 {
-                    hex: "#",
+                    hex: "",
                     type: "Primary",
+                    rgb: "",
                     gradient: []
                 },
                 {
-                    hex: "#",
+                    hex: "",
                     type: "Secondary",
+                    rgb: "",
                     gradient: []
                 },
                 {
-                    hex: "#", 
+                    hex: "", 
                     type: "Tertiary",
+                    rgb: "",
                     gradient: []
                 }
             ]
@@ -61,6 +64,7 @@ class Create extends Component {
                     var nextcolor = [nextcolor[0] + 15, nextcolor[1] + 10, nextcolor[2] + 2];
                 }
 
+                newColors[index].rgb = startcolor;
                 newColors[index].gradient = newArray;
 
                 return {
@@ -85,7 +89,7 @@ class Create extends Component {
                     var nextcolor = [nextcolor[0] + 15, nextcolor[1] + 10, nextcolor[2] + 2];
                 }
     
-                newColors.push({hex: value, type: "Extra", gradient: newArray});
+                newColors.push({hex: value, type: "Extra", rgb: startcolor, gradient: newArray});
     
                 return {
                     ...state,
@@ -96,7 +100,7 @@ class Create extends Component {
 
     }
     
-    createPdf = (html) => Doc.createPdf(html);
+    // createPdf = (html) => Doc.createPdf(html);
 
     render() {
 
@@ -104,37 +108,40 @@ class Create extends Component {
 
         return (
             <React.Fragment>
-                <div id="header">
-                </div>
-      
-                <div className="playground-window">
-                    <StyleContext.Consumer>
-                        {({handlers}) => 
-                            <Leftpanel 
-                                colors={this.state.colors}
-                                onChangeHex={this.onChangeHex}
-                                defaultHex={this.state.color}
-                                addHex={this.addHex}
-                                setPrimary={handlers.setPrimary}
-                            />
-                        }
-                    </StyleContext.Consumer>
-                 
-                    
-                    <PdfContainer createPdf={this.createPdf}>
-                        <Styleguide colors={this.state.colors}></Styleguide>
 
-                    </PdfContainer>
-
-                    <div id="settings-panel-right" className="settings-panel-container">
+                <div id="create-wrapper">
+                    <div id="header">
                     </div>
-                </div>
-      
-                <div id="footer">
-                </div>  
+
+                    <div id="header-labels">
+                    </div>
+
+                    <div className="playground-window">
+                        <StyleContext.Consumer>
+                            {({handlers}) => 
+                                <Leftpanel 
+                                    colors={this.state.colors}
+                                    onChangeHex={this.onChangeHex}
+                                    defaultHex={this.state.color}
+                                    addHex={this.addHex}
+                                    setPrimary={handlers.setPrimary}
+                                />
+                            }
+                        </StyleContext.Consumer>
+                 
+                        <Styleguide colors={this.state.colors}></Styleguide>
+                    
+                        {/* <PdfContainer createPdf={this.createPdf}>
+                        </PdfContainer> */}
+
+                        <div id="settings-panel-right" className="settings-panel-container">
+                        </div>
+                    </div>
+
+                </div> 
             </React.Fragment>
         );
     }
 }
 
-export default Create;
+export default Create; 

@@ -31,32 +31,43 @@ class Leftpanel extends Component {
     render() {
         return (
             <div id="settings-panel-left" className="settings-panel-container">
-                <label id="hexCodeLabel">Enter Hex codes:</label>
-                <br/>
+
+                <label className="settingsLabel"> Colors</label>
 
                 {this.props.colors.map((color, index) => {
                     return (
                         <React.Fragment>
-                            <label class="color-type-label">{color.type}</label>
-                            <input id="hexCodeInput" 
-                                type="text" 
-                                value={color.hex} 
-                                onChange={this.props.onChangeHex(index)}
-                            />
+                            <div className="color-input-container">
+                                <div className="color-input-circle"></div>
+                                <label class="color-type-label">{color.type}</label>
+                                <input className="hexCodeInput" 
+                                    type="text" 
+                                    value={color.hex} 
+                                    onChange={this.props.onChangeHex(index)}
+                                />
+                                <button id="colorwheel-btn"></button>
+                            </div>
                             {/* <button onClick={this.onChangeHex.bind(this)}>Update</button> */}
                         </React.Fragment>
 
                     )
                 })}
 
-                <input id="addHexInput" 
-                    type="text"
-                    value={this.state.newValue}
-                    onChange={this.onChangeAddHex}
-                />
-                <button onClick={this.props.addHex(this.state.newValue)}>Add</button>
+                <div className="color-input-container extra-color-input">
+                    <div className="color-input-circle"></div>
+                    <label className="color-type-label">Extra</label>
+                    <input className="hexCodeInput" 
+                        type="text"
+                        value={this.state.newValue}
+                        onChange={this.onChangeAddHex}
+                    />
+                    <button id="colorwheel-btn"></button>
+                    <button className="add-btn" onClick={this.props.addHex(this.state.newValue)}>Add</button>
+                </div>
+                
+                <label className="settingsLabel"> Fonts</label>
 
-                <select onChange={this.onFontChange} name="defaultFonts">
+                <select className="font-dropdown" onChange={this.onFontChange} name="defaultFonts">
                     <option value="Red Hat Display">Red Hat Display</option>
                     <option value="Alata">Alata</option>
                     <option value="Montserrat">Montserrat</option>
