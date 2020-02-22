@@ -3,7 +3,7 @@ import '../styles/Create.css';
 import Doc from '../DocService';
 import PdfContainer from '../PdfContainer';
 
-import Leftpanel from '../components/Leftpanel';
+import ColorPanel from '../components/ColorPanel';
 import Styleguide from '../components/Styleguide';
 import {StyleContext} from '../App';
 class Create extends Component {
@@ -119,7 +119,7 @@ class Create extends Component {
                     <div className="playground-window">
                         <StyleContext.Consumer>
                             {({handlers}) => 
-                                <Leftpanel 
+                                <ColorPanel 
                                     colors={this.state.colors}
                                     onChangeHex={this.onChangeHex}
                                     defaultHex={this.state.color}

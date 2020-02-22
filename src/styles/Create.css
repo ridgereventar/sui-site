@@ -1,3 +1,10 @@
+h1 {
+  font-family: "Avenir Next";
+  font-weight: 500; 
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
 h2 {
   font-family: "Avenir Next";
   font-weight: 700;
@@ -36,21 +43,29 @@ span {
 }
 
 
-/* LEFT settings panel */
+/* Color settings panel */
 
 .settings-panel-container {
   padding: 20px 15px;
   width: 356px; 
   height: 540px; 
   background-color:white;
-  overflow: scroll;
+  overflow-y: auto;
 }
 
-.settingsLabel {
-  color: black;
-  font-size: 14px;
-  display: inline-block;
-  margin-bottom: 20px;
+.settings-panel-container::-webkit-scrollbar {
+  width: 8px;
+  background-color: white;
+}
+
+.settings-panel-container::-webkit-scrollbar-thumb {
+  background-color: #E4E4E4;
+  border-radius: 10px;
+  visibility: hidden;
+}
+
+.settings-panel-container:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
 }
 
 .color-input-container {
@@ -69,7 +84,6 @@ span {
 .color-input-circle {
   width: 30px; 
   height: 30px; 
-  background-color: aqua;
   border-radius: 50%;
 }
 

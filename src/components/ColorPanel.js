@@ -2,7 +2,8 @@ import React, { Component, useContext } from 'react';
 import $ from 'jquery';
 import '../styles/Create.css';
 import {StyleContext} from '../App';
-class Leftpanel extends Component {
+
+class ColorPanel extends Component {
 
     constructor(props) {
         super(props);
@@ -30,15 +31,15 @@ class Leftpanel extends Component {
 
     render() {
         return (
-            <div id="settings-panel-left" className="settings-panel-container">
+            <div className="settings-panel-container">
 
-                <label className="settingsLabel"> Colors</label>
+                <h1> Colors</h1>
 
                 {this.props.colors.map((color, index) => {
                     return (
                         <React.Fragment>
                             <div className="color-input-container">
-                                <div className="color-input-circle"></div>
+                                <div className="color-input-circle" style={{backgroundColor: color.hex}}></div>
                                 <label class="color-type-label">{color.type}</label>
                                 <input className="hexCodeInput" 
                                     type="text" 
@@ -65,16 +66,10 @@ class Leftpanel extends Component {
                     <button className="add-btn" onClick={this.props.addHex(this.state.newValue)}>Add</button>
                 </div>
                 
-                <label className="settingsLabel"> Fonts</label>
-
-                <select className="font-dropdown" onChange={this.onFontChange} name="defaultFonts">
-                    <option value="Red Hat Display">Red Hat Display</option>
-                    <option value="Alata">Alata</option>
-                    <option value="Montserrat">Montserrat</option>
-                </select>
+                
             </div>
         );
     }
 }
 
-export default Leftpanel;
+export default ColorPanel;

@@ -16,10 +16,9 @@ class Styleguide extends Component {
     return (
         <div className="style-guide">
             
-            <label className="settingsLabel"> Colors</label>
+            <h1> Colors </h1>
 
             <div className="color-palette-container">
-              
               {this.props.colors.map(color => {
                 return (
                   <React.Fragment>
@@ -44,11 +43,10 @@ class Styleguide extends Component {
                   </React.Fragment>
                 )
               })}
-            
             </div>
 
-            <h4>Typography</h4>
-            <hr/>
+            <h1>Fonts</h1>
+            
             <h1 id="header1" class="headerFont">Headline Large</h1>
             <h2 id="header2" class="headerFont">Headline Medium</h2>
             <h3 id="header3" class="headerFont">Headline</h3>
