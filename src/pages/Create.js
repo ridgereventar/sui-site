@@ -12,7 +12,6 @@ class Create extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            color: "#FFFFFF",
             colors: [
                 {
                     hex: "",
@@ -32,7 +31,8 @@ class Create extends Component {
                     rgb: "",
                     gradient: []
                 }
-            ]
+            ],
+            fonts: []
         };
     }
 
@@ -101,11 +101,16 @@ class Create extends Component {
 
     }
     
+    addFont = (value) => {
+
+    }
+
     // createPdf = (html) => Doc.createPdf(html);
 
     render() {
 
         console.log(this.state.colors);
+        console.log(this.state.Fonts);
 
         return (
             <React.Fragment>
@@ -122,8 +127,8 @@ class Create extends Component {
                     <Settings
                         colors={this.state.colors}
                         onChangeHex={this.onChangeHex}
-                        defaultHex={this.state.color}
                         addHex={this.addHex}
+                        addFont={this.addFont}
                         // setPrimary={handlers.setPrimary}
                     />
                 

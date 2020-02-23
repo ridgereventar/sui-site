@@ -3,7 +3,7 @@ import '../styles/Create.css';
 
 const BasicInput = (props) => {
     return (
-        <div className="color-input-container">
+        <div className="input-container">
             <div className="color-input-circle" style={{backgroundColor: props.hex}}></div>
             <label class="color-type-label">{props.type}</label>
             <input className="hexCodeInput" 
@@ -18,7 +18,7 @@ const BasicInput = (props) => {
 
 const AddInput = (props) => {
     return (
-        <div className="color-input-container">
+        <div className="input-container">
             <div className="color-input-circle"></div>
             <label className="color-type-label">{props.type}</label>
             <input className="hexCodeInput" 
