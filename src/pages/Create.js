@@ -3,9 +3,10 @@ import '../styles/Create.css';
 import Doc from '../DocService';
 import PdfContainer from '../PdfContainer';
 
-import ColorPanel from '../components/ColorPanel';
+import Settings from '../components/Settings';
 import Styleguide from '../components/Styleguide';
 import {StyleContext} from '../App';
+
 class Create extends Component {
 
     constructor(props) {
@@ -109,36 +110,29 @@ class Create extends Component {
         return (
             <React.Fragment>
 
-                <div id="create-wrapper">
-                    <div id="header">
-                    </div>
+                <div id="header">
+                </div>
 
-                    <div id="header-labels">
-                    </div>
+                <div className="playground-window">
+                    {/* <StyleContext.Consumer>
+                        {({handlers}) => 
+                        }
+                    </StyleContext.Consumer> */}
 
-                    <div className="playground-window">
-                        <StyleContext.Consumer>
-                            {({handlers}) => 
-                                <ColorPanel 
-                                    colors={this.state.colors}
-                                    onChangeHex={this.onChangeHex}
-                                    defaultHex={this.state.color}
-                                    addHex={this.addHex}
-                                    setPrimary={handlers.setPrimary}
-                                />
-                            }
-                        </StyleContext.Consumer>
-                 
-                        <Styleguide colors={this.state.colors}></Styleguide>
+                    <Settings
+                        colors={this.state.colors}
+                        onChangeHex={this.onChangeHex}
+                        defaultHex={this.state.color}
+                        addHex={this.addHex}
+                        // setPrimary={handlers.setPrimary}
+                    />
+                
+                    <Styleguide colors={this.state.colors}></Styleguide>
                     
-                        {/* <PdfContainer createPdf={this.createPdf}>
-                        </PdfContainer> */}
-
-                        <div id="settings-panel-right" className="settings-panel-container">
-                        </div>
+                    <div id="settings-panel-right" className="settings-container">
                     </div>
+                </div>
 
-                </div> 
             </React.Fragment>
         );
     }
