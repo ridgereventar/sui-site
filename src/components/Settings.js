@@ -4,13 +4,17 @@ import '../styles/Create.css';
 
 import {StyleContext} from '../App';
 import ColorInput from './ColorInput';
+import {DEFAULT_FONTS} from '../constants';
+
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 
 class Settings extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            newValue: ""
+            newValue: "",
         }
     }
 
@@ -25,21 +29,36 @@ class Settings extends Component {
         // this.props.setPrimary(test);
     }
 
-    // onFontChange(event) {
-    //     console.log(event.target.value);
-    //     $(".headerFont").css("font-family", `"${event.target.value}", sans-serif`);
-    // }
+    onFontChangeHandler = (selectedFonts) => {
+        if(selectedFonts == null) {
+            const emptyObj = [{}];
+            this.props.addFont(emptyObj);
+        } else {
+            this.props.addFont(selectedFonts);
 
-    componentDidMount() {
-        $("#fontDropdown").on("change", function (event) {
-            console.log(event.target.value);
-        })
-        $("#weightDropdown").on("change", function (event) {
-            console.log(event.target.value);
-        })
+        }
     }
 
     render() {
+
+        const {fontOptions} = this.props;
+
+        const options = [];
+        const animatedComp = makeAnimated();
+
+        {fontOptions.map((font) => {
+            options.push({value: font.id, label: font.title});
+        })}
+
+        const customStyles = {
+            option: (provided, state) => ({
+                ...provided,
+                color: 'black',
+                "font-family": state.label,
+                padding: 5
+            })
+        }
+
         return (
             <div className="settings-container">
                 <div className="settings-header">
@@ -70,23 +89,29 @@ class Settings extends Component {
 
                 <div className="settings-panel">
                     <h1> Fonts </h1>
-                    <div className="input-container">
-                        <h3>Aa</h3>
-                        <div className="select-font-container">
-                            <select id="fontDropdown" name="defaultFonts">
-                                <option value="Red Hat Display">Red Hat Display</option>
-                                <option value="Alata">Alata</option>
-                                <option value="Montserrat">Montserrat</option>
-                            </select>
-                        </div>
-                        <div className="select-weight-container">
-                            <select id="weightDropdown" name="weights">
-                                <option value="Regular 500">Regular 500</option>
-                                <option value="Bold 700">Bold 700</option>
-                            </select> 
 
-                        </div>
+                    <div className="font-select-container">
+                        <Select 
+                            styles={customStyles}
+                            options={options}
+                            closeMenuOnSelect={false}
+                            components={animatedComp}
+                            isMulti
+                            onChange={this.onFontChangeHandler}/>
                     </div>
+
+
+                    
+
+                    {this.props.fonts.map((font) => {
+
+                        return (
+                            <div className="input-container">
+                                <h3 className="font-input-icon" style={{"font-family": font.label}}>Aa</h3>
+                                <text className="selected-font-label" style={{"font-family": font.label}}>{font.label}</text>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         );
@@ -94,3 +119,5 @@ class Settings extends Component {
 }
 
 export default Settings;
+
+

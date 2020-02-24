@@ -17,13 +17,4 @@ serviceWorker.unregister();
 
 $(document).ready(function() {
 
-    $("#fontDropdown").select2({
-        placeholder: "Select Font"    
-    });
-
-    $("#weightDropdown").select2({
-        placeholder: "weight",
-        minimumResultsForSearch: -1
-    })
-
 });

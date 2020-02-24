@@ -47,10 +47,7 @@ class Styleguide extends Component {
 
             <h1>Fonts</h1>
             
-            <h1 id="header1" class="headerFont">Headline Large</h1>
-            <h2 id="header2" class="headerFont">Headline Medium</h2>
-            <h3 id="header3" class="headerFont">Headline</h3>
-            <h5>Body</h5>
+          
                 
             <StyleContext.Consumer>
               {(value) => {

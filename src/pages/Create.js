@@ -6,6 +6,7 @@ import PdfContainer from '../PdfContainer';
 import Settings from '../components/Settings';
 import Styleguide from '../components/Styleguide';
 import {StyleContext} from '../App';
+import { DEFAULT_FONTS } from '../constants';
 
 class Create extends Component {
 
@@ -32,7 +33,10 @@ class Create extends Component {
                     gradient: []
                 }
             ],
-            fonts: []
+            fonts: [
+                
+            ],
+            fontOptions: Object.values(DEFAULT_FONTS)
         };
     }
 
@@ -101,8 +105,27 @@ class Create extends Component {
 
     }
     
-    addFont = (value) => {
+    addFont = (selectedFonts) => {
+        this.setState((state) => {
 
+            return {
+                ...state,
+                fonts: selectedFonts,
+            }
+        })
+    }
+
+    updateFont = (index, value) => {
+        this.setState((state) => {
+            const newFonts = state.fonts;
+
+            newFonts[index] = value;
+
+            return {
+                ...state,
+                fonts: newFonts
+            }
+        })
     }
 
     // createPdf = (html) => Doc.createPdf(html);
@@ -110,7 +133,9 @@ class Create extends Component {
     render() {
 
         console.log(this.state.colors);
-        console.log(this.state.Fonts);
+        console.log("fonts:");
+        console.log(this.state.fonts);
+
 
         return (
             <React.Fragment>
@@ -126,9 +151,12 @@ class Create extends Component {
 
                     <Settings
                         colors={this.state.colors}
+                        fonts={this.state.fonts}
                         onChangeHex={this.onChangeHex}
                         addHex={this.addHex}
                         addFont={this.addFont}
+                        updateFont={this.updateFont}
+                        fontOptions={this.state.fontOptions}
                         // setPrimary={handlers.setPrimary}
                     />
                 
