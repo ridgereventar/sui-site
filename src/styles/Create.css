@@ -1,11 +1,11 @@
-h1 {
+.setting-label {
   font-family: "Avenir Next";
   font-weight: 500; 
   font-size: 14px;
   margin-bottom: 20px;
 }
 
-h2 {
+.hex-type-label {
   font-family: "Avenir Next";
   font-weight: 700;
   font-size: 14px;
@@ -39,10 +39,33 @@ span {
 
 .settings-header {
   width: 100%; 
-  height: 35px; 
-  background-color: white;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+/* sectionLabel */
+
+.section-label-container {
+  display: flex;
+}
+
+.label-icon-container {
+  height: 15px; 
+  width: 15px;
+  background-image: url('../images/settingsicon.png');
+  background-size: cover;
+}
+
+.section-label {
+  margin-left: 5px;
+  font-size: 12px;
+  color:black;
+}
+
+/* ------- */
 
 .settings-panel {
   margin-bottom: 5px;
@@ -66,6 +89,18 @@ span {
 
 .settings-panel:hover::-webkit-scrollbar-thumb {
   visibility: visible;
+}
+
+.color-panel {
+  height: 230px;
+}
+
+.font-panel {
+  height: 250px;
+}
+
+.typography-panel {
+  height: 321px;
 }
 
 /* ColorInput */
@@ -133,14 +168,29 @@ span {
 
 /* StyleGuide Styles */
 
+.styleguide-container {
+  width: 612px; 
+  height: max-content;
+}
+
+.styleguide-header {
+  width: 100%; 
+  margin-bottom: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .style-guide {
   margin-top: 10px;
   padding: 40px 50px;
-  width: 612px; 
-  height: 792px; 
+  height: 712px;
+  width: 512px;  
   background-color: white;
   box-shadow: 0px 0px 8px #C5C5C5;
-  
+  margin: 0 auto;
+  position: relative;
 }
 
 .color-palette-container {

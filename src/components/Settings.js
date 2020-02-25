@@ -5,6 +5,7 @@ import '../styles/Create.css';
 import {StyleContext} from '../App';
 import ColorInput from './ColorInput';
 import {DEFAULT_FONTS} from '../constants';
+import SectionLabel from './SectionLabel';
 
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -62,10 +63,13 @@ class Settings extends Component {
         return (
             <div className="settings-container">
                 <div className="settings-header">
+                    <SectionLabel
+                        url={require('../images/settingsicon.png')}
+                        label="Settings"/>
                 </div>
 
-                <div className="settings-panel">
-                    <h1> Colors</h1>
+                <div className="settings-panel color-panel">
+                    <h1 className="setting-label"> Colors</h1>
 
                     {this.props.colors.map((color, index) => {
                         return (
@@ -87,8 +91,8 @@ class Settings extends Component {
 
                 </div>  
 
-                <div className="settings-panel">
-                    <h1> Fonts </h1>
+                <div className="settings-panel font-panel">
+                    <h1 className="setting-label"> Fonts </h1>
 
                     <div className="font-select-container">
                         <Select 
@@ -100,11 +104,7 @@ class Settings extends Component {
                             onChange={this.onFontChangeHandler}/>
                     </div>
 
-
-                    
-
                     {this.props.fonts.map((font) => {
-
                         return (
                             <div className="input-container">
                                 <h3 className="font-input-icon" style={{"font-family": font.label}}>Aa</h3>
@@ -112,6 +112,28 @@ class Settings extends Component {
                             </div>
                         );
                     })}
+                </div>
+            
+                <div className="settings-panel typography-panel">
+                    <h1 className="setting-label">Typography</h1>
+                    <div className="input-container">
+                        <h1>H1</h1>
+                    </div>
+                    <div className="input-container">
+                        <h2>H2</h2>
+                    </div>
+                    <div className="input-container">
+                        <h3>H3</h3>
+                    </div>
+                    <div className="input-container">
+                        <h4>H4</h4>
+                    </div>
+                    <div className="input-container">
+                        <h5>H5</h5>
+                    </div>
+                    <div className="input-container">
+                        <p>Body</p>
+                    </div>
                 </div>
             </div>
         );
