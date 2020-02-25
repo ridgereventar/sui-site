@@ -17,15 +17,12 @@ class Settings extends Component {
 
     }
 
-    onFontChangeHandler = (selectedFonts) => {
-        if(selectedFonts == null) {
-            const emptyObj = [{}];
-            this.props.addFont(emptyObj);
-        } else {
-            this.props.addFont(selectedFonts);
-
-        }
-    }
+    // onFontChangeHandler = (index) => {
+    //     return (val) => {
+    //         console.log(index);
+    //         console.log(val);
+    //     } 
+    // }
 
     render() {
 
@@ -44,7 +41,25 @@ class Settings extends Component {
                 color: 'black',
                 "font-family": state.label,
                 padding: 5
-            })
+            }),
+            control: base => ({
+                ...base,
+                minHeight: 20,
+                "margin-bottom": '8px'
+            }),
+            dropdownIndicator: base => ({
+                ...base,
+                padding: 2
+            }),
+            valueContainer: base => ({
+                ...base,
+                padding: '0px 1px'
+            }),
+            input: base => ({
+                ...base,
+                margin: 0,
+                padding: 0
+            }),
         }
 
         return (
@@ -77,24 +92,27 @@ class Settings extends Component {
                 <div className="settings-panel font-panel">
                     <h1 className="setting-label"> Fonts </h1>
 
-                    <div className="font-select-container">
-                        <Select 
-                            styles={customStyles}
-                            options={options}
-                            closeMenuOnSelect={false}
-                            components={animatedComp}
-                            isMulti
-                            onChange={this.onFontChangeHandler}/>
-                    </div>
 
-                    {this.props.fonts.map((font) => {
+                    {this.props.fonts.map((font, index) => {
                         return (
-                            <div className="input-container">
-                                <h3 className="font-input-icon" style={{"font-family": font.label}}>Aa</h3>
-                                <text className="selected-font-label" style={{"font-family": font.label}}>{font.label}</text>
+                            <div className="font-input-container">
+                                <h3 className="font-input-icon" style={{"font-family": font.name}}>Aa</h3>
+                                <div className="font-select-container"> 
+                                    <label className="font-type-label" for="font-select">{font.type}</label>
+                                    <Select
+                                        styles={customStyles}
+                                        options={options}
+                                        onChange={this.props.updateFont(index)}
+                                        />
+                                </div>
                             </div>
                         );
                     })}
+
+                    <div onClick={this.props.addFont} className="font-add-btn">
+                        <h3 className="font-add-btn-icon">+</h3>
+                    </div>
+
                 </div>
             
                 <div className="settings-panel typography-panel">

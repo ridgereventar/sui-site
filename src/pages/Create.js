@@ -34,7 +34,14 @@ class Create extends Component {
                 }
             ],
             fonts: [
-                
+                {
+                    type: "Primary",
+                    name: ""
+                },
+                {
+                    type: "Secondary",
+                    name: ""
+                }
             ],
             fontOptions: Object.values(DEFAULT_FONTS)
         };
@@ -128,22 +135,28 @@ class Create extends Component {
         }
 
     }
+
+    updateFont = (index) => {
+        return (font) => {
+            this.setState((state) => {
+                const newFonts = state.fonts;
+    
+                newFonts[index].name = font.label;
+    
+                return {
+                    ...state,
+                    fonts: newFonts
+                }
+            })
+        }
+
+    }
     
     addFont = (selectedFonts) => {
         this.setState((state) => {
-
-            return {
-                ...state,
-                fonts: selectedFonts,
-            }
-        })
-    }
-
-    updateFont = (index, value) => {
-        this.setState((state) => {
             const newFonts = state.fonts;
 
-            newFonts[index] = value;
+            newFonts.push({type:"Extra", name: ""});
 
             return {
                 ...state,
@@ -151,7 +164,6 @@ class Create extends Component {
             }
         })
     }
-
     // createPdf = (html) => Doc.createPdf(html);
 
     render() {
