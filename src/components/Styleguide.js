@@ -8,9 +8,9 @@ import SectionLabel from './SectionLabel';
 
 class Styleguide extends Component {
 
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+  }
 
   render() {
 
@@ -55,9 +55,7 @@ class Styleguide extends Component {
               </div>
 
               <h1 className="setting-label">Fonts</h1>
-              
-            
-                  
+
               <StyleContext.Consumer>
                 {(value) => {
                     return <Button color={value.styles.button.primary}/>

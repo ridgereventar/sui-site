@@ -1,52 +1,27 @@
-import React from 'react'; 
+import React, {Component} from 'react'; 
 import '../styles/Create.css';
 
-const BasicInput = (props) => {
-    return (
-        <div className="input-container">
-            <div className="color-input-circle" style={{backgroundColor: props.hex}}></div>
-            <label class="color-type-label">{props.type}</label>
-            <input className="hexCodeInput" 
-                type="text" 
-                value={props.hex} 
-                onChange={props.onChangeHex(props.index)}
-            />
-            <button id="colorwheel-btn"></button>
-        </div>
-    )
-}
+import ColorPicker from './ColorPicker';
 
-const AddInput = (props) => {
-    return (
-        <div className="input-container">
-            <div className="color-input-circle"></div>
-            <label className="color-type-label">{props.type}</label>
-            <input className="hexCodeInput" 
-                type="text"
-                value={props.value}
-                onChange={props.onChangeAddHex}
-            />
-            <button id="colorwheel-btn"></button>
-            <button className="add-btn" onClick={props.addHex(props.value)}>Add</button>
-        </div>
-    )
-}
+class ColorInput extends Component {
 
-const ColorInput = (props) => {
-    const addInput = props.addInput; 
-    if(addInput) {
-        return <AddInput
-                    type={props.type}
-                    value={props.newValue}
-                    onChangeAddHex={props.onChangeAddHex}
-                    addHex={props.addHex}/>;
-    } else {
-        return <BasicInput
-                    hex={props.hex}
-                    type={props.type}
-                    index={props.index}
-                    onChangeHex={props.onChangeHex}/>;
+    render () {
+        return (
+            <div className="input-container">
+                <div className="color-input-circle" style={{backgroundColor: this.props.hex}}></div>
+                <label class="color-type-label">{this.props.type}</label>
+                <input className="hexCodeInput" 
+                    type="text" 
+                    value={this.props.hex} 
+                    onChange={this.props.onChangeHex(this.props.index)}
+                />
+                <ColorPicker
+                    inputAdd={false}
+                    onColorPicked={this.props.onColorPicked}
+                    index={this.props.index}/>
+            </div>
+        )
     }
-};
+}
 
 export default ColorInput;

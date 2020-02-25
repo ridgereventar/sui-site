@@ -4,7 +4,7 @@ import '../styles/Create.css';
 
 import {StyleContext} from '../App';
 import ColorInput from './ColorInput';
-import {DEFAULT_FONTS} from '../constants';
+import ColorInputAdd from './ColorInputAdd';
 import SectionLabel from './SectionLabel';
 
 import Select from 'react-select';
@@ -14,20 +14,7 @@ class Settings extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            newValue: "",
-        }
-    }
 
-    onChangeAddHex = (e) => {
-        var test = e.target.value;
-        this.setState(state => {
-            return {
-              ...state,
-              newValue: test
-            }
-        })
-        // this.props.setPrimary(test);
     }
 
     onFontChangeHandler = (selectedFonts) => {
@@ -74,19 +61,15 @@ class Settings extends Component {
                     {this.props.colors.map((color, index) => {
                         return (
                             <ColorInput 
-                                addInput={false}
                                 hex={color.hex}
                                 type={color.type}
                                 index={index}
-                                onChangeHex={this.props.onChangeHex}/>
+                                onChangeHex={this.props.onChangeHex}
+                                onColorPicked={this.props.onColorPicked}/>
                         )
                     })}
 
-                    <ColorInput
-                        addInput={true}
-                        type="Extra"
-                        newValue={this.state.newValue}
-                        onChangeAddHex={this.onChangeAddHex}
+                    <ColorInputAdd
                         addHex={this.props.addHex}/>
 
                 </div>  

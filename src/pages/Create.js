@@ -80,6 +80,30 @@ class Create extends Component {
         }
     }
 
+    onColorPicked = (index, value) => {
+        this.setState((state) => {
+            const newColors = state.colors;
+            newColors[index].hex = value;
+
+            const startcolor = this.hextorgb(newColors[index].hex); 
+            const newArray = [];
+            var nextcolor = startcolor;
+            
+            for(var i=0; i < 5; i++) {
+                newArray.push(this.rgbToHex(nextcolor[0], nextcolor[1], nextcolor[2]));
+                var nextcolor = [nextcolor[0] + 15, nextcolor[1] + 10, nextcolor[2] + 2];
+            }
+
+            newColors[index].rgb = startcolor;
+            newColors[index].gradient = newArray;
+
+            return {
+                ...state,
+                colors: newColors
+            }
+        })
+    }
+
     addHex = (value) => {
         return (e) => {
             this.setState((state) => {
@@ -153,6 +177,7 @@ class Create extends Component {
                         colors={this.state.colors}
                         fonts={this.state.fonts}
                         onChangeHex={this.onChangeHex}
+                        onColorPicked={this.onColorPicked}
                         addHex={this.addHex}
                         addFont={this.addFont}
                         updateFont={this.updateFont}
