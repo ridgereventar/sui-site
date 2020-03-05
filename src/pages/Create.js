@@ -1,7 +1,5 @@
 import React, { Component, useContext } from 'react';
 import '../styles/Create.css';
-import Doc from '../DocService';
-import PdfContainer from '../PdfContainer';
 
 import Settings from '../components/Settings';
 import Styleguide from '../components/Styleguide';
@@ -167,7 +165,6 @@ class Create extends Component {
             }
         })
     }
-    // createPdf = (html) => Doc.createPdf(html);
 
     render() {
 
