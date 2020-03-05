@@ -1,39 +1,49 @@
 export const DEFAULT_FONTS = {
     arial: {
         id: 'arial',
-        title: 'Arial'
+        title: 'Arial',
+        weights: [700,500,300]
     },
     avenirnext: {
         id: 'avenir',
-        title: 'Avenir Next'
+        title: 'Avenir Next',
+        weights: [700,500,300]
     },
     calibri: {
         id: 'calibri',
-        title: 'Calibri' 
+        title: 'Calibri',
+        weights: [700,500,300] 
     },
     cambria: {
         id: 'cambria',
-        title: 'Cambria'
+        title: 'Cambria',
+        weights: [700,500,300]
     }, 
     courierNew: {
         id: 'courierNew', 
-        title: 'Courier New'
+        title: 'Courier New',
+        weights: [700,500,300]
     },
     georgia: {
         id: 'georgia', 
-        title: 'Georgia'
+        title: 'Georgia',
+        weights: [700,500,300]
     },  
     helvetica: {
         id: 'helvetica',
-        title: 'Helvetica'
+        title: 'Helvetica',
+        weights: [700,500,300]
     },
     rockwell: {
         id: 'rockwell',
-        title: 'Rockwell'
+        title: 'Rockwell',
+        weights: [700,500,300]
     },
     verdana: {
         id: 'verdana',
-        title: 'Verdana'
+        title: 'Verdana',
+        weights: [700,500,300]
+
     },
     opensans: {
         id: 'opensans', 

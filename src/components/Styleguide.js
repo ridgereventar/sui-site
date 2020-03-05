@@ -5,6 +5,7 @@ import '../styles/Create.css';
 
 import {StyleContext} from '../App';
 import SectionLabel from './SectionLabel';
+import FontDisplay from './FontDisplay';
 
 class Styleguide extends Component {
 
@@ -54,13 +55,21 @@ class Styleguide extends Component {
                 })}
               </div>
 
-              <h1 className="setting-label">Fonts</h1>
 
-              <StyleContext.Consumer>
+              <h1 className="setting-label">Fonts</h1>                
+              
+              {this.props.fonts.map(font => {
+                return (
+                    <FontDisplay
+                      font={font}/>
+                  )
+              })}              
+
+              {/* <StyleContext.Consumer>
                 {(value) => {
                     return <Button color={value.styles.button.primary}/>
                 }}
-              </StyleContext.Consumer>
+              </StyleContext.Consumer> */}
           </div>
         </div>
 

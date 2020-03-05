@@ -36,11 +36,13 @@ class Create extends Component {
             fonts: [
                 {
                     type: "Primary",
-                    name: ""
+                    name: "",
+                    weights: []
                 },
                 {
                     type: "Secondary",
-                    name: ""
+                    name: "",
+                    weights: []
                 }
             ],
             fontOptions: Object.values(DEFAULT_FONTS)
@@ -143,6 +145,7 @@ class Create extends Component {
     
                 newFonts[index].name = font.label;
     
+                newFonts[index].weights = font.weights;
                 return {
                     ...state,
                     fonts: newFonts
@@ -156,7 +159,7 @@ class Create extends Component {
         this.setState((state) => {
             const newFonts = state.fonts;
 
-            newFonts.push({type:"Extra", name: ""});
+            newFonts.push({type:"Extra", name: "", weights:[]});
 
             return {
                 ...state,
@@ -197,7 +200,8 @@ class Create extends Component {
                         // setPrimary={handlers.setPrimary}
                     />
                 
-                    <Styleguide colors={this.state.colors}></Styleguide>
+                    <Styleguide colors={this.state.colors}
+                        fonts={this.state.fonts}></Styleguide>
                     
                     <div id="settings-panel-right" className="settings-container">
                     </div>

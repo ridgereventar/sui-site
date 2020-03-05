@@ -26,14 +26,20 @@ class Settings extends Component {
 
     render() {
 
-        const {fontOptions} = this.props;
 
         const options = [];
+        const typographyOptions = [];
         const animatedComp = makeAnimated();
 
-        {fontOptions.map((font) => {
-            options.push({value: font.id, label: font.title});
+        {this.props.fontOptions.map((font) => {
+            options.push({value: font.id, label: font.title, weights: font.weights});
         })}
+
+        {this.props.fonts.map(font => {
+            typographyOptions.push({value: font.name, label: font.name});
+        })}
+
+
 
         const customStyles = {
             option: (provided, state) => ({
@@ -116,24 +122,67 @@ class Settings extends Component {
                 </div>
             
                 <div className="settings-panel typography-panel">
+
                     <h1 className="setting-label">Typography</h1>
-                    <div className="input-container">
-                        <h1>H1</h1>
+                    <div className="font-input-container">
+                        <div className="font-input-icon-container">
+                            <h1>H1</h1>
+                        </div>
+                        <div className="font-select-container">
+                            <Select
+                                styles={customStyles}
+                                options={typographyOptions}></Select> 
+                        </div>
                     </div>
-                    <div className="input-container">
-                        <h2>H2</h2>
+                    <div className="font-input-container">
+                        <div className="font-input-icon-container">
+                            <h2>H2</h2>
+                        </div>
+                        <div className="font-select-container">
+                            <Select
+                                styles={customStyles}
+                                options={typographyOptions}></Select> 
+                        </div>
                     </div>
-                    <div className="input-container">
-                        <h3>H3</h3>
+                    <div className="font-input-container">
+                        <div className="font-input-icon-container">
+                            <h3>H3</h3>
+                        </div>
+                        <div className="font-select-container">
+                            <Select
+                                styles={customStyles}
+                                options={typographyOptions}></Select> 
+                        </div>
                     </div>
-                    <div className="input-container">
-                        <h4>H4</h4>
+                    <div className="font-input-container">
+                        <div className="font-input-icon-container">
+                            <h4>H4</h4>
+                        </div>
+                        <div className="font-select-container">
+                            <Select
+                                styles={customStyles}
+                                options={typographyOptions}></Select> 
+                        </div>
                     </div>
-                    <div className="input-container">
-                        <h5>H5</h5>
+                    <div className="font-input-container">
+                        <div className="font-input-icon-container">
+                            <h5>H5</h5>
+                        </div>
+                        <div className="font-select-container">
+                            <Select
+                                styles={customStyles}
+                                options={typographyOptions}></Select> 
+                        </div>
                     </div>
-                    <div className="input-container">
-                        <p>Body</p>
+                    <div className="font-input-container">
+                        <div className="font-input-icon-container">
+                            <p>Body</p>
+                        </div>
+                        <div className="font-select-container">
+                            <Select
+                                styles={customStyles}
+                                options={typographyOptions}></Select> 
+                        </div>
                     </div>
                 </div>
             </div>
