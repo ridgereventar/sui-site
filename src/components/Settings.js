@@ -1,11 +1,12 @@
 import React, { Component, useContext } from 'react';
 import $ from 'jquery';
-import '../styles/Create.css';
+import '../styles/create/Settings.css';
 
 import {StyleContext} from '../App';
 import ColorInput from './ColorInput';
 import ColorInputAdd from './ColorInputAdd';
 import SectionLabel from './SectionLabel';
+import FontInput from './FontInput';
 
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -14,71 +15,25 @@ class Settings extends Component {
 
     constructor(props) {
         super(props);
-
     }
-
-    // onFontChangeHandler = (index) => {
-    //     return (val) => {
-    //         console.log(index);
-    //         console.log(val);
-    //     } 
-    // }
 
     render() {
 
-
-        const options = [];
         const typographyOptions = [];
         const animatedComp = makeAnimated();
-
-        {this.props.fontOptions.map((font) => {
-            options.push({value: font.id, label: font.title, weights: font.weights});
-        })}
 
         {this.props.fonts.map(font => {
             typographyOptions.push({value: font.name, label: font.name});
         })}
 
-
-
-        const customStyles = {
-            option: (provided, state) => ({
-                ...provided,
-                color: 'black',
-                "font-family": state.label,
-                padding: 5
-            }),
-            control: base => ({
-                ...base,
-                minHeight: 20,
-                "margin-bottom": '8px'
-            }),
-            dropdownIndicator: base => ({
-                ...base,
-                padding: 2
-            }),
-            valueContainer: base => ({
-                ...base,
-                padding: '0px 1px'
-            }),
-            input: base => ({
-                ...base,
-                margin: 0,
-                padding: 0
-            }),
-        }
-
         return (
             <div className="settings-container">
-                <div className="settings-header">
-                    <SectionLabel
-                        url={require('../images/settingsicon.png')}
-                        label="Settings"/>
-                </div>
+                <SectionLabel
+                    url={require('../images/settingsicon.png')}
+                    label="Settings"/>
 
                 <div className="settings-panel color-panel">
                     <h1 className="setting-label"> Colors</h1>
-
                     {this.props.colors.map((color, index) => {
                         return (
                             <ColorInput 
@@ -89,101 +44,83 @@ class Settings extends Component {
                                 onColorPicked={this.props.onColorPicked}/>
                         )
                     })}
-
                     <ColorInputAdd
                         addHex={this.props.addHex}/>
-
                 </div>  
 
                 <div className="settings-panel font-panel">
                     <h1 className="setting-label"> Fonts </h1>
-
-
                     {this.props.fonts.map((font, index) => {
                         return (
-                            <div className="font-input-container">
-                                <h3 className="font-input-icon" style={{"font-family": font.name}}>Aa</h3>
-                                <div className="font-select-container"> 
-                                    <label className="font-type-label" for="font-select">{font.type}</label>
-                                    <Select
-                                        styles={customStyles}
-                                        options={options}
-                                        onChange={this.props.updateFont(index)}
-                                        />
-                                </div>
-                            </div>
+                            <FontInput
+                                font={font}
+                                index={index}
+                                fontOptions={this.props.fontOptions}
+                                updateFont={this.props.updateFont}/>         
                         );
                     })}
-
                     <div onClick={this.props.addFont} className="font-add-btn">
                         <h3 className="font-add-btn-icon">+</h3>
                     </div>
-
                 </div>
             
                 <div className="settings-panel typography-panel">
-
                     <h1 className="setting-label">Typography</h1>
+                    
                     <div className="font-input-container">
                         <div className="font-input-icon-container">
                             <h1>H1</h1>
                         </div>
                         <div className="font-select-container">
-                            <Select
-                                styles={customStyles}
-                                options={typographyOptions}></Select> 
+                            <Select options={typographyOptions}/> 
                         </div>
                     </div>
+                    
                     <div className="font-input-container">
                         <div className="font-input-icon-container">
                             <h2>H2</h2>
                         </div>
                         <div className="font-select-container">
-                            <Select
-                                styles={customStyles}
-                                options={typographyOptions}></Select> 
+                            <Select options={typographyOptions}/> 
                         </div>
                     </div>
+
                     <div className="font-input-container">
                         <div className="font-input-icon-container">
                             <h3>H3</h3>
                         </div>
                         <div className="font-select-container">
-                            <Select
-                                styles={customStyles}
-                                options={typographyOptions}></Select> 
+                            <Select options={typographyOptions}/> 
                         </div>
                     </div>
+
                     <div className="font-input-container">
                         <div className="font-input-icon-container">
                             <h4>H4</h4>
                         </div>
                         <div className="font-select-container">
-                            <Select
-                                styles={customStyles}
-                                options={typographyOptions}></Select> 
+                            <Select options={typographyOptions}/> 
                         </div>
                     </div>
+
                     <div className="font-input-container">
                         <div className="font-input-icon-container">
                             <h5>H5</h5>
                         </div>
                         <div className="font-select-container">
-                            <Select
-                                styles={customStyles}
-                                options={typographyOptions}></Select> 
+                            <Select options={typographyOptions}/> 
                         </div>
                     </div>
+
                     <div className="font-input-container">
                         <div className="font-input-icon-container">
                             <p>Body</p>
                         </div>
                         <div className="font-select-container">
-                            <Select
-                                styles={customStyles}
-                                options={typographyOptions}></Select> 
+                            <Select options={typographyOptions}/> 
                         </div>
                     </div>
+                    
                 </div>
             </div>
         );

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'; 
 import {ChromePicker} from 'react-color';
 
+import '../styles/create/ColorInput.css';
 
 class ColorPicker extends Component {
     constructor(props) {
@@ -47,7 +48,7 @@ class ColorPicker extends Component {
         }
         return (
             <div className="color-picker-container">
-                <button id="colorwheel-btn" onClick={this.handleClick}></button>
+                <button className="colorwheel-btn" onClick={this.handleClick}></button>
                 {this.state.displayColorPicker ? 
                     <div style={popover}>
                         <div style={cover} onClick={this.handleClose}/>

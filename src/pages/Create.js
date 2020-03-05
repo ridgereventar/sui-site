@@ -1,5 +1,5 @@
 import React, { Component, useContext } from 'react';
-import '../styles/Create.css';
+import '../styles/create/Create.css';
 
 import Settings from '../components/Settings';
 import Styleguide from '../components/Styleguide';

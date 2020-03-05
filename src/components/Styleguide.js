@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Button} from '../ui';
 
-import '../styles/Create.css';
+import '../styles/create/StyleGuide.css';
 
 import {StyleContext} from '../App';
 import SectionLabel from './SectionLabel';
@@ -18,11 +18,9 @@ class Styleguide extends Component {
     return (
         <div className="styleguide-container">
     
-          <div className="styleguide-header">
-            <SectionLabel
-              url={require('../images/styleguideicon.png')}
-              label="Style Guide"/>
-          </div>
+          <SectionLabel
+            url={require('../images/styleguideicon.png')}
+            label="Style Guide"/>
 
           <div className="style-guide">
 

@@ -1,5 +1,5 @@
 import React from 'react'; 
-import '../styles/Create.css';
+import '../styles/create/FontDisplay.css';
 
 const sampleText = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ",
                     "abcdefghjiklmnopqrstuvwxyz", 
@@ -12,23 +12,23 @@ const FontDisplay = (props) => {
                 <h3 className="font-display-icon" style={{"font-family":`${props.font.name}`}}>Aa</h3>
             </div>
             <div className="font-display-info-container">
-                <h2 className="font-type-label">{props.font.type}</h2>
-                <span className="display-font-name" style={{"font-family":`${props.font.name}`}}>{props.font.name}</span>
+                <h2 className="font-display-type">{props.font.type}</h2>
+                <span className="font-display-name" style={{"font-family":`${props.font.name}`}}>{props.font.name}</span>
             </div>
             <div className="divider-vert"></div>
-            <div className="font-weight-info-container">
+            <div className="font-display-weight-container">
                 {props.font.weights.map(weight => {
                     return (
-                        <span className="font-weight-label" 
+                        <span className="font-display-weight" 
                               style={{"font-weight": `${weight}`, "font-family": `${props.font.name}`}}
                               >{weight}</span>
                     )
                 })}
             </div>
-            <div className="font-sample-container">
+            <div className="font-display-sample-container">
                 {props.font.weights.map((weight, index) => {
                     return (
-                        <p className="font-weight-sample"
+                        <p className="font-display-sample"
                            style={{"font-weight": `${weight}`, "font-family": `${props.font.name}`}} 
                            >{sampleText[index]}</p>
                     )

@@ -1,0 +1,25 @@
+.section-header {
+    width: 100%; 
+    margin-bottom: 10px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-label-container {
+    display: flex;
+}
+
+.label-icon-container {
+    height: 15px; 
+    width: 15px;
+    background-image: url('../../images/settingsicon.png');
+    background-size: cover;
+}
+
+.section-label {
+    margin-left: 5px;
+    font-size: 12px;
+    color:black;
+}
