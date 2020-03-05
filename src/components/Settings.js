@@ -3,9 +3,10 @@ import $ from 'jquery';
 import '../styles/create/Settings.css';
 
 import {StyleContext} from '../App';
+
+import SectionLabel from './SectionLabel';
 import ColorInput from './ColorInput';
 import ColorInputAdd from './ColorInputAdd';
-import SectionLabel from './SectionLabel';
 import FontInput from './FontInput';
 
 import Select from 'react-select';
@@ -120,7 +121,7 @@ class Settings extends Component {
                             <Select options={typographyOptions}/> 
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         );

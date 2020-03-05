@@ -16,7 +16,7 @@ class Styleguide extends Component {
   render() {
 
     return (
-        <div className="styleguide-container">
+        <div className="style-guide-container">
     
           <SectionLabel
             url={require('../images/styleguideicon.png')}
