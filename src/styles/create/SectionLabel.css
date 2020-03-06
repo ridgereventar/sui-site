@@ -14,7 +14,6 @@
 .label-icon-container {
     height: 15px; 
     width: 15px;
-    background-image: url('../../images/settingsicon.png');
     background-size: cover;
 }
 

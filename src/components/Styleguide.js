@@ -7,6 +7,8 @@ import {StyleContext} from '../App';
 import SectionLabel from './SectionLabel';
 import FontDisplay from './FontDisplay';
 
+import styleIcon from '../images/styleguideicon.png';
+
 class Styleguide extends Component {
 
   constructor(props) {
@@ -19,7 +21,7 @@ class Styleguide extends Component {
         <div className="style-guide-container">
     
           <SectionLabel
-            url={require('../images/styleguideicon.png')}
+            url={styleIcon}
             label="Style Guide"/>
 
           <div className="style-guide">

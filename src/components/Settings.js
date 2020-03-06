@@ -12,6 +12,8 @@ import FontInput from './FontInput';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 
+import settingIcon from '../images/settingsicon.png';
+
 class Settings extends Component {
 
     constructor(props) {
@@ -30,7 +32,7 @@ class Settings extends Component {
         return (
             <div className="settings-container">
                 <SectionLabel
-                    url={require('../images/settingsicon.png')}
+                    url={settingIcon}
                     label="Settings"/>
 
                 <div className="settings-panel color-panel">

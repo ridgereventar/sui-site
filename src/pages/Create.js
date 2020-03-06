@@ -3,6 +3,8 @@ import '../styles/create/Create.css';
 
 import Settings from '../components/Settings';
 import Styleguide from '../components/Styleguide';
+import UiComp from '../components/UiComp';
+
 import {StyleContext} from '../App';
 import { DEFAULT_FONTS } from '../constants';
 
@@ -200,8 +202,7 @@ class Create extends Component {
                     <Styleguide colors={this.state.colors}
                         fonts={this.state.fonts}></Styleguide>
                     
-                    <div id="settings-panel-right" className="settings-container">
-                    </div>
+                    <UiComp></UiComp>
                 </div>
 
             </React.Fragment>
