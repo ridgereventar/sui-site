@@ -52,6 +52,7 @@
     font-size: 14px;
     color: black;
     line-height: 21px;
+    display: block;
   }
   
   .font-display-sample-container {

@@ -8,31 +8,19 @@ import UiComp from '../components/UiComp';
 import {StyleContext} from '../App';
 import { DEFAULT_FONTS } from '../constants';
 
+import { StyleContextConsumer } from '../contexts/StyleContext';
+import ColorContext, { ColorContextConsumer } from '../contexts/ColorContext';
+
+import withContext from '../helpers/withContext';
+import FontContext, { FontContextConsumer } from '../contexts/FontContext';
+
+
+
 class Create extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            colors: [
-                {
-                    hex: "",
-                    type: "Primary",
-                    rgb: "",
-                    gradient: []
-                },
-                {
-                    hex: "",
-                    type: "Secondary",
-                    rgb: "",
-                    gradient: []
-                },
-                {
-                    hex: "", 
-                    type: "Tertiary",
-                    rgb: "",
-                    gradient: []
-                }
-            ],
             fonts: [
                 {
                     type: "Primary",
@@ -49,124 +37,6 @@ class Create extends Component {
         };
     }
 
-    hextorgb = (hex) => {
-        return ['0x' + hex[1] + hex[2] | 0, '0x' + hex[3] + hex[4] | 0, '0x' + hex[5] + hex[6] | 0];
-    };
-
-    componentToHex = (c) => {
-        var hex = c.toString(16);
-        return hex.length == 1 ? "0" + hex : hex;
-    }
-      
-    rgbToHex = (r, g, b) => {
-        return "#" + this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
-    }
-
-    onChangeHex = (index) => {
-        return (e) => {
-            const value = e.target.value;
-            this.setState((state) => {
-                const newColors = state.colors;
-                newColors[index].hex = value;
-    
-                const startcolor = this.hextorgb(newColors[index].hex); 
-                const newArray = [];
-                var nextcolor = startcolor;
-                
-                for(var i=0; i < 5; i++) {
-                    newArray.push(this.rgbToHex(nextcolor[0], nextcolor[1], nextcolor[2]));
-                    var nextcolor = [nextcolor[0] + 15, nextcolor[1] + 10, nextcolor[2] + 2];
-                }
-
-                newColors[index].rgb = startcolor;
-                newColors[index].gradient = newArray;
-
-                return {
-                    ...state,
-                    colors: newColors
-                }
-            })
-        }
-    }
-
-    onColorPicked = (index, value) => {
-        this.setState((state) => {
-            const newColors = state.colors;
-            newColors[index].hex = value;
-
-            const startcolor = this.hextorgb(newColors[index].hex); 
-            const newArray = [];
-            var nextcolor = startcolor;
-            
-            for(var i=0; i < 5; i++) {
-                newArray.push(this.rgbToHex(nextcolor[0], nextcolor[1], nextcolor[2]));
-                var nextcolor = [nextcolor[0] + 15, nextcolor[1] + 10, nextcolor[2] + 2];
-            }
-
-            newColors[index].rgb = startcolor;
-            newColors[index].gradient = newArray;
-
-            return {
-                ...state,
-                colors: newColors
-            }
-        })
-    }
-
-    addHex = (value) => {
-        return (e) => {
-            this.setState((state) => {
-                const newColors = state.colors;
-                
-                const startcolor = this.hextorgb(value); 
-                const newArray = [];
-                var nextcolor = startcolor;
-                    
-                for(var i=0; i < 5; i++) {
-                    newArray.push(this.rgbToHex(nextcolor[0], nextcolor[1], nextcolor[2]));
-                    var nextcolor = [nextcolor[0] + 15, nextcolor[1] + 10, nextcolor[2] + 2];
-                }
-    
-                newColors.push({hex: value, type: "Extra", rgb: startcolor, gradient: newArray});
-    
-                return {
-                    ...state,
-                    colors: newColors
-                }
-            })
-        }
-
-    }
-
-    updateFont = (index) => {
-        return (font) => {
-            this.setState((state) => {
-                const newFonts = state.fonts;
-    
-                newFonts[index].name = font.label;
-    
-                newFonts[index].weights = font.weights;
-                return {
-                    ...state,
-                    fonts: newFonts
-                }
-            })
-        }
-
-    }
-    
-    addFont = (selectedFonts) => {
-        this.setState((state) => {
-            const newFonts = state.fonts;
-
-            newFonts.push({type:"Extra", name: "", weights:[]});
-
-            return {
-                ...state,
-                fonts: newFonts
-            }
-        })
-    }
 
     render() {
 
@@ -182,25 +52,13 @@ class Create extends Component {
                 </div>
 
                 <div className="playground-window">
-                    {/* <StyleContext.Consumer>
-                        {({handlers}) => 
-                        }
-                    </StyleContext.Consumer> */}
+
 
                     <Settings
-                        colors={this.state.colors}
-                        fonts={this.state.fonts}
-                        onChangeHex={this.onChangeHex}
-                        onColorPicked={this.onColorPicked}
-                        addHex={this.addHex}
-                        addFont={this.addFont}
-                        updateFont={this.updateFont}
                         fontOptions={this.state.fontOptions}
-                        // setPrimary={handlers.setPrimary}
                     />
                 
-                    <Styleguide colors={this.state.colors}
-                        fonts={this.state.fonts}></Styleguide>
+                    <Styleguide/>
                     
                     <UiComp></UiComp>
                 </div>
@@ -210,4 +68,14 @@ class Create extends Component {
     }
 }
 
-export default Create; 
+export default withContext(
+    {
+        context: ColorContext,
+        mapValueToProps: (value) =>  ({addColor: value.addColor, updateColor: value.updateColor})
+    },
+    {
+        context: FontContext,
+        mapValueToProps: (value) =>  ({fonts: value.fonts, addFont: value.addFont, updateFont: value.updateFont})
+    }
+)(Create); 
+  

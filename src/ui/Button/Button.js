@@ -4,7 +4,7 @@ const Button = (props) => {
     
     return (
         <button style={{backgroundColor: props.color}}>
-            Click me
+            {props.children}
         </button>
     )
 }

@@ -7,6 +7,7 @@ import uicompIcon from '../images/uicompicon.png';
 class UiComp extends Component {
     constructor(props){
         super(props);
+
     }
 
     render() {
@@ -16,9 +17,19 @@ class UiComp extends Component {
                     url={uicompIcon}
                     label="Ui Components"/>
 
-                <div className="settings-panel ui-panel">
-
+                <div className="ui-panel">
+                    <div className="tab-container">
+                        <div className="input-nav-container">
+                            <span className="tab-label">Input / Navigation</span>
+                        </div>
+                        <div className="typ-container">
+                            <span className="tab-label"> Typography </span>
+                        </div>
+                    </div>
                 </div>
+                {/* <div className="settings-panel ui-panel">
+  
+                </div> */}
             </div>
         );
     }

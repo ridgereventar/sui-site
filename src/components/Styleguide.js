@@ -9,6 +9,11 @@ import FontDisplay from './FontDisplay';
 
 import styleIcon from '../images/styleguideicon.png';
 
+import {StyleContextConsumer} from '../contexts/StyleContext';
+import ColorContext, { ColorContextConsumer } from '../contexts/ColorContext';
+import withContext from '../helpers/withContext';
+import FontContext, { FontContextConsumer } from '../contexts/FontContext';
+
 class Styleguide extends Component {
 
   constructor(props) {
@@ -38,12 +43,12 @@ class Styleguide extends Component {
                         
                         <div className="color-info-container">
                           <h2 className="hex-type-label"> {color.type} </h2>
-                          <span style={{"margin-bottom": "5px"}}> {color.hex} </span>
-                          <span> rgb({color.rgb[0]}, {color.rgb[1]}, {color.rgb[2]}) </span>
+                          <span className="hex-span"> {color.hex} </span>
+                          <span className="rgb-span"> rgb({color.rgb[0]}, {color.rgb[1]}, {color.rgb[2]}) </span>
                         </div>
                         
                         <div className="gradient-container">
-                          {color.gradient.map(value => {
+                          {color.swatch.map(value => {
                             return(
                               <div className="gradient-square" style={{backgroundColor: `${value}`}}></div>
                             )
@@ -65,11 +70,11 @@ class Styleguide extends Component {
                   )
               })}              
 
-              {/* <StyleContext.Consumer>
+              {/* <StyleContextConsumer>
                 {(value) => {
-                    return <Button color={value.styles.button.primary}/>
+                    return <Button color={value.styles.primary}>Click me</Button>
                 }}
-              </StyleContext.Consumer> */}
+              </StyleContextConsumer> */}
           </div>
         </div>
 
@@ -78,4 +83,13 @@ class Styleguide extends Component {
   }
 }
 
-export default Styleguide;
+export default withContext(
+  {
+      context: ColorContext,
+      mapValueToProps: (value) =>  ({colors: value.colors, addColor: value.addColor, updateColor: value.updateColor})
+  },
+  {
+      context: FontContext,
+      mapValueToProps: (value) =>  ({fonts: value.fonts, addFont: value.addFont, updateFont: value.updateFont})
+  }
+)(Styleguide); 

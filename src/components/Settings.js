@@ -13,12 +13,43 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 
 import settingIcon from '../images/settingsicon.png';
+import withContext from '../helpers/withContext';
+import ColorContext, { ColorContextConsumer } from '../contexts/ColorContext';
+import FontContext, { FontContextConsumer } from '../contexts/FontContext';
 
 class Settings extends Component {
 
     constructor(props) {
         super(props);
     }
+
+    addHex = (value) => {
+        return (e) => {
+            this.props.addColor("Extra", value);
+        }
+    }
+
+    onChangeHex = (index) => {
+        return (e) => {
+            const value = e.target.value;
+            this.props.updateColor(index, value);
+        }
+    }
+
+    onColorPicked = (index, value) => {
+        this.props.updateColor(index, value);
+    }
+
+    updateFont = (index) => {
+        return (font) => {
+            this.props.updateFont(index, font);
+        }
+    }
+    
+    addFont = () => {
+        this.props.addFont();
+    }
+
 
     render() {
 
@@ -43,12 +74,12 @@ class Settings extends Component {
                                 hex={color.hex}
                                 type={color.type}
                                 index={index}
-                                onChangeHex={this.props.onChangeHex}
-                                onColorPicked={this.props.onColorPicked}/>
+                                onChangeHex={this.onChangeHex}
+                                onColorPicked={this.onColorPicked}/>
                         )
                     })}
                     <ColorInputAdd
-                        addHex={this.props.addHex}/>
+                        addHex={this.addHex}/>
                 </div>  
 
                 <div className="settings-panel font-panel">
@@ -59,10 +90,10 @@ class Settings extends Component {
                                 font={font}
                                 index={index}
                                 fontOptions={this.props.fontOptions}
-                                updateFont={this.props.updateFont}/>         
+                                updateFont={this.updateFont}/>         
                         );
                     })}
-                    <div onClick={this.props.addFont} className="font-add-btn">
+                    <div onClick={this.addFont} className="font-add-btn">
                         <h3 className="font-add-btn-icon">+</h3>
                     </div>
                 </div>
@@ -130,6 +161,15 @@ class Settings extends Component {
     }
 }
 
-export default Settings;
 
+export default withContext(
+    {
+        context: ColorContext,
+        mapValueToProps: (value) =>  ({colors: value.colors, addColor: value.addColor, updateColor: value.updateColor})
+    },
+    {
+        context: FontContext,
+        mapValueToProps: (value) =>  ({fonts: value.fonts, addFont: value.addFont, updateFont: value.updateFont})
+    }
+)(Settings); 
 
