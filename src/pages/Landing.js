@@ -1,6 +1,9 @@
-import React, { Component, useContext } from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter, Route, NavLink } from "react-router-dom";
 import '../styles/Landing.css';
+
+import LoginForm from '../components/LoginForm';
+import SignupForm from '../components/SignupForm';
 
 class Landing extends Component {
 
@@ -32,7 +35,9 @@ class Landing extends Component {
               
                 <div className="welcome-container">
                   <div className="welcome-text-container">
-                    <div className="welcome-box"></div>
+                    {/* <div className="welcome-box"></div> */}
+                    {/* <LoginForm/> */}
+                    <SignupForm/>
                   </div>
                   <div className="welcome-anim-container">
                     <div className="graphic"></div>

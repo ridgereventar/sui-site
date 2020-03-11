@@ -115,6 +115,7 @@
   width: 55%; 
   /* background-color: blue; */
   display: flex;
+  align-items: center;
 }
 
 .graphic {

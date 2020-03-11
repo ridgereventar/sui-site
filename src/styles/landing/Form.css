@@ -1,0 +1,113 @@
+.login-form-container {
+    width: 560px;
+    height: 410px;
+    background-color: #2A2A2A;
+    border-radius: 8px;
+    margin-top: -70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-contents-container{
+    width: 370px;
+    height: max-content;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-header {
+    color: white;
+    font-size: 28px;
+    font-family: "Avenir Next";
+    font-weight: 500;
+}
+
+.blue-font {
+    color: #4BC3E9; 
+}
+
+.login-form {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.form-label {
+    display: block;
+    color: white;
+    font-family: "Avenir Next";
+    font-size: 12px;
+}
+
+.form-input {
+    width: 100%;
+    height: 35px;
+    background-color: transparent;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #424242 1px;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+input:-webkit-autofill,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.btn-container {
+    width: 100%;
+    height: 45px;
+    background-color: red;
+}
+
+.form-btn {
+    border: none;
+    width: 175px;
+    height: 45px;
+    border-radius: 5px;
+    color: white;
+    font-family: "Avenir Next";
+    font-weight: 700;
+    font-size: 18px;
+}
+
+#form-login-btn {
+    background: linear-gradient(#35E2FF, #049EE3);
+}
+
+#form-signup-btn {
+    float: right;
+    background-color: transparent;
+    border: solid white 1px;
+}
+
+/* Signup Form */
+
+.signup-form-container {
+    width: 560px;
+    height: 650px;
+    background-color: #2A2A2A;
+    border-radius: 8px;
+    margin-top: -70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-msg {
+    color: white;
+    font-family: "Avenir Next";
+    font-size: 15px;
+}
+
+#login-link {
+    color: #4BC3E9;
+}

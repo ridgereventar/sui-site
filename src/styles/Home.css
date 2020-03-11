@@ -1,0 +1,200 @@
+.home-wrapper {
+    width: 100%; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.account-header-container {
+    width: 300px; 
+    height: 100%;
+    margin-left: auto; 
+    margin-right: 30px;
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.account-name {
+    margin-right: 20px;
+    font-family: "Avenir Next";
+}
+
+.profile-icon {
+    width: 40px; 
+    height: 40px;
+    background-image: url('../images/profileicon.png');
+    background-size: cover;
+}
+
+.home-container {
+    width: 100%;
+    height: 100%; 
+    flex: 1;
+    display: flex;
+    background-color: lightblue;
+}
+
+.mystyles-container {
+    width: 100%;
+    height: 52%;
+    background-color: #1F1F1F;
+}
+
+.bold-title {
+    margin-top: 30px;
+    color: white;
+    font-family: "Avenir Next";
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+
+.small-text {
+    color: white;
+    font-family: "Avenir Next";
+    margin-left: 50px;
+
+}
+
+.style-swipe {
+    width: 100%;
+    height: 350px; 
+    /* background-color: red; */
+    margin-top: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+
+}
+
+.style-swipe::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+}
+  
+.style-swipe::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 10px;
+    visibility: hidden;
+}
+  
+.style-swipe:hover::-webkit-scrollbar-thumb {
+    visibility: hidden;
+}
+  
+
+
+
+/* StyleCard */
+
+.style-card-wrapper:first-child {
+    margin-left: 50px;
+}
+
+.style-card-wrapper {
+    display: inline-block;
+    margin-right: 50px;
+    height: max-content;
+}
+
+.style-card-container {
+    width: 370px; 
+    height: 260px;
+    background-color: white;
+    position: relative;  
+    overflow: hidden;
+    background-color: #DADADA;
+    background-size: 90% 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: solid white 10px;
+    z-index: 2;
+
+}
+
+.style-guide-preview {
+    width: 120px;
+    height: 100%;
+    right: -150px;
+    position: absolute;  
+    float: right;
+    background-color: white;
+    box-shadow: 15px 10px 30px 5px;
+    transition: 0.3s;
+    padding-left: 15px;
+}
+
+.style-card-container:hover .style-guide-preview {
+    transition: 0.3s;
+    right: 0;
+}
+
+.info-slide-out-container {
+    width: 390px;
+    height: 35px;  
+    position: relative;
+}
+
+.info-slide-out {
+    width: 386px;
+    height: 33px;
+    top: -35px;
+    background-color: transparent;
+    border: solid #4E4E4E 2px;
+    border-top: none;
+    position: absolute;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+
+}
+
+.style-card-wrapper:hover .info-slide-out {
+    transition: 0.3s;
+    top: 0;
+}
+
+.card-name {
+    color: white;
+    font-family: "Avenir Next";
+    margin-left: 10px;
+}
+
+/* mini color display */
+
+.mini-display-container {
+    width: 100%;
+    height: 45px; 
+    /* background-color: red; */
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.mini-color-icon {
+    height: 45px; 
+    width: 45px;
+    background-color: #1EE0EF;
+    border-radius: 100px;
+}
+
+.mini-hex-label {
+    font-family: "Avenir Next";
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.mini-font-icon {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.mini-font-name {
+    margin-left: 10px;
+    font-size: 10px;
+    width: 65px;
+    overflow-wrap: break-word;
+    white-space: normal;
+
+}

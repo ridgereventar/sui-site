@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import {StyleContextProvider, StyleContextConsumer} from './contexts/StyleContext';
 import { ColorContextProvider } from './contexts/ColorContext';
 import FontContext, { FontContextProvider } from './contexts/FontContext';
+import Home from './pages/Home';
 
 
 export const StyleContext = React.createContext();
@@ -30,7 +31,8 @@ class App extends Component {
                 <Route path="/" exact component={Landing}/>
                 <Route path="/login" exact component={Login}/>
                 <Route path="/create" exact component={Create}/>
-                
+                <Route path="/home" exact component={Home}/>
+
                 {/* <StyleContextConsumer>
                   {(value) => {return <Create colors={value}></Create>}}
                 </StyleContextConsumer> */}
