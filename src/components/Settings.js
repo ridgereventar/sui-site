@@ -2,7 +2,6 @@ import React, { Component, useContext } from 'react';
 import $ from 'jquery';
 import '../styles/create/Settings.css';
 
-import {StyleContext} from '../App';
 
 import SectionLabel from './SectionLabel';
 import ColorInput from './ColorInput';

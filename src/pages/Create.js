@@ -5,10 +5,8 @@ import Settings from '../components/Settings';
 import Styleguide from '../components/Styleguide';
 import UiComp from '../components/UiComp';
 
-import {StyleContext} from '../App';
 import { DEFAULT_FONTS } from '../constants';
 
-import { StyleContextConsumer } from '../contexts/StyleContext';
 import ColorContext, { ColorContextConsumer } from '../contexts/ColorContext';
 
 import withContext from '../helpers/withContext';

@@ -31,7 +31,14 @@ class Home extends Component {
                             <StyleCard/>
                             <StyleCard/>
                             <StyleCard/>
-
+                        </div>
+                    </div>
+                    <div className="home-icon-container">
+                        <div id="explore-btn" className="icon-btn">
+                            <h1>Explore</h1>
+                        </div>
+                        <div id="create-btn" className="icon-btn">
+                            <h1>Create</h1>
                         </div>
                     </div>
                 </div>

@@ -3,13 +3,11 @@ import {Button} from '../ui';
 
 import '../styles/create/StyleGuide.css';
 
-import {StyleContext} from '../App';
 import SectionLabel from './SectionLabel';
 import FontDisplay from './FontDisplay';
 
 import styleIcon from '../images/styleguideicon.png';
 
-import {StyleContextConsumer} from '../contexts/StyleContext';
 import ColorContext, { ColorContextConsumer } from '../contexts/ColorContext';
 import withContext from '../helpers/withContext';
 import FontContext, { FontContextConsumer } from '../contexts/FontContext';
@@ -70,11 +68,6 @@ class Styleguide extends Component {
                   )
               })}              
 
-              {/* <StyleContextConsumer>
-                {(value) => {
-                    return <Button color={value.styles.primary}>Click me</Button>
-                }}
-              </StyleContextConsumer> */}
           </div>
         </div>
 

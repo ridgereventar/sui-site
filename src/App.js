@@ -5,13 +5,13 @@ import './App.css';
 import Landing from './pages/Landing';
 import Create from './pages/Create';
 import Login from './pages/Login';
-import {StyleContextProvider, StyleContextConsumer} from './contexts/StyleContext';
-import { ColorContextProvider } from './contexts/ColorContext';
-import FontContext, { FontContextProvider } from './contexts/FontContext';
 import Home from './pages/Home';
 
+import { ColorContextProvider } from './contexts/ColorContext';
+import { FontContextProvider } from './contexts/FontContext';
+import ThemeContext, { ThemeContextProvider } from './contexts/ThemeContext';
 
-export const StyleContext = React.createContext();
+import sampleConfig from './sui.json';
 
 class App extends Component {
 
@@ -23,23 +23,20 @@ class App extends Component {
 
   render() {
     return (
+      
       <FontContextProvider>
         <ColorContextProvider>
-          <StyleContextProvider>
+        <ThemeContextProvider>
+          {/* <ThemeContextProvider theme={sampleConfig}> */}
             <BrowserRouter>
               <Switch>
                 <Route path="/" exact component={Landing}/>
                 <Route path="/login" exact component={Login}/>
                 <Route path="/create" exact component={Create}/>
                 <Route path="/home" exact component={Home}/>
-
-                {/* <StyleContextConsumer>
-                  {(value) => {return <Create colors={value}></Create>}}
-                </StyleContextConsumer> */}
-
               </Switch>
             </BrowserRouter>
-          </StyleContextProvider>      
+          </ThemeContextProvider>
         </ColorContextProvider>
       </FontContextProvider>
 

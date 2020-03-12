@@ -36,8 +36,8 @@ class Landing extends Component {
                 <div className="welcome-container">
                   <div className="welcome-text-container">
                     {/* <div className="welcome-box"></div> */}
-                    {/* <LoginForm/> */}
-                    <SignupForm/>
+                    <LoginForm/>
+                    {/* <SignupForm/> */}
                   </div>
                   <div className="welcome-anim-container">
                     <div className="graphic"></div>

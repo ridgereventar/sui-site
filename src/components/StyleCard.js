@@ -28,6 +28,10 @@ class StyleCard extends Component {
                 <div className="info-slide-out-container">
                     <div className="info-slide-out">
                         <span className="card-name">SUi - Style Guide Creator</span>
+                        <div className="like-btn">
+                            <div className="heart"></div>
+                            <span className="like-label">Like</span>
+                        </div>
                     </div>
                 </div>            
             </div>

@@ -6,6 +6,7 @@
     "@progress/kendo-drawing": "^1.6.0",
     "@progress/kendo-react-pdf": "^3.10.1",
     "body-parser": "^1.19.0",
+    "classnames": "^2.2.6",
     "express": "^4.17.1",
     "jquery": "^3.4.1",
     "mongoose": "^5.8.9",

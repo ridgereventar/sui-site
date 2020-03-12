@@ -33,7 +33,8 @@
     height: 100%; 
     flex: 1;
     display: flex;
-    background-color: lightblue;
+    flex-direction: column;
+    /* background-color: lightblue; */
 }
 
 .mystyles-container {
@@ -161,6 +162,37 @@
     margin-left: 10px;
 }
 
+.like-btn {
+    width: 70px; 
+    height: 22px;
+    margin-left: auto;
+    order: 2;
+    border: solid #4E4E4E 1px;
+    margin-right: 2px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.like-btn:hover {
+    cursor: pointer;
+}
+
+.heart {
+    width: 15px;
+    height: 15px;
+    background-image: url('../images/heart.png');
+    background-size: contain;
+    margin-left: 10px;
+}
+
+.like-label {
+    color: white;
+    font-family: "Avenir Next";
+    font-size: 14px;
+    margin-left: 5px;
+}
+
 /* mini color display */
 
 .mini-display-container {
@@ -197,4 +229,42 @@
     overflow-wrap: break-word;
     white-space: normal;
 
+}
+
+/* home icon container  */
+
+.home-icon-container{
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    background-color: #F0EFEF;
+}
+
+.icon-btn {
+    width: 48.5%; 
+    height: 93%; 
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-family: "Avenir Next";
+    border-radius: 8px;
+}
+
+.icon-btn:hover {
+    background-color: #1EE0EF;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#explore-btn {
+    margin-left: 15px;
+}
+
+#create-btn {
+    margin-right: 15px;
+    margin-left: auto;
+    order: 2;
 }

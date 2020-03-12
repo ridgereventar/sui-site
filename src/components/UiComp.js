@@ -3,6 +3,7 @@ import '../styles/create/UiComp.css';
 import SectionLabel from './SectionLabel';
 
 import uicompIcon from '../images/uicompicon.png';
+import Button from '../ui/Button/Button';
 
 class UiComp extends Component {
     constructor(props){
@@ -26,6 +27,10 @@ class UiComp extends Component {
                             <span className="tab-label"> Typography </span>
                         </div>
                     </div>
+                    <Button
+                        btnRoundness="large"
+                        />
+
                 </div>
                 {/* <div className="settings-panel ui-panel">
   
