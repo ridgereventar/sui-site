@@ -1,0 +1,25 @@
+.btn-basic {
+    width: 90px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+.btn-border {
+    background-color: transparent;
+}
+
+.btn-fill {
+
+}
+
+.btn--roundness-none {
+    border-radius: 0px;
+}
+
+.btn--roundness-small {
+    border-radius: 5px;
+}
+
+.btn--roundness-large {
+    border-radius: 50px;
+}

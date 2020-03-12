@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Button} from '../ui';
 
 import '../styles/create/StyleGuide.css';
 

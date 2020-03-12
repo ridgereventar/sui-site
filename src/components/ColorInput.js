@@ -9,7 +9,7 @@ class ColorInput extends Component {
         return (
             <div className="color-input-container">
                 <div className="color-input-circle" style={{backgroundColor: this.props.hex}}></div>
-                <label class="color-input-type">{this.props.type}</label>
+                <label className="color-input-type">{this.props.type}</label>
                 <input className="hex-input" 
                     type="text" 
                     value={this.props.hex} 

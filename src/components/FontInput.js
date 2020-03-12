@@ -13,7 +13,7 @@ const customStyles = {
     control: base => ({
         ...base,
         minHeight: 20,
-        "margin-bottom": '8px'
+        marginBottom: '8px'
     }),
     dropdownIndicator: base => ({
         ...base,
@@ -39,9 +39,9 @@ const FontInput = (props) => {
 
     return (
         <div className="font-input-container">
-            <h3 className="font-input-icon" style={{"font-family": props.font.name}}>Aa</h3>
+            <h3 className="font-input-icon" style={{fontFamily: props.font.name}}>Aa</h3>
             <div className="font-select-container"> 
-                <label className="font-type-label" for="font-select">{props.font.type}</label>
+                <label className="font-type-label">{props.font.type}</label>
                 <Select
                     styles={customStyles}
                     options={options}

@@ -9,18 +9,18 @@ const FontDisplay = (props) => {
     return (
         <div className="font-display-container">
             <div className="font-display-icon-container">
-                <h3 className="font-display-icon" style={{"font-family":`${props.font.name}`}}>Aa</h3>
+                <h3 className="font-display-icon" style={{fontFamily:`${props.font.name}`}}>Aa</h3>
             </div>
             <div className="font-display-info-container">
                 <h2 className="font-display-type">{props.font.type}</h2>
-                <span className="font-display-name" style={{"font-family":`${props.font.name}`}}>{props.font.name}</span>
+                <span className="font-display-name" style={{fontFamily:`${props.font.name}`}}>{props.font.name}</span>
             </div>
             <div className="divider-vert"></div>
             <div className="font-display-weight-container">
                 {props.font.weights.map(weight => {
                     return (
                         <span className="font-display-weight" 
-                              style={{"font-weight": `${weight}`, "font-family": `${props.font.name}`}}
+                              style={{"font-weight": `${weight}`, fontFamily: `${props.font.name}`}}
                               >{weight}</span>
                     )
                 })}
@@ -29,7 +29,7 @@ const FontDisplay = (props) => {
                 {props.font.weights.map((weight, index) => {
                     return (
                         <p className="font-display-sample"
-                           style={{"font-weight": `${weight}`, "font-family": `${props.font.name}`}} 
+                           style={{"font-weight": `${weight}`, fontFamily: `${props.font.name}`}} 
                            >{sampleText[index]}</p>
                     )
                 })}
