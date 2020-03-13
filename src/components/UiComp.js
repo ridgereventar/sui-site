@@ -7,6 +7,7 @@ import Button from '../ui/Button';
 import { createPortal } from 'react-dom';
 
 import cx from 'classnames';
+import InputText from '../ui/InputText';
 
 class UiComp extends Component {
     constructor(props){
@@ -130,6 +131,41 @@ class UiComp extends Component {
                                 roundness="large"/>
                         </div>
                         
+                        <span className="component-label">Text Fields</span>
+                        <div className="component-section-wrapper">
+                            <div className="component-section-col">
+                                <InputText
+                                    filter={this.state.filter}
+                                    border={true}
+                                    roundness="none"
+                                    line={false}/>
+                                <InputText
+                                    filter={this.state.filter}
+                                    border={true}
+                                    roundness="small"
+                                    line={false}/>
+                                <InputText
+                                    filter={this.state.filter}
+                                    border={true}
+                                    roundness="large"
+                                    line={false}/>        
+                            </div>
+                            <div className="component-section-col">
+                                <InputText
+                                    filter={this.state.filter}
+                                    border={false}
+                                    roundness="none"
+                                    line={true}/>
+                                <InputText
+                                    filter={this.state.filter}
+                                    border={false}
+                                    roundness="none"
+                                    line={true}/>  
+                            </div>
+                        </div>
+                        
+
+
                     </div>
                     
                     

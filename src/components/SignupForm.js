@@ -12,10 +12,10 @@ class SignupForm extends Component {
 
     render() {
         return (
-            <div className="signup-form-container">
+            <div className="signup-form-container height-transition">
                 <div className="login-contents-container">
-                    <span className="form-header">Sign up for S<span className="blue-font">Ui</span> </span>
-                    <form className="login-form">
+                    <span className="form-header fade-in">Sign up for S<span className="blue-font">Ui</span> </span>
+                    <form className="login-form fade-in">
                         <label className="form-label">Full name</label>
                         <input
                             className="form-input"

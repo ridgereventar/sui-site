@@ -1,6 +1,8 @@
 import React, {Component} from 'react'; 
 import '../styles/landing/Form.css';
 
+import cx from 'classnames';
+
 class LoginForm extends Component {
     constructor(props) {
         super(props);
@@ -11,11 +13,20 @@ class LoginForm extends Component {
     }
 
     render() {
+        console.log("inside login");
+        console.log(this.props.signup);
         return (
-            <div className="login-form-container">
+            <div className={cx(
+                "login-form-container",
+                {
+                    ["fade-in"]: !this.props.signup,
+                    ["height-shrink"]: this.props.signup
+
+                } 
+            )}>
                 <div className="login-contents-container">
-                    <span className="form-header">Log in to S<span className="blue-font">Ui</span> </span>
-                    <form className="login-form">
+                    <span className="form-header fade-in">Log in to S<span className="blue-font">Ui</span> </span>
+                    <form className="login-form fade-in">
                         <label className="form-label">Email Address</label>
                         <input
                             className="form-input"

@@ -1,0 +1,44 @@
+.input-label {
+    display: block;
+    color: black;
+    font-size: 12px;
+    margin-bottom: 4px;
+    margin-top: 12px;
+}
+
+.input-text-field {
+    width: 140px;
+    height: 22px;
+    padding-left: 8px;
+    font-size: 14px;
+}
+
+.input--roundness-none {
+    border-radius: 0px;
+}
+
+.input--roundness-small {
+    border-radius: 3px;
+}
+
+.input--roundness-large {
+    border-radius: 50px;
+    padding-left: 10px;
+
+}
+
+.input-text-field:focus {
+    outline: none;
+}
+
+.input-line {
+    background-color: transparent;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: black;
+    padding-left: 0px;
+    font-size: 15px;
+}

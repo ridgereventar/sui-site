@@ -1,7 +1,4 @@
 import React, { useState, useContext } from 'react';
-import withContext from '../helpers/withContext';
-import ColorContext from '../contexts/ColorContext';
-import FontContext from '../contexts/FontContext';
 import ThemeContext from '../contexts/ThemeContext';
 
 import '../styles/ui/Button.css'
