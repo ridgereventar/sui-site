@@ -1,16 +1,14 @@
 import React, { useState, useContext } from 'react';
-import ThemeContext from '../contexts/ThemeContext';
+import cx from 'classnames';
 
 import '../styles/ui/Button.css'
 
-import cx from 'classnames';
+import ThemeContext from '../contexts/ThemeContext';
 
 const Button = (props) => {
     
-    // const [count, setCount] = useState(0);
     const theme = useContext(ThemeContext)
-
-    console.log(JSON.stringify(theme));
+    // console.log(JSON.stringify(theme));
 
     return (
         
@@ -18,11 +16,8 @@ const Button = (props) => {
             "btn-basic",
             `btn--roundness-${props.roundness}`, 
             {
-                ["btn-border"]: props.border,
-                ["btn-fill"]: props.fill,
-                
+                ["btn-border"]: props.border                
             })} 
-
             style={{
                 border: props.border ? `solid ${theme.colors[props.filter].hex} 1px` : 'none',
                 backgroundColor: props.fill ? theme.colors[props.filter].hex : 'transparent'

@@ -1,13 +1,13 @@
-import React, {Component} from 'react'; 
+import React, {Component} from 'react';
+import cx from 'classnames';
+
 import '../styles/create/UiComp.css'; 
+
 import SectionLabel from './SectionLabel';
+import Button from '../ui/Button';
+import InputText from '../ui/InputText';
 
 import uicompIcon from '../images/uicompicon.png';
-import Button from '../ui/Button';
-import { createPortal } from 'react-dom';
-
-import cx from 'classnames';
-import InputText from '../ui/InputText';
 
 class UiComp extends Component {
     constructor(props){
@@ -50,19 +50,19 @@ class UiComp extends Component {
     render() {
         return(
             <div className="ui-comp-container">
-                <SectionLabel
-                    url={uicompIcon}
-                    label="Ui Components"/>
+                <SectionLabel url={uicompIcon} label="Ui Components"/>
 
                 <div className="ui-panel">
-                    <div className="tab-container">
-                        <div className="input-nav-container">
+
+                    <div className="ui-tab-container">
+                        <div id="ui-tab-input-nav" className="ui-tab">
                             <span className="tab-label">Input / Navigation</span>
                         </div>
-                        <div className="typ-container">
+                        <div id="ui-tab-typo" className="ui-tab">
                             <span className="tab-label"> Typography </span>
                         </div>
                     </div>
+
                     <div className="filter-wrapper">
                         <div className="filter-container">
                             <div 
@@ -94,7 +94,9 @@ class UiComp extends Component {
                                 onClick={this.handleFilter}>Tertiary</div>
                         </div>
                     </div>
+
                     <div className="component-containter">
+
                         <span className="component-label">Buttons</span>
                         <div className="component-section">
                             <Button
@@ -163,17 +165,10 @@ class UiComp extends Component {
                                     line={true}/>  
                             </div>
                         </div>
-                        
-
 
                     </div>
                     
-                    
-
                 </div>
-                {/* <div className="settings-panel ui-panel">
-  
-                </div> */}
             </div>
         );
     }

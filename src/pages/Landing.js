@@ -6,7 +6,7 @@ import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
 import WelcomeMsg from '../components/WelcomeMsg';
 
-import cx from 'classnames';
+import Fade from 'react-reveal/Fade';
 
 class Landing extends Component {
 
@@ -67,8 +67,14 @@ class Landing extends Component {
               </div>
 
               <div className="intro-container">
+                <Fade right>
+                  <div className="intro-slideout">
 
+                  </div>
+                </Fade>
               </div>
+   
+              
 
 
 

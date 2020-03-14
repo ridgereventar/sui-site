@@ -1,30 +1,24 @@
 .font-input-container {
-    margin-bottom: 5px;
     width: 100%; 
-    height: max-content; 
+    height: max-content;
     display: flex;
-    align-items: center;
-    /* background-color: aquamarine; */
+    align-items: center; 
+    margin-bottom: 5px;
 }
   
 .font-input-icon {
     width: 35px;
     font-size: 45px;
-    margin:0;
+    margin: 0;
 }
 
 .font-select-container {
-    /* margin-bottom: 20px; */
-    margin-left: 40px;
-    height: 100%; 
     width: 200px;
-    /* background-color: red; */
-    /* padding-bottom: 8px; */
+    height: 100%; 
+    margin-left: 40px;
 }
-
 
 .font-type-label {
     font-size: 10px;
-    font-family: "Avenir Next";
     font-weight: 600;
 }

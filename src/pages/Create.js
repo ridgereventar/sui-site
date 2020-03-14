@@ -5,44 +5,17 @@ import Settings from '../components/Settings';
 import Styleguide from '../components/Styleguide';
 import UiComp from '../components/UiComp';
 
-import { DEFAULT_FONTS } from '../constants';
-
-import ColorContext, { ColorContextConsumer } from '../contexts/ColorContext';
-
+import ColorContext from '../contexts/ColorContext';
+import FontContext from '../contexts/FontContext';
 import withContext from '../helpers/withContext';
-import FontContext, { FontContextConsumer } from '../contexts/FontContext';
-
-
 
 class Create extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            fonts: [
-                {
-                    type: "Primary",
-                    name: "",
-                    weights: []
-                },
-                {
-                    type: "Secondary",
-                    name: "",
-                    weights: []
-                }
-            ],
-            fontOptions: Object.values(DEFAULT_FONTS)
-        };
     }
 
-
     render() {
-
-        console.log(this.state.colors);
-        console.log("fonts:");
-        console.log(this.state.fonts);
-
-
         return (
             <React.Fragment>
 
@@ -50,15 +23,9 @@ class Create extends Component {
                 </div>
 
                 <div className="playground-window">
-
-
-                    <Settings
-                        fontOptions={this.state.fontOptions}
-                    />
-                
+                    <Settings/>
                     <Styleguide/>
-                    
-                    <UiComp></UiComp>
+                    <UiComp/>
                 </div>
 
             </React.Fragment>

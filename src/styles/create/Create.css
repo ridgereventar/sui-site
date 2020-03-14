@@ -5,16 +5,11 @@
 }
 
 .playground-window {
-  background-color: #F3F3F3;
   display: flex;
   justify-content: space-between;
+  background-color: #F3F3F3;
 }
 
-
-.selected-font-label {
-  margin-left: 10px;
-  font-size: 14px;
-}
 
 
 

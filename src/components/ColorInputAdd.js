@@ -3,7 +3,6 @@ import '../styles/create/ColorInput.css';
 
 import ColorPicker from './ColorPicker';
 
-
 class ColorInputAdd extends Component {
 
     constructor(props) {
@@ -21,7 +20,6 @@ class ColorInputAdd extends Component {
               newValue: test
             }
         })
-        // this.props.setPrimary(test);
     }
 
     colorPickerAddHex = (value) => {

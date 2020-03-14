@@ -1,27 +1,25 @@
 .login-form-container {
     width: 560px;
     height: 410px;
-    background-color: #2A2A2A;
-    border-radius: 8px;
-    margin-top: -70px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 8px;
+    margin-top: -70px;
+    background-color: #2A2A2A;
 }
 
 .login-contents-container{
     width: 370px;
     height: max-content;
-    /* background-color: red; */
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
 }
 
 .form-header {
     color: white;
     font-size: 28px;
-    font-family: "Avenir Next";
     font-weight: 500;
 }
 
@@ -37,46 +35,37 @@
 .form-label {
     display: block;
     color: white;
-    font-family: "Avenir Next";
     font-size: 12px;
 }
 
 .form-input {
     width: 100%;
     height: 35px;
+    color: white;
+    font-size: 18px;
     background-color: transparent;
     outline: none;
     outline-style: none;
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: solid #424242 1px;
-    color: white;
-    font-size: 18px;
+    border-bottom: solid #424242 1px;   
     margin-bottom: 20px;
 }
 
-input:-webkit-autofill,
-select:-webkit-autofill:focus {
+input:-webkit-autofill, select:-webkit-autofill:focus {
     -webkit-text-fill-color: white;
     transition: background-color 5000s ease-in-out 0s;
 }
 
-.btn-container {
-    width: 100%;
-    height: 45px;
-    background-color: red;
-}
-
 .form-btn {
-    border: none;
     width: 175px;
     height: 45px;
+    border: none;
     border-radius: 5px;
     color: white;
-    font-family: "Avenir Next";
-    font-weight: 700;
     font-size: 18px;
+    font-weight: 700;
 }
 
 #form-login-btn {
@@ -85,8 +74,8 @@ select:-webkit-autofill:focus {
 
 #form-signup-btn {
     float: right;
-    background-color: transparent;
     border: solid white 1px;
+    background-color: transparent;
 }
 
 /* Signup Form */
@@ -94,17 +83,16 @@ select:-webkit-autofill:focus {
 .signup-form-container {
     width: 560px;
     height: 650px;
-    background-color: #2A2A2A;
-    border-radius: 8px;
-    margin-top: -70px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #2A2A2A;
+    border-radius: 8px;
+    margin-top: -70px;
 }
 
 .login-msg {
     color: white;
-    font-family: "Avenir Next";
     font-size: 15px;
 }
 

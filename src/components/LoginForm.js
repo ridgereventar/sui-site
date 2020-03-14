@@ -1,5 +1,5 @@
 import React, {Component} from 'react'; 
-import '../styles/landing/Form.css';
+import '../styles/Form.css';
 
 import cx from 'classnames';
 
@@ -13,8 +13,7 @@ class LoginForm extends Component {
     }
 
     render() {
-        console.log("inside login");
-        console.log(this.props.signup);
+        
         return (
             <div className={cx(
                 "login-form-container",

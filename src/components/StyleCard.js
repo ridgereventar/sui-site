@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import '../styles/Home.css';
+import '../styles/StyleCard.css';
 
-import uisample from '../images/uisample.png';
 import MiniColorDisplay from './MiniColorDisplay';
 import MiniFontDisplay from './MiniFontDisplay';
+
+import uisample from '../images/uisample.png';
 
 class StyleCard extends Component {
     constructor(props) {

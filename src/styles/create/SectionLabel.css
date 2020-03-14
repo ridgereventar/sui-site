@@ -1,10 +1,10 @@
 .section-header {
     width: 100%; 
-    margin-bottom: 10px;
-    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .section-label-container {
@@ -12,13 +12,13 @@
 }
 
 .label-icon-container {
-    height: 15px; 
     width: 15px;
+    height: 15px; 
     background-size: cover;
 }
 
 .section-label {
-    margin-left: 5px;
-    font-size: 12px;
     color:black;
+    font-size: 12px;
+    margin-left: 5px;
 }

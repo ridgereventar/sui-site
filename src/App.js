@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-import './App.css';
+import './styles/App.css';
 
 import Landing from './pages/Landing';
 import Create from './pages/Create';
-import Login from './pages/Login';
 import Home from './pages/Home';
 
 import { ColorContextProvider } from './contexts/ColorContext';
@@ -20,7 +19,6 @@ class App extends Component {
     super(props);
   }
 
-
   render() {
     return (
       
@@ -32,7 +30,6 @@ class App extends Component {
               <Switch>
                 <Route path="/" exact component={Landing}/>
                 <Route path="/landing" component={Landing}/>
-                <Route path="/login" exact component={Login}/>
                 <Route path="/create" exact component={Create}/>
                 <Route path="/home" exact component={Home}/>
               </Switch>
@@ -40,9 +37,6 @@ class App extends Component {
           </ThemeContextProvider>
         </ColorContextProvider>
       </FontContextProvider>
-
-
-
 
     );
   }

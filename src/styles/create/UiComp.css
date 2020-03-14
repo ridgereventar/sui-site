@@ -3,19 +3,19 @@
 }
 
 .ui-panel {
-    height: 700px;
     width: 386px; 
+    height: 700px;
     background-color: white;
 }
 
-.tab-container {
+.ui-tab-container {
     width: 100%;
     height: 35px; 
-    background-color: red;
     display: flex;
+    background-color: red;
 }
 
-.input-nav-container {
+.ui-tab {
     width: 50%; 
     height: 35px; 
     background-color: white;
@@ -24,57 +24,28 @@
     align-items: center;
 }
 
-.typ-container {
-    width: 50%; 
-    height: 35px; 
+#ui-tab-typo {
     background-color: #E9E9E9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .tab-label {
-    font-family: "Avenir Next";
     font-size: 11px;
 }
 
 .filter-wrapper {
     width: 100%;
     height: 60px;
-    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
     box-shadow: 12px -5px 8px 10px #E1E1E1;
-
 }
 
 .filter-container {
     width: 270px; 
     height: 30px; 
-    /* background-color: red; */
     display: flex;
-}
-
-.filter-btn {
-    width: 90px;
-    height: 30px;
-    background-color: #E9E9E9;
-    font-family: "Avenir Next";
-    font-size: 11px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.filter-btn:hover {
-    cursor: pointer;
-    border: solid #C0C0C0 0.5px;
-}
-
-.selected-filter {
-    background-color: white;
-    border: solid #C0C0C0 0.5px;
 }
 
 #primary-filter {
@@ -83,6 +54,26 @@
 
 #tertiary-filter {
     border-radius: 0px 50px 50px 0px;
+}
+
+.filter-btn {
+    width: 90px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    background-color: #E9E9E9;
+}
+
+.filter-btn:hover {
+    cursor: pointer;
+    border: solid #C0C0C0 0.5px;
+}
+
+.selected-filter {
+    border: solid #C0C0C0 0.5px;
+    background-color: white;
 }
 
 .component-containter {
@@ -94,9 +85,8 @@
 }
 
 .component-label {
-    font-family: "Avenir Next";
-    font-size: 12px;
     display: block;
+    font-size: 12px;
     margin-top: 30px;
 }
 
@@ -109,9 +99,4 @@
     height: max-content;
     display: flex;
     justify-content: space-between;
-
 }
-
-/* .component-section-col {
-
-} */

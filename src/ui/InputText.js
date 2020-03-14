@@ -1,19 +1,18 @@
 import React, { useState, useContext } from 'react';
-import ThemeContext from '../contexts/ThemeContext';
+import cx from 'classnames';
 
 import '../styles/ui/InputText.css'
 
-import cx from 'classnames';
+import ThemeContext from '../contexts/ThemeContext';
 
 const InputText = (props) => {
     
     const theme = useContext(ThemeContext);
 
     return (
-        
         <React.Fragment>
             <label className={cx(
-                "input-label",
+                "input-label"
             )}> 
             Label </label>
             
@@ -33,7 +32,6 @@ const InputText = (props) => {
                 id=""
                 name=""
                 />
-
         </React.Fragment>
     )
 }

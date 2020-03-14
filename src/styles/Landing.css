@@ -126,16 +126,18 @@
   background-repeat: no-repeat;
 }
 
-
-
-
-
-
-
-
-
 .intro-container {
   width:100%; 
   height: 100vh;
-  background-color: #68D9EC;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.intro-slideout {
+  width: 92%;
+  height: 92%; 
+  border-radius: 40px 0 0 40px;
+  background-image: url(../images/bluegradient.png);
 }

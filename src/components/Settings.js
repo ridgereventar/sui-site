@@ -1,20 +1,19 @@
 import React, { Component, useContext } from 'react';
-import $ from 'jquery';
+import Select from 'react-select';
+
 import '../styles/create/Settings.css';
 
-
 import SectionLabel from './SectionLabel';
+import FontInput from './FontInput';
 import ColorInput from './ColorInput';
 import ColorInputAdd from './ColorInputAdd';
-import FontInput from './FontInput';
 
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
+import ColorContext from '../contexts/ColorContext';
+import FontContext from '../contexts/FontContext';
+import withContext from '../helpers/withContext';
 
 import settingIcon from '../images/settingsicon.png';
-import withContext from '../helpers/withContext';
-import ColorContext, { ColorContextConsumer } from '../contexts/ColorContext';
-import FontContext, { FontContextConsumer } from '../contexts/FontContext';
+import { DEFAULT_FONTS } from '../constants';
 
 class Settings extends Component {
 
@@ -48,13 +47,10 @@ class Settings extends Component {
     addFont = () => {
         this.props.addFont();
     }
-
-
+å
     render() {
 
         const typographyOptions = [];
-        const animatedComp = makeAnimated();
-
         {this.props.fonts.map(font => {
             typographyOptions.push({value: font.name, label: font.name});
         })}
@@ -88,7 +84,7 @@ class Settings extends Component {
                             <FontInput
                                 font={font}
                                 index={index}
-                                fontOptions={this.props.fontOptions}
+                                fontOptions={Object.values(DEFAULT_FONTS)}
                                 updateFont={this.updateFont}/>         
                         );
                     })}
