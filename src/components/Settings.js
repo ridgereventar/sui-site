@@ -13,7 +13,7 @@ import FontContext from '../contexts/FontContext';
 import withContext from '../helpers/withContext';
 
 import settingIcon from '../images/settingsicon.png';
-import { DEFAULT_FONTS } from '../constants';
+import { DEFAULT_FONTS } from '../helpers/constants';
 
 class Settings extends Component {
 

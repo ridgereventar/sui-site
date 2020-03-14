@@ -10,7 +10,7 @@ import { ColorContextProvider } from './contexts/ColorContext';
 import { FontContextProvider } from './contexts/FontContext';
 import ThemeContext, { ThemeContextProvider } from './contexts/ThemeContext';
 
-import sampleConfig from './sui.json';
+import sampleConfig from './helpers/sui.json';
 
 class App extends Component {
 
