@@ -60,7 +60,7 @@ class Landing extends Component {
                                                                                           name={this.props.name}
                                                                                           email={this.props.email}
                                                                                           signup={this.state.signupDisplayed}/>} />
-                      <Route path="/landing/signup" exact component={SignupForm}/>
+                      <Route path="/landing/signup" exact component={(props) => <SignupForm signup={this.props.signup}/>}/>
                     </Switch>
             
                   </div>
@@ -91,6 +91,6 @@ class Landing extends Component {
 export default withContext(
   {
     context: UserContext,
-    mapValueToProps: (value) => ({name: value.name, email: value.email, login: value.login})
+    mapValueToProps: (value) => ({name: value.name, email: value.email, login: value.login, signup: value.signup})
   }
 )(Landing);

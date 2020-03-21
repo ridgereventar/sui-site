@@ -24,11 +24,7 @@ class LoginForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         if(this.formValid(this.state)) {
-            const user = {
-                email: this.state.email,
-                password: this.state.password
-            }
-
+    
             this.props.login(this.state.email, this.state.password).then(() => {
                 this.props.history.push('/home');                
             }).catch((error) => {
