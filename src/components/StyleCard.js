@@ -14,7 +14,7 @@ class StyleCard extends Component {
     render() {
         return (
             <div className="style-card-wrapper">
-                <div className="style-card-container" style={{"background-image": `url(${uisample})`}}>
+                <div className="style-card-container" style={{backgroundImage: `url(${uisample})`}}>
                     
                     <div className="style-guide-preview">
                         <MiniColorDisplay/>

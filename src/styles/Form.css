@@ -21,6 +21,7 @@
     color: white;
     font-size: 28px;
     font-weight: 500;
+    margin-bottom: 20px;
 }
 
 .blue-font {
@@ -29,11 +30,9 @@
 
 .login-form {
     width: 100%;
-    margin-top: 30px;
 }
 
 .form-label {
-    display: block;
     color: white;
     font-size: 12px;
 }
@@ -98,4 +97,25 @@ input:-webkit-autofill, select:-webkit-autofill:focus {
 
 #login-link {
     color: #4BC3E9;
+}
+
+.input-error-msg {
+    color: red;
+    font-size: 11px;
+    margin-left: 10px;
+}
+
+.login-error-msg-container {
+    width: 100%;
+    border-radius: 2px;
+    padding: 5px 0px;
+    margin-bottom: 20px;
+    background-color: #ff5555;
+}
+
+.login-error-msg {
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
 }
