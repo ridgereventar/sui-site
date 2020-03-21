@@ -7,6 +7,8 @@ import SignupForm from '../components/SignupForm';
 import WelcomeMsg from '../components/WelcomeMsg';
 
 import Fade from 'react-reveal/Fade';
+import withContext from '../helpers/withContext';
+import UserContext from '../contexts/UserContext';
 
 class Landing extends Component {
 
@@ -54,7 +56,10 @@ class Landing extends Component {
                   <div className="welcome-text-container">
                     <Switch>
                       <Route path="/landing" exact component={WelcomeMsg}/>
-                      <Route path="/landing/login" exact component={(props) => <LoginForm signup={this.state.signupDisplayed}/>} />
+                      <Route path="/landing/login" exact component={(props) => <LoginForm login={this.props.login} 
+                                                                                          name={this.props.name}
+                                                                                          email={this.props.email}
+                                                                                          signup={this.state.signupDisplayed}/>} />
                       <Route path="/landing/signup" exact component={SignupForm}/>
                     </Switch>
             
@@ -83,4 +88,9 @@ class Landing extends Component {
     }
 }
 
-export default Landing;
+export default withContext(
+  {
+    context: UserContext,
+    mapValueToProps: (value) => ({name: value.name, email: value.email, login: value.login})
+  }
+)(Landing);

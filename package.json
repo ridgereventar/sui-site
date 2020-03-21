@@ -5,8 +5,10 @@
   "dependencies": {
     "@progress/kendo-drawing": "^1.6.0",
     "@progress/kendo-react-pdf": "^3.10.1",
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "classnames": "^2.2.6",
+    "concurrently": "^5.1.0",
     "express": "^4.17.1",
     "jquery": "^3.4.1",
     "mongoose": "^5.8.9",
@@ -25,8 +27,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm run start\""
   },
+  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": "react-app"
   },

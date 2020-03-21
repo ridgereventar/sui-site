@@ -11,6 +11,7 @@ import { FontContextProvider } from './contexts/FontContext';
 import ThemeContext, { ThemeContextProvider } from './contexts/ThemeContext';
 
 import sampleConfig from './helpers/sui.json';
+import { UserContextProvider } from './contexts/UserContext';
 
 class App extends Component {
 
@@ -24,16 +25,18 @@ class App extends Component {
       
       <FontContextProvider>
         <ColorContextProvider>
-        <ThemeContextProvider>
+          <ThemeContextProvider>
           {/* <ThemeContextProvider theme={sampleConfig}> */}
-            <BrowserRouter>
-              <Switch>
-                <Route path="/" exact component={Landing}/>
-                <Route path="/landing" component={Landing}/>
-                <Route path="/create" exact component={Create}/>
-                <Route path="/home" exact component={Home}/>
-              </Switch>
-            </BrowserRouter>
+            <UserContextProvider>
+              <BrowserRouter>
+                <Switch>
+                  <Route path="/" exact component={Landing}/>
+                  <Route path="/landing" component={Landing}/>
+                  <Route path="/create" exact component={Create}/>
+                  <Route path="/home" exact component={Home}/>
+                </Switch>
+              </BrowserRouter>
+            </UserContextProvider>
           </ThemeContextProvider>
         </ColorContextProvider>
       </FontContextProvider>
