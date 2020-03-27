@@ -18,7 +18,7 @@
     background-repeat: no-repeat;
     background-position: center;
     border: solid white 10px;
-    z-index: 2;
+    z-index: 0;
 }
 
 .style-guide-preview {
@@ -55,6 +55,7 @@
     border-top: none;
     position: absolute;
     transition: 0.3s;
+    z-index: -1;
 }
 
 .style-card-wrapper:hover .info-slide-out {

@@ -16,12 +16,16 @@ mongoose
 
 // Routes
 
-// 1. User Login: 
 const User = require('./models/User');
 
 // @route GET api/users (get ALL users from db)
 app.get('*/api/users', (req, res) => {
   User.find().then(users => res.json(users));
+});
+
+app.get('*/api/user/:id', (req, res) => {
+  User.findById(req.params.id)
+      .then((user) => res.json(user));
 });
 
 // @route POST api/users (create a user)
@@ -41,6 +45,34 @@ app.delete('*/api/users/:id', (req, res) => {
       .then(() => res.json({success: true})))
       .catch(err => res.status(404).json({success: false}));
 })
+
+const Theme = require('./models/Theme');
+
+// @route GET api/themes (get ALL themes from db)
+app.get('*/api/themes', (req, res) => {
+
+  Theme.find().then(themes => res.json(themes));
+})
+
+// @route POST api/themes (create a theme)
+app.post('*/api/themes', (req, res) => {
+  const newTheme = new Theme({
+    themeName: req.body.themeName,
+    creator: req.headers['sui-id'],
+    privacy: req.body.privacy,
+    theme: req.body.theme
+  })
+  newTheme.save().then(theme => res.json(theme));
+})
+
+
+// app.get('/api/theme/:id)'), => {
+//   //validate user
+//   //get theme:id for user:id
+//   //return theme.json()
+// }
+
+//
 
 
 // Port and Listen 

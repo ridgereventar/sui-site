@@ -1,16 +1,27 @@
 import React from 'react'; 
-
+import {withRouter} from 'react-router-dom';
 const UserContext = React.createContext(); 
 const axios = require('axios').default;
 
 export const UserContextConsumer = UserContext.Consumer; 
 
-export class UserContextProvider extends React.Component {
+class UserContextProviderClass extends React.Component {
     constructor(props) {
         super(props); 
         this.state = {
+            isAuthorized: false,
             name: "",
             email: ""
+        }
+    }
+
+    componentDidMount() {
+        console.log("mounted!");
+        if(localStorage.getItem("userId") !== null) {
+            axios.get(`/api/user/${localStorage.getItem("userId")}`).then((user) => {
+                this.setState({name: user.data.name, email: user.data.email});
+                this.props.history.push('/home');                
+            })
         }
     }
 
@@ -66,5 +77,7 @@ export class UserContextProvider extends React.Component {
         )
     }
 }
+
+export const UserContextProvider = withRouter(UserContextProviderClass);
 
 export default UserContext; 

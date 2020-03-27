@@ -4,7 +4,7 @@ import React from 'react';
 // All values are passed to the component via props
 function applyContext(ChildConsumer, context) {
 
-    console.log(ChildConsumer, context);
+    // console.log(ChildConsumer, context);
 
 
       let isContextOptions = false;
@@ -22,7 +22,7 @@ function applyContext(ChildConsumer, context) {
         Consumer = isContextOptions ? context.context.Consumer : context.Consumer;
       }
 
-    console.log(Consumer)
+    // console.log(Consumer)
 
       return React.forwardRef(({
         ...props

@@ -24,6 +24,18 @@ class ThemeContextClass extends React.Component {
             
         
     }
+
+    // componentDidMount() {
+    //     fetch(/api/theme/2)
+    //         .then(data => {
+    //             this.setState({
+    //                 colors: data.theme.props.colors,
+    //                 fonts: data.theme.fonts
+    //             });
+    //         })
+    // }
+
+
     
     render() {
         return (
