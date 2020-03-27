@@ -3,23 +3,74 @@ import {withRouter} from 'react-router-dom';
 import '../styles/Form.css';
 
 import cx from 'classnames';
-import Axios from 'axios';
+
+const axios = require('axios').default;
 
 class CreateForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            themeName: "",
+            creator: this.props.name,
+            privacy: "",
+            theme: {
+                colors: [
+                    {
+                        type: "Primary", 
+                        hex: "", 
+                        rgb: "",
+                        swatch: []
+                    }, 
+                    {
+                        type: "Secondary", 
+                        hex: "", 
+                        rgb: "",
+                        swatch: []
+                    }, 
+                    {
+                        type: "Tertiary", 
+                        hex: "", 
+                        rgb: "",
+                        swatch: []
+                    } 
+                ], 
+                fonts: [
+                    {
+                        type: "Primary", 
+                        name: "", 
+                        url: "",
+                        weights: []
+                    },
+                    {
+                        type: "Secondary", 
+                        name: "", 
+                        url: "",
+                        weights: []
+                    }
+                ]
+            }
         }
     }
     
     handleSubmit = (event) => {
         event.preventDefault();
-        // Axios.post('/url', {
-        //     headers: {
-        //         'sui-user': this.props.user.userId
-        //     }
-        // })
+        const newTheme = {
+            themeName: this.state.themeName,
+            creator: this.state.creator,
+            privacy: this.state.privacy,
+            theme: this.state.theme
+        }
+        axios.post('/api/themes', newTheme).then((response) => {
+            console.log(response);
+            this.props.history.push('/create');
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
+    handleChange = (e) => {
+        const{name, value} = e.target;
+        this.setState({[name]: value});
     }
 
     render() {
@@ -33,6 +84,7 @@ class CreateForm extends Component {
                     id="themeName"
                     placeholder="Brand / Company"
                     name="themeName"
+                    onChange={this.handleChange}
                     />
                 
                 <input
@@ -41,6 +93,7 @@ class CreateForm extends Component {
                     id="public"
                     name="privacy"
                     value="public"
+                    onChange={this.handleChange}
                     />
                 <label className="form-label" htmlFor="public">Public</label>
                 <br/>
@@ -51,6 +104,7 @@ class CreateForm extends Component {
                     id="private"
                     name="privacy"
                     value="private"
+                    onChange={this.handleChange}
                     />
                 <label className="form-label" htmlFor="private">Public</label>
                 <br/>

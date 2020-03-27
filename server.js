@@ -23,17 +23,29 @@ app.get('*/api/users', (req, res) => {
   User.find().then(users => res.json(users));
 });
 
+// @route GET api/user/:id (get a user by id from db)
 app.get('*/api/user/:id', (req, res) => {
   User.findById(req.params.id)
       .then((user) => res.json(user));
 });
+
+// @route UPDATE api/user/:id (update a users theme list)
+// app.get('*/api/user/:id', (req, res) => {
+//   var conditions = {_id: req.params.id};
+
+//   User.update(conditions, req.body.themes).then(doc => {
+//     if(!doc) {return res.status(404).end(); }
+//     return res.status(200).json(doc);
+//   }).catch(err => next(err));
+// });
 
 // @route POST api/users (create a user)
 app.post('*/api/users', (req, res) => {
   const newUser = new User({
     name: req.body.name, 
     email: req.body.email,
-    password: req.body.password 
+    password: req.body.password,
+    themes: req.body.themes 
   });
   newUser.save().then(user => res.json(user));
 })
@@ -50,7 +62,6 @@ const Theme = require('./models/Theme');
 
 // @route GET api/themes (get ALL themes from db)
 app.get('*/api/themes', (req, res) => {
-
   Theme.find().then(themes => res.json(themes));
 })
 
@@ -58,21 +69,13 @@ app.get('*/api/themes', (req, res) => {
 app.post('*/api/themes', (req, res) => {
   const newTheme = new Theme({
     themeName: req.body.themeName,
-    creator: req.headers['sui-id'],
+    creator: req.body.creator,
     privacy: req.body.privacy,
     theme: req.body.theme
   })
   newTheme.save().then(theme => res.json(theme));
 })
 
-
-// app.get('/api/theme/:id)'), => {
-//   //validate user
-//   //get theme:id for user:id
-//   //return theme.json()
-// }
-
-//
 
 
 // Port and Listen 

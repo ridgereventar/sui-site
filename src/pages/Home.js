@@ -58,7 +58,8 @@ class Home extends Component {
                     }
                     >
                     <h2 className="modal-title">Create New</h2>
-                    <CreateForm/>
+                    <CreateForm
+                        name={this.props.name}/>
                     
                 </Modal>
 

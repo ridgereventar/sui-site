@@ -44,7 +44,8 @@ class UserContextProviderClass extends React.Component {
         const newUser = {
             name: userName,
             email: userEmail,
-            password: userPassword 
+            password: userPassword,
+            themes: [] 
         }
         return axios.post('/api/users', newUser).then((response) => {
             // after posting the new user, find the user to set the localStorage

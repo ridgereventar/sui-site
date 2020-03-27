@@ -20,9 +20,6 @@ class Styleguide extends Component {
 
   render() {
 
-    console.log(this.props.colors);
-    console.log(this.props.fonts);
-
     return (
         <div className="style-guide-container">
     
