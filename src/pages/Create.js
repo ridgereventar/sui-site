@@ -5,9 +5,9 @@ import Settings from '../components/Settings';
 import Styleguide from '../components/Styleguide';
 import UiComp from '../components/UiComp';
 
-import ColorContext from '../contexts/ColorContext';
-import FontContext from '../contexts/FontContext';
+
 import withContext from '../helpers/withContext';
+import ThemeContext from '../contexts/ThemeContext';
 
 class Create extends Component {
 
@@ -16,10 +16,13 @@ class Create extends Component {
     }
 
     render() {
+        console.log(this.props.theme);
         return (
             <React.Fragment>
 
                 <div id="header">
+                    <h3 style={{color: 'white', display: 'inline'}}>{this.props.themeName}</h3>
+                    <button onClick={this.props.saveTheme}>Save</button>
                 </div>
 
                 <div className="playground-window">
@@ -35,12 +38,11 @@ class Create extends Component {
 
 export default withContext(
     {
-        context: ColorContext,
-        mapValueToProps: (value) =>  ({addColor: value.addColor, updateColor: value.updateColor})
-    },
-    {
-        context: FontContext,
-        mapValueToProps: (value) =>  ({fonts: value.fonts, addFont: value.addFont, updateFont: value.updateFont})
+        context: ThemeContext,
+        mapValueToProps: (value) =>  ({themeName: value.themeName, 
+                                        theme: value.theme, 
+                                        setTheme: value.setTheme,
+                                        saveTheme: value.saveTheme})
     }
 )(Create); 
   

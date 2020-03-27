@@ -32,7 +32,6 @@ class StyleCard extends Component {
     }
     
     render() {
-        console.log(this.state);
         return (
             <div className="style-card-wrapper">
                 <div className="style-card-container" style={{backgroundImage: `url(${uisample})`}}>

@@ -7,7 +7,7 @@ import ThemeContext from '../contexts/ThemeContext';
 
 const Button = (props) => {
     
-    const theme = useContext(ThemeContext)
+    const {theme} = useContext(ThemeContext)
     // console.log(JSON.stringify(theme));
 
     return (

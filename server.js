@@ -70,6 +70,28 @@ app.get('*/api/theme/:id', (req, res) => {
       .then((theme) => res.json(theme));
 });
 
+// @route UPDATE api/theme/:id (update a theme)
+app.put('*/api/theme/:id', (req, res) => {
+  var id = req.params.id;
+  Theme.findOne({_id: id}, (err, foundTheme) => {
+    if(err) {
+      console.log(err);
+      res.status(500).send();
+    } else {
+        if(!foundTheme) {
+          res.status(404).send();
+        } else {
+          foundTheme.themeName = req.body.themeName;
+          foundTheme.creator = req.body.creator;
+          foundTheme.privacy = req.body.privacy;
+          foundTheme.theme = req.body.theme;
+          foundTheme.save().then(theme => res.json(theme));
+        }
+    }
+  })
+});
+
+
 // @route POST api/themes (create a theme)
 app.post('*/api/themes', (req, res) => {
   const newTheme = new Theme({

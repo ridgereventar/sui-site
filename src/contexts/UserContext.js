@@ -32,7 +32,7 @@ class UserContextProviderClass extends React.Component {
                 console.log("...not found");
                 return Promise.reject("ERROR: User not found");
             } else {
-                this.setState({name: founduser.name, emal: founduser.email});
+                this.setState({name: founduser.name, emal: founduser.email, themes: founduser.themes});
                 localStorage.setItem('userId', founduser._id);
                 return Promise.resolve("SUCCESS: User found, logged in.");
             }
@@ -54,7 +54,7 @@ class UserContextProviderClass extends React.Component {
                     console.log("...not found");
                     return Promise.reject("ERROR: User added was not found");
                 } else {
-                    this.setState({name: founduser.name, emal: founduser.email});
+                    this.setState({name: founduser.name, emal: founduser.email, themes: founduser.themes});
                     localStorage.setItem('userId', founduser._id);
                 }
             })

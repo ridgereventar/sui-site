@@ -7,7 +7,7 @@ import ThemeContext from '../contexts/ThemeContext';
 
 const InputText = (props) => {
     
-    const theme = useContext(ThemeContext);
+    const {theme} = useContext(ThemeContext);
 
     return (
         <React.Fragment>

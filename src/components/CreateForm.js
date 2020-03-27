@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
+import withContext from '../helpers/withContext';
+import {compose} from 'recompose';
 import '../styles/Form.css';
-
-import cx from 'classnames';
+import ThemeContext from '../contexts/ThemeContext';
 
 const axios = require('axios').default;
 
@@ -14,40 +15,8 @@ class CreateForm extends Component {
             creator: this.props.name,
             privacy: "",
             theme: {
-                colors: [
-                    {
-                        type: "Primary", 
-                        hex: "", 
-                        rgb: "",
-                        swatch: []
-                    }, 
-                    {
-                        type: "Secondary", 
-                        hex: "", 
-                        rgb: "",
-                        swatch: []
-                    }, 
-                    {
-                        type: "Tertiary", 
-                        hex: "", 
-                        rgb: "",
-                        swatch: []
-                    } 
-                ], 
-                fonts: [
-                    {
-                        type: "Primary", 
-                        name: "", 
-                        url: "",
-                        weights: []
-                    },
-                    {
-                        type: "Secondary", 
-                        name: "", 
-                        url: "",
-                        weights: []
-                    }
-                ]
+                colors:[],
+                fonts:[]
             }
         }
     }
@@ -62,6 +31,7 @@ class CreateForm extends Component {
         }
         axios.post('/api/themes', newTheme).then((response) => {            
             // After posting the newTheme to db, add its _id to the logged in user. 
+            this.props.setTheme(response.data);
             axios.put(`/api/user/${localStorage.getItem("userId")}`, {theme: response.data._id}).then((response) => {
                 this.props.history.push('/create');
             }).catch((error) => {
@@ -121,4 +91,12 @@ class CreateForm extends Component {
     }
 }
 
-export default withRouter(CreateForm);
+export default compose(
+    withRouter,
+    withContext(
+        {
+            context: ThemeContext,
+            mapValueToProps: (value) =>  ({theme: value.theme, setTheme: value.setTheme})
+        }
+    )
+)(CreateForm);
