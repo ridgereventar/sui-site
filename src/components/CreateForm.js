@@ -60,9 +60,13 @@ class CreateForm extends Component {
             privacy: this.state.privacy,
             theme: this.state.theme
         }
-        axios.post('/api/themes', newTheme).then((response) => {
-            console.log(response);
-            this.props.history.push('/create');
+        axios.post('/api/themes', newTheme).then((response) => {            
+            // After posting the newTheme to db, add its _id to the logged in user. 
+            axios.put(`/api/user/${localStorage.getItem("userId")}`, {theme: response.data._id}).then((response) => {
+                this.props.history.push('/create');
+            }).catch((error) => {
+                console.log(error);
+            })
         }).catch((error) => {
             console.log(error);
         })
@@ -106,7 +110,7 @@ class CreateForm extends Component {
                     value="private"
                     onChange={this.handleChange}
                     />
-                <label className="form-label" htmlFor="private">Public</label>
+                <label className="form-label" htmlFor="private">Private</label>
                 <br/>
 
                 

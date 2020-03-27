@@ -30,14 +30,13 @@ app.get('*/api/user/:id', (req, res) => {
 });
 
 // @route UPDATE api/user/:id (update a users theme list)
-// app.get('*/api/user/:id', (req, res) => {
-//   var conditions = {_id: req.params.id};
+app.put('*/api/user/:id', (req, res) => {
+  var conditions = {_id: req.params.id};
 
-//   User.update(conditions, req.body.themes).then(doc => {
-//     if(!doc) {return res.status(404).end(); }
-//     return res.status(200).json(doc);
-//   }).catch(err => next(err));
-// });
+  User.update(conditions, {
+    $push: {themes: req.body.theme}
+  }).then((user) => res.json(user));
+});
 
 // @route POST api/users (create a user)
 app.post('*/api/users', (req, res) => {
@@ -64,6 +63,12 @@ const Theme = require('./models/Theme');
 app.get('*/api/themes', (req, res) => {
   Theme.find().then(themes => res.json(themes));
 })
+
+// @route GET api/theme/:id (get a theme by id from db)
+app.get('*/api/theme/:id', (req, res) => {
+  Theme.findById(req.params.id)
+      .then((theme) => res.json(theme));
+});
 
 // @route POST api/themes (create a theme)
 app.post('*/api/themes', (req, res) => {

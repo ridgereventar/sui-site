@@ -76,12 +76,12 @@ class Home extends Component {
                         <h1 className="bold-title">My Styles</h1>
                         <span className="small-text">Recent</span>
                         <div className="style-swipe">
-                            <StyleCard/>
-                            <StyleCard/>
-                            <StyleCard/>
-                            <StyleCard/>
-                            <StyleCard/>
-                            <StyleCard/>
+                            {this.props.themes.map(theme => {
+                                return(
+                                    <StyleCard
+                                        themeId={theme}/>
+                                )
+                            })}
                         </div>
                     </div>
                     <div className="home-icon-container">
@@ -104,6 +104,6 @@ class Home extends Component {
 export default withContext(
     {
       context: UserContext,
-      mapValueToProps: (value) => ({name: value.name, email: value.email, logout: value.logout})
+      mapValueToProps: (value) => ({name: value.name, email: value.email, themes: value.themes, logout: value.logout})
     }
   )(Home);

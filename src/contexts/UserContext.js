@@ -11,15 +11,15 @@ class UserContextProviderClass extends React.Component {
         this.state = {
             isAuthorized: false,
             name: "",
-            email: ""
+            email: "",
+            themes: []
         }
     }
 
     componentDidMount() {
-        console.log("mounted!");
         if(localStorage.getItem("userId") !== null) {
             axios.get(`/api/user/${localStorage.getItem("userId")}`).then((user) => {
-                this.setState({name: user.data.name, email: user.data.email});
+                this.setState({name: user.data.name, email: user.data.email, themes: user.data.themes});
                 this.props.history.push('/home');                
             })
         }
@@ -27,7 +27,6 @@ class UserContextProviderClass extends React.Component {
 
     login = (email, password) => {
         return axios.get('/api/users').then((response) => {
-            console.log(response.data);
             let founduser = response.data.find(user => user.email === email && user.password === password);
             if(founduser == null) {
                 console.log("...not found");
@@ -70,6 +69,7 @@ class UserContextProviderClass extends React.Component {
             <UserContext.Provider value={{
                 name: this.state.name, 
                 email: this.state.email,
+                themes: this.state.themes,
                 login: this.login,
                 signup: this.signup
             }}>

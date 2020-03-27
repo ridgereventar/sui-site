@@ -71,7 +71,7 @@ class LoginForm extends Component {
         }
 
         // Assigns each field to the state 
-        this.setState({formErrors, [name]: value}, () => console.log(this.state));
+        this.setState({formErrors, [name]: value});
     }
 
     onEmailFocus = () => {

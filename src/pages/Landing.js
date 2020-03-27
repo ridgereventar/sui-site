@@ -25,7 +25,6 @@ class Landing extends Component {
 
     render() {
 
-        console.log(this.state.signupDisplayed);
         return (
             <React.Fragment>
               <div className="landing-container">
