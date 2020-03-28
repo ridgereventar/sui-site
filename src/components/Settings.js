@@ -66,6 +66,7 @@ class Settings extends Component {
                     {this.props.colors.map((color, index) => {
                         return (
                             <ColorInput 
+                                key={index}
                                 hex={color.hex}
                                 type={color.type}
                                 index={index}
@@ -82,6 +83,7 @@ class Settings extends Component {
                     {this.props.fonts.map((font, index) => {
                         return (
                             <FontInput
+                                key={index}
                                 font={font}
                                 index={index}
                                 fontOptions={Object.values(DEFAULT_FONTS)}

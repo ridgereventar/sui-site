@@ -35,7 +35,13 @@
     background-color: white;
     box-shadow: 15px 10px 30px 5px;
     transition: 0.3s;
+    overflow: auto;
 }
+
+.style-guide-preview::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
 
 .style-card-container:hover .style-guide-preview {
     transition: 0.3s;

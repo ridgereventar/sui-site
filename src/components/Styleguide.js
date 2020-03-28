@@ -28,16 +28,16 @@ class Styleguide extends Component {
           <div className="style-guide">
 
               <h1 className="setting-label"> Colors </h1>
-              {this.props.colors.map(color => {
+              {this.props.colors.map((color, index) => {
                 return (
-                  <ColorDisplay color={color}/>
+                  <ColorDisplay key={index} color={color}/>
                 )
               })}
 
               <h1 className="setting-label">Fonts</h1>                
-              {this.props.fonts.map(font => {
+              {this.props.fonts.map((font, index) => {
                 return (
-                    <FontDisplay font={font}/>
+                    <FontDisplay key={index} font={font}/>
                   )
               })}              
 

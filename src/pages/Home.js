@@ -90,6 +90,7 @@ class Home extends Component {
                             {this.state.themes.map(theme => {
                                 return(
                                     <StyleCard
+                                        key={theme}
                                         themeId={theme}/>
                                 )
                             })}

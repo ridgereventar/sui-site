@@ -45,6 +45,7 @@ const FontInput = (props) => {
                 <Select
                     styles={customStyles}
                     options={options}
+                    value={options.filter(option => option.label === props.font.name)}
                     onChange={props.updateFont(props.index)}
                     />
             </div>

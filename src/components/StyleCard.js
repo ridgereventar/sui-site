@@ -18,7 +18,42 @@ class StyleCard extends Component {
             themeName: "",
             creator: "",
             privacy: "",
-            theme: {}
+            theme: {
+                colors: [
+                    {
+                        type: "Primary", 
+                        hex: "", 
+                        rgb: "",
+                        swatch: []
+                    }, 
+                    {
+                        type: "Secondary", 
+                        hex: "", 
+                        rgb: "",
+                        swatch: []
+                    }, 
+                    {
+                        type: "Tertiary", 
+                        hex: "", 
+                        rgb: "",
+                        swatch: []
+                    } 
+                ],
+                fonts: [
+                    {
+                        type: "Primary", 
+                        name: "", 
+                        url: "",
+                        weights: []
+                    },
+                    {
+                        type: "Secondary", 
+                        name: "", 
+                        url: "",
+                        weights: []
+                    }
+                ]
+            }
         }
     }
 
@@ -45,12 +80,17 @@ class StyleCard extends Component {
                 <div className="style-card-container" style={{backgroundImage: `url(${uisample})`}} onClick={this.handleClick}>
                     
                     <div className="style-guide-preview">
+                        {this.state.theme.colors.map((color, index) => {
+                            return (
+                                <MiniColorDisplay key={index} color={color}/>
+                            )
+                        })}
 
-                        <MiniColorDisplay/>
-                        <MiniColorDisplay/>
-                        <MiniColorDisplay/>
-                        <MiniFontDisplay/>
-                        <MiniFontDisplay/>
+                        {this.state.theme.fonts.map((font, index) => {
+                            return (
+                                <MiniFontDisplay key={index} font={font}/>
+                            )
+                        })}
 
                     </div>
                 

@@ -16,9 +16,9 @@ const ColorDisplay = (props) => {
                 </div>
                 
                 <div className="gradient-container">
-                    {props.color.swatch.map(value => {
+                    {props.color.swatch.map((value, index) => {
                     return(
-                        <div className="gradient-square" style={{backgroundColor: `${value}`}}></div>
+                        <div key={index} className="gradient-square" style={{backgroundColor: `${value}`}}></div>
                     )
                     })}
                 </div>

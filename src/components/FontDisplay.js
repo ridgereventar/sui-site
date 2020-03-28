@@ -17,9 +17,10 @@ const FontDisplay = (props) => {
             </div>
             <div className="divider-vert"></div>
             <div className="font-display-weight-container">
-                {props.font.weights.map(weight => {
+                {props.font.weights.map((weight, index) => {
                     return (
-                        <span className="font-display-weight" 
+                        <span key={index}
+                              className="font-display-weight" 
                               style={{fontWeight: `${weight}`, fontFamily: `${props.font.name}`}}
                               >{weight}</span>
                     )
@@ -28,7 +29,8 @@ const FontDisplay = (props) => {
             <div className="font-display-sample-container">
                 {props.font.weights.map((weight, index) => {
                     return (
-                        <p className="font-display-sample"
+                        <p key={index}
+                           className="font-display-sample"
                            style={{fontWeight: `${weight}`, fontFamily: `${props.font.name}`}} 
                            >{sampleText[index]}</p>
                     )
