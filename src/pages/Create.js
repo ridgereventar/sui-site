@@ -15,7 +15,7 @@ const Create = () => {
         <div className="create-container">
             <div className="create-header">
                 <div className="create-header-icon"></div>
-                <h3 style={{color: 'white', display: 'inline'}}>{theme.themeName}</h3>
+                <span className="theme-name">{theme.themeName}</span>
                 <button onClick={theme.saveTheme}>Save</button>
             </div>
 
