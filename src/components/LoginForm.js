@@ -9,6 +9,7 @@ class LoginForm extends Component {
         super(props);
         this.state = {
             formInvalid: false,
+            userNotFound: false,
             emailFocused: false,
             passwordFocused: false,
             email: null,
@@ -23,11 +24,14 @@ class LoginForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         if(this.formValid(this.state)) {
-    
+
+            this.setState({formInvalid: false});
+            
             this.props.login(this.state.email, this.state.password).then(() => {
                 this.props.history.push('/home');                
             }).catch((error) => {
                 console.log(error);
+                this.setState({userNotFound: true});
             })
 
         } else {
@@ -90,14 +94,18 @@ class LoginForm extends Component {
         this.setState({passwordFocused: false});
     }
 
+    handleSignupClick = () => {
+        this.props.history.push('/landing/signup');
+    }
+
     render() {
 
         return (
             <div className={cx(
                 "login-form-container",
                 {
-                    ["fade-in"]: !this.props.signup,
-                    ["height-shrink"]: this.props.signup
+                    ["fade-in"]: !this.props.location.state.signupShown,
+                    ["height-shrink"]: this.props.location.state.signupShown
 
                 } 
             )}>
@@ -107,6 +115,12 @@ class LoginForm extends Component {
                     {this.state.formInvalid && (
                         <div className="login-error-msg-container">
                             <span className="login-error-msg">Please check email and password and try again.</span>
+                        </div>
+                    )}
+
+                    {!this.state.formInvalid && this.state.userNotFound && (
+                        <div className="login-error-msg-container">
+                            <span className="login-error-msg">User not found. Please re-enter and try again.</span>
                         </div>
                     )}
                     
@@ -141,7 +155,7 @@ class LoginForm extends Component {
                             onBlur={this.onPwBlur}/>
                         
                         <input className="form-btn" id="form-login-btn" type="submit" value="Login"/>
-                        <input className="form-btn" id="form-signup-btn" type="button" value="Sign up"/>
+                        <input className="form-btn" id="form-signup-btn" type="button" value="Sign up" onClick={this.handleSignupClick}/>
                     </form>
                 </div>
             </div>

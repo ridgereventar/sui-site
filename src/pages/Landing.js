@@ -19,8 +19,13 @@ class Landing extends Component {
         }
     }
 
+
     handleSignupClick = () => {
       this.setState({signupDisplayed: true});
+    }
+
+    handleLoginClick = () => {
+      this.props.history.push('/landing/login', {signupShown: this.state.signupDisplayed});
     }
 
     render() {
@@ -38,9 +43,9 @@ class Landing extends Component {
                         </NavLink>
                       </li>
                       <li>
-                        <NavLink className="nav-link" to="/landing/login">
+                        <span className="nav-link" onClick={this.handleLoginClick}>
                           Log in
-                        </NavLink>
+                        </span>
                       </li>
                       <li>
                         <NavLink className="nav-link" to="/landing/signup">

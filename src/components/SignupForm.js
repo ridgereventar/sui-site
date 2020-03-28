@@ -113,6 +113,10 @@ class SignupForm extends Component {
         }
     }
 
+    handleLoginClick = () => {
+        this.props.history.push('/landing/login', {signupShown: true})
+    }
+
     render() {
         return (
             <div className="signup-form-container height-transition">
@@ -182,7 +186,7 @@ class SignupForm extends Component {
                             onBlur={this.onBlur}/>
 
                         <input className="form-btn" id="form-login-btn" type="submit" value="Sign up"/>
-                        <p className="login-msg"> Already have an account? <a id="login-link">Log in</a> </p>
+                        <p className="login-msg"> Already have an account? <span id="login-link" onClick={this.handleLoginClick}>Log in</span> </p>
                     </form>
                 </div>
             </div>
