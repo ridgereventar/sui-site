@@ -4,8 +4,46 @@ import withContext from '../helpers/withContext';
 import {compose} from 'recompose';
 import '../styles/Form.css';
 import ThemeContext from '../contexts/ThemeContext';
+import ColorContext from '../contexts/ColorContext';
+import FontContext from '../contexts/FontContext';
 
 const axios = require('axios').default;
+
+const emptyColors = [
+    {
+        type: "Primary", 
+        hex: "", 
+        rgb: "",
+        swatch: []
+    }, 
+    {
+        type: "Secondary", 
+        hex: "", 
+        rgb: "",
+        swatch: []
+    }, 
+    {
+        type: "Tertiary", 
+        hex: "", 
+        rgb: "",
+        swatch: []
+    } 
+]
+
+const emptyFonts = [
+    {
+        type: "Primary", 
+        name: "", 
+        url: "",
+        weights: []
+    },
+    {
+        type: "Secondary", 
+        name: "", 
+        url: "",
+        weights: []
+    }
+]
 
 class CreateForm extends Component {
     constructor(props) {
@@ -29,14 +67,13 @@ class CreateForm extends Component {
             privacy: this.state.privacy,
             theme: this.state.theme
         }
-        axios.post('/api/themes', newTheme).then((response) => {            
+        axios.post('/api/themes', newTheme, {
+            header: {
+                ['user-id']: this.props.user.id
+            }
+        }).then((response) => {            
             // After posting the newTheme to db, add its _id to the logged in user. 
-            this.props.setTheme(response.data);
-            axios.put(`/api/user/${localStorage.getItem("userId")}`, {theme: response.data._id}).then((response) => {
-                this.props.history.push('/create');
-            }).catch((error) => {
-                console.log(error);
-            })
+            this.props.history.push('/create?id=${response.id}')
         }).catch((error) => {
             console.log(error);
         })
@@ -94,6 +131,14 @@ class CreateForm extends Component {
 export default compose(
     withRouter,
     withContext(
+        {
+            context: ColorContext,
+            mapValueToProps: (value) => ({setColors: value.setColors})
+        },
+        {
+            context: FontContext,
+            mapValueToProps: (value) => ({setFonts: value.setFonts})
+        },
         {
             context: ThemeContext,
             mapValueToProps: (value) =>  ({theme: value.theme, setTheme: value.setTheme})

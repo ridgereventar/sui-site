@@ -10,6 +10,7 @@ class UserContextProviderClass extends React.Component {
         super(props); 
         this.state = {
             isAuthorized: false,
+            id: "",
             name: "",
             email: "",
             themes: []
@@ -20,7 +21,7 @@ class UserContextProviderClass extends React.Component {
         if(localStorage.getItem("userId") !== null) {
             axios.get(`/api/user/${localStorage.getItem("userId")}`).then((user) => {
                 this.setState({name: user.data.name, email: user.data.email, themes: user.data.themes});
-                this.props.history.push('/home');                
+                // this.props.history.push('/home');                
             })
         }
     }

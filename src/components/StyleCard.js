@@ -1,20 +1,24 @@
 import React, {Component} from 'react';
+
 import '../styles/StyleCard.css';
 
 import MiniColorDisplay from './MiniColorDisplay';
 import MiniFontDisplay from './MiniFontDisplay';
 
 import uisample from '../images/uisample.png';
+import { withRouter } from 'react-router-dom';
+
 const axios = require('axios').default;
 
 class StyleCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            _id: this.props.themeId,
             themeName: "",
             creator: "",
-            colors: [], 
-            fonts: []
+            privacy: "",
+            theme: {}
         }
     }
 
@@ -23,18 +27,22 @@ class StyleCard extends Component {
             this.setState({
                 themeName: theme.data.themeName,
                 creator: theme.data.creator,
-                colors: theme.data.theme.colors,
-                fonts: theme.data.theme.fonts
+                privacy: theme.data.privacy,
+                theme: theme.data.theme
             });
         }).catch(error => {
             console.log(error);
         })
     }
+
+    handleClick = () => {
+        this.props.history.push(`/create?id=${this.props.themeId}`);
+    }
     
     render() {
         return (
             <div className="style-card-wrapper">
-                <div className="style-card-container" style={{backgroundImage: `url(${uisample})`}}>
+                <div className="style-card-container" style={{backgroundImage: `url(${uisample})`}} onClick={this.handleClick}>
                     
                     <div className="style-guide-preview">
 
@@ -62,4 +70,4 @@ class StyleCard extends Component {
     }
 }
 
-export default StyleCard;
+export default withRouter(StyleCard);

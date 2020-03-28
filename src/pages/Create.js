@@ -4,45 +4,39 @@ import '../styles/create/Create.css';
 import Settings from '../components/Settings';
 import Styleguide from '../components/Styleguide';
 import UiComp from '../components/UiComp';
+import ThemeContext, {ThemeContextProvider} from '../contexts/ThemeContext';
+import {FontContextProvider} from '../contexts/FontContext';
+import {ColorContextProvider} from '../contexts/ColorContext';
 
+const Create = () => {
+    const theme = useContext(ThemeContext);
+    return (
+        <>
+            <div id="header">
+                <h3 style={{color: 'white', display: 'inline'}}>{theme.themeName}</h3>
+                <button onClick={theme.saveTheme}>Save</button>
+            </div>
 
-import withContext from '../helpers/withContext';
-import ThemeContext from '../contexts/ThemeContext';
-
-class Create extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        console.log(this.props.theme);
-        return (
-            <React.Fragment>
-
-                <div id="header">
-                    <h3 style={{color: 'white', display: 'inline'}}>{this.props.themeName}</h3>
-                    <button onClick={this.props.saveTheme}>Save</button>
-                </div>
-
-                <div className="playground-window">
-                    <Settings/>
-                    <Styleguide/>
-                    <UiComp/>
-                </div>
-
-            </React.Fragment>
-        );
-    }
+            <div className="playground-window">
+                <Settings/>
+                <Styleguide/>
+                <UiComp/>
+            </div>
+        </>
+    );
 }
 
-export default withContext(
-    {
-        context: ThemeContext,
-        mapValueToProps: (value) =>  ({themeName: value.themeName, 
-                                        theme: value.theme, 
-                                        setTheme: value.setTheme,
-                                        saveTheme: value.saveTheme})
-    }
-)(Create); 
+const CeateContainer = (props) => {
+    return (
+        <ThemeContextProvider>
+            <FontContextProvider>
+                <ColorContextProvider>
+                    <Create/>
+                </ColorContextProvider>
+            </FontContextProvider>
+        </ThemeContextProvider>
+    )
+}
+
+export default CeateContainer;
   

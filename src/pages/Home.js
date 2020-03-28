@@ -32,6 +32,10 @@ class Home extends Component {
         this.props.history.push('/landing'); 
     }
 
+    handleClick = () => {
+        console.log("click!");
+    }
+
     render() {
         return (
             <div className="home-wrapper">
@@ -79,7 +83,8 @@ class Home extends Component {
                             {this.props.themes.map(theme => {
                                 return(
                                     <StyleCard
-                                        themeId={theme}/>
+                                        themeId={theme}
+                                        onClick={this.handleClick}/>
                                 )
                             })}
                         </div>

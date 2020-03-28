@@ -101,6 +101,13 @@ app.post('*/api/themes', (req, res) => {
     theme: req.body.theme
   })
   newTheme.save().then(theme => res.json(theme));
+
+  //TODO
+  var conditions = {_id: req.header['user-id']};
+
+  User.update(conditions, {
+    $push: {themes: req.body.theme}
+  }).then((user) => res.json(user));
 })
 
 

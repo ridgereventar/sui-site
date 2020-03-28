@@ -23,21 +23,14 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>      
-        <FontContextProvider>
-          <ColorContextProvider>
-            <ThemeContextProvider>
-            {/* <ThemeContextProvider theme={sampleConfig}> */}
-              <UserContextProvider>
-                  <Switch>
-                      <Route path="/" exact component={Landing}/>
-                      <Route path="/landing" component={Landing}/>
-                      <Route path="/create" exact component={Create}/>
-                      <Route path="/home" exact component={Home}/>
-                  </Switch>
-              </UserContextProvider>
-            </ThemeContextProvider>
-          </ColorContextProvider>
-        </FontContextProvider>
+        <UserContextProvider>
+            <Switch>
+                <Route path="/" exact component={Landing}/>
+                <Route path="/landing" component={Landing}/>
+                <Route path="/create" exact component={Create}/>
+                <Route path="/home" exact component={Home}/>
+            </Switch>
+        </UserContextProvider>
       </BrowserRouter>
 
     );

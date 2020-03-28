@@ -1,14 +1,53 @@
 import React from 'react';
-import FontContext from './FontContext';
-import ColorContext from './ColorContext';
-import withContext from '../helpers/withContext';
+
 const axios = require('axios').default;
-
 const ThemeContext = React.createContext();
-
 export const ThemeContextConsumer = ThemeContext.Consumer;
 
-class ThemeContextClass extends React.Component {
+const initialState = {
+    _id: "",
+    themeName: "",
+    creator: "",
+    privacy: "",
+    theme: {
+        colors: [
+            {
+                type: "Primary", 
+                hex: "", 
+                rgb: "",
+                swatch: []
+            }, 
+            {
+                type: "Secondary", 
+                hex: "", 
+                rgb: "",
+                swatch: []
+            }, 
+            {
+                type: "Tertiary", 
+                hex: "", 
+                rgb: "",
+                swatch: []
+            } 
+        ],
+        fonts: [
+            {
+                type: "Primary", 
+                name: "", 
+                url: "",
+                weights: []
+            },
+            {
+                type: "Secondary", 
+                name: "", 
+                url: "",
+                weights: []
+            }
+        ]
+    }
+}
+
+export class ThemeContextProvider extends React.Component {
     constructor(props) {
         super(props);
 
@@ -23,30 +62,44 @@ class ThemeContextClass extends React.Component {
 
         // this.state = theme;
 
-        this.state = {
-            _id: "",
-            themeName: "",
-            creator: "",
-            privacy: "",
-            theme: {}
-        }
+        this.state = initialState
         
     }
 
-    setTheme = (themeData) => {
-        console.log(themeData);
+    componentDidMount = () => {
+        //check id in url
+
+        var url = new URL(window.location);
+
+        let searchParams = new URLSearchParams(url.search);
+        console.log(searchParams)
+        if(searchParams.has('id')) {
+
+            axios.get(`api/theme/${searchParams.get('id')}`).then((res) => {
+                this.setState(res.data);
+            }).catch(error => {
+                console.log(error);
+            })
+        } else {
+            //error, redirect?
+        }
+
+    }
+
+    init = () => {
+        this.setState(initialState);
+    };
+
+    updateTheme = (newTheme) => {
         this.setState({
-            _id: themeData._id,
-            themeName: themeData.themeName,
-            creator: themeData.creator,
-            privacy: themeData.privacy,
+            ...this.state,
             theme: {
-                colors: this.props.colors,
-                fonts: this.props.fonts
-            }       
+                ...this.state.theme,
+                ...newTheme
+            }
         })
     }
-    
+ 
     saveTheme = () => {
         axios.put(`/api/theme/${this.state._id}`, {
             themeName: this.state.themeName,
@@ -63,29 +116,15 @@ class ThemeContextClass extends React.Component {
     render() {
         return (
             <ThemeContext.Provider value={{
-                _id: this.state._id,
-                themeName: this.state.themeName,
-                creator: this.state.creator,
-                privacy: this.state.privacy,
-                theme: this.state.theme, 
+                ...this.state,
+                updateTheme: this.updateTheme,
                 setTheme: this.setTheme,
-                saveTheme: this.saveTheme
+                saveTheme: this.saveTheme,
             }}>
                 {this.props.children}
             </ThemeContext.Provider>
         )
     }
 }
-
-export const ThemeContextProvider = withContext(
-    {
-        context: ColorContext,
-        mapValueToProps: (value) =>  ({colors: value.colors})
-    },
-    {
-        context: FontContext,
-        mapValueToProps: (value) =>  ({fonts: value.fonts})
-    }
-)(ThemeContextClass); 
 
 export default ThemeContext;
