@@ -68,32 +68,31 @@ export const DEFAULT_FONTS = {
  }
 
  
- 
 
-//  const fontList = Object.values(DEFAULT_FONTS); //['robot', 'avenir']
+export const customStyles = {
+    option: (provided, state) => ({
+        ...provided,
+        color: 'black',
+        "font-family": state.label,
+        padding: 5
+    }),
+    control: base => ({
+        ...base,
+        minHeight: 20,
+        marginBottom: '8px'
+    }),
+    dropdownIndicator: base => ({
+        ...base,
+        padding: 2
+    }),
+    valueContainer: base => ({
+        ...base,
+        padding: '0px 1px'
+    }),
+    input: base => ({
+        ...base,
+        margin: 0,
+        padding: 0
+    }),
+}
 
-
-//  <select>
-//      {fontList.map(font => <option value={font.id}>{font.title}</option>)}
-//  </select>
-
-//  <input></input>
-
-
-// fontSelected() {
-//     setFont(font.url);
-// }
-
-
-// fontInputHnadler(e) {
-//     setFont(e.target.value)
-// }
-
-
-// setFont(url) {
-
-//     <div style={{}}>
-        
-//     </style>
-//     //set the font style globally
-// }

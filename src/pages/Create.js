@@ -12,8 +12,9 @@ import {ColorContextProvider} from '../contexts/ColorContext';
 const Create = () => {
     const theme = useContext(ThemeContext);
     return (
-        <>
-            <div id="header">
+        <div className="create-container">
+            <div className="create-header">
+                <div className="create-header-icon"></div>
                 <h3 style={{color: 'white', display: 'inline'}}>{theme.themeName}</h3>
                 <button onClick={theme.saveTheme}>Save</button>
             </div>
@@ -23,7 +24,7 @@ const Create = () => {
                 <Styleguide/>
                 <UiComp/>
             </div>
-        </>
+        </div>
     );
 }
 

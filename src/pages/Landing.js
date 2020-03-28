@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
+import { Route, NavLink, Switch } from "react-router-dom";
 import '../styles/Landing.css';
 
 import LoginForm from '../components/LoginForm';

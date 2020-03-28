@@ -1,177 +1,42 @@
-import React, {Component} from 'react';
-import cx from 'classnames';
+import React, {Component, useState} from 'react';
+import { Route, NavLink, Switch } from "react-router-dom";
 
 import '../styles/create/UiComp.css'; 
 
 import SectionLabel from './SectionLabel';
-import Button from '../ui/Button';
-import InputText from '../ui/InputText';
 
 import uicompIcon from '../images/uicompicon.png';
+import InputWindow from './InputWindow';
+import TypoWindow from './TypoWindow';
 
-class UiComp extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            filter: 0,
-            primarySelected: true, 
-            secondarySelected: false, 
-            tertiarySelected: false
-        }
+const UiComp = (props) => {
+
+    const [showInputTab, setShowInputTab] = useState(true);
+
+
+    const toggleTab = (choice) => {
+        setShowInputTab(choice);
     }
 
-    handleFilter = (event) => {
-        let filterSelected = event.target.innerHTML;
-        
-        if(filterSelected == "Primary") {
-            this.setState({
-                filter: 0,
-                primarySelected: true, 
-                secondarySelected: false, 
-                tertiarySelected: false
-            })
-        } else if (filterSelected == "Secondary") {
-            this.setState({
-                filter: 1,
-                primarySelected: false, 
-                secondarySelected: true, 
-                tertiarySelected: false
-            })
-        } else if (filterSelected == "Tertiary") {
-            this.setState({
-                filter: 2,
-                primarySelected: false, 
-                secondarySelected: false, 
-                tertiarySelected: true
-            })
-        }
-    }
+    return(
+        <div className="ui-comp-container">
+            <SectionLabel url={uicompIcon} label="Ui Components"/>
 
-    render() {
-        return(
-            <div className="ui-comp-container">
-                <SectionLabel url={uicompIcon} label="Ui Components"/>
+            <div className="ui-panel">
 
-                <div className="ui-panel">
-
-                    <div className="ui-tab-container">
-                        <div id="ui-tab-input-nav" className="ui-tab">
-                            <span className="tab-label">Input / Navigation</span>
-                        </div>
-                        <div id="ui-tab-typo" className="ui-tab">
-                            <span className="tab-label"> Typography </span>
-                        </div>
+                <div className="ui-tab-container">
+                    <div id="ui-tab-input-nav" className="ui-tab" onClick={() => toggleTab(true)}>
+                        <span className="tab-label">Input / Navigation</span>
                     </div>
-
-                    <div className="filter-wrapper">
-                        <div className="filter-container">
-                            <div 
-                                id="primary-filter" 
-                                className={cx(
-                                    "filter-btn",
-                                     {
-                                         ["selected-filter"]: this.state.primarySelected
-                                     }
-                                )}
-                                onClick={this.handleFilter}>Primary</div>
-                            <div 
-                                id="secondary-filter" 
-                                className={cx(
-                                    "filter-btn",
-                                    {
-                                        ["selected-filter"]: this.state.secondarySelected
-                                    } 
-                                )}
-                                onClick={this.handleFilter}>Secondary</div>
-                            <div 
-                                id="tertiary-filter" 
-                                className={cx(
-                                    "filter-btn",
-                                    {
-                                        ["selected-filter"]: this.state.tertiarySelected
-                                    } 
-                                )}
-                                onClick={this.handleFilter}>Tertiary</div>
-                        </div>
+                    <div id="ui-tab-typo" className="ui-tab" onClick={() => toggleTab(false)}>
+                        <span className="tab-label"> Typography </span>
                     </div>
-
-                    <div className="component-containter">
-
-                        <span className="component-label">Buttons</span>
-                        <div className="component-section">
-                            <Button
-                                filter={this.state.filter}
-                                border={true}
-                                fill={false}
-                                roundness="none"/>
-                            <Button
-                                filter={this.state.filter}
-                                border={true}
-                                fill={false}
-                                roundness="small"/>
-                            <Button
-                                filter={this.state.filter}
-                                border={true}
-                                fill={false}
-                                roundness="large"/>
-                        </div>
-                        <div className="component-section">
-                            <Button
-                                filter={this.state.filter}
-                                border={false}
-                                fill={true}
-                                roundness="none"/>
-                            <Button
-                                filter={this.state.filter}
-                                border={false}
-                                fill={true}
-                                roundness="small"/>
-                            <Button
-                                filter={this.state.filter}
-                                border={false}
-                                fill={true}
-                                roundness="large"/>
-                        </div>
-                        
-                        <span className="component-label">Text Fields</span>
-                        <div className="component-section-wrapper">
-                            <div className="component-section-col">
-                                <InputText
-                                    filter={this.state.filter}
-                                    border={true}
-                                    roundness="none"
-                                    line={false}/>
-                                <InputText
-                                    filter={this.state.filter}
-                                    border={true}
-                                    roundness="small"
-                                    line={false}/>
-                                <InputText
-                                    filter={this.state.filter}
-                                    border={true}
-                                    roundness="large"
-                                    line={false}/>        
-                            </div>
-                            <div className="component-section-col">
-                                <InputText
-                                    filter={this.state.filter}
-                                    border={false}
-                                    roundness="none"
-                                    line={true}/>
-                                <InputText
-                                    filter={this.state.filter}
-                                    border={false}
-                                    roundness="none"
-                                    line={true}/>  
-                            </div>
-                        </div>
-
-                    </div>
-                    
                 </div>
+                {showInputTab ? <InputWindow/> : <TypoWindow/>}
             </div>
-        );
-    }
+        </div>
+    );
+    
 }
 
 export default UiComp;

@@ -13,7 +13,7 @@ import FontContext from '../contexts/FontContext';
 import withContext from '../helpers/withContext';
 
 import settingIcon from '../images/settingsicon.png';
-import { DEFAULT_FONTS } from '../helpers/constants';
+import { DEFAULT_FONTS, customStyles } from '../helpers/constants';
 
 class Settings extends Component {
 
@@ -49,11 +49,6 @@ class Settings extends Component {
     }
 å
     render() {
-
-        const typographyOptions = [];
-        {this.props.fonts.map(font => {
-            typographyOptions.push({value: font.name, label: font.name});
-        })}
 
         return (
             <div className="settings-container">
@@ -95,64 +90,6 @@ class Settings extends Component {
                     </div>
                 </div>
             
-                <div className="settings-panel typography-panel">
-                    <h1 className="setting-label">Typography</h1>
-                    
-                    <div className="font-input-container">
-                        <div className="font-input-icon-container">
-                            <h1>H1</h1>
-                        </div>
-                        <div className="font-select-container">
-                            <Select options={typographyOptions}/> 
-                        </div>
-                    </div>
-                    
-                    <div className="font-input-container">
-                        <div className="font-input-icon-container">
-                            <h2>H2</h2>
-                        </div>
-                        <div className="font-select-container">
-                            <Select options={typographyOptions}/> 
-                        </div>
-                    </div>
-
-                    <div className="font-input-container">
-                        <div className="font-input-icon-container">
-                            <h3>H3</h3>
-                        </div>
-                        <div className="font-select-container">
-                            <Select options={typographyOptions}/> 
-                        </div>
-                    </div>
-
-                    <div className="font-input-container">
-                        <div className="font-input-icon-container">
-                            <h4>H4</h4>
-                        </div>
-                        <div className="font-select-container">
-                            <Select options={typographyOptions}/> 
-                        </div>
-                    </div>
-
-                    <div className="font-input-container">
-                        <div className="font-input-icon-container">
-                            <h5>H5</h5>
-                        </div>
-                        <div className="font-select-container">
-                            <Select options={typographyOptions}/> 
-                        </div>
-                    </div>
-
-                    <div className="font-input-container">
-                        <div className="font-input-icon-container">
-                            <p>Body</p>
-                        </div>
-                        <div className="font-select-container">
-                            <Select options={typographyOptions}/> 
-                        </div>
-                    </div>
-
-                </div>
             </div>
         );
     }

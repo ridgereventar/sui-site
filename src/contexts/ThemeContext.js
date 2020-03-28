@@ -50,25 +50,12 @@ const initialState = {
 export class ThemeContextProvider extends React.Component {
     constructor(props) {
         super(props);
-
         // let theme = props.theme;
-
-        // if(!theme) {
-        //     theme = {
-        //         colors: this.props.colors,
-        //         fonts: this.props.fonts
-        //     }
-        // }
-
-        // this.state = theme;
-
         this.state = initialState
         
     }
 
     componentDidMount = () => {
-        //check id in url
-
         var url = new URL(window.location);
 
         let searchParams = new URLSearchParams(url.search);
@@ -83,7 +70,10 @@ export class ThemeContextProvider extends React.Component {
         } else {
             //error, redirect?
         }
+    }
 
+    componentDidUpdate(prevProps, prevState) {
+        this.saveTheme();
     }
 
     init = () => {
