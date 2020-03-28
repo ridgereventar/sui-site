@@ -7,7 +7,9 @@ import ThemeContext from '../contexts/ThemeContext';
 
 const Button = (props) => {
     
-    const {theme} = useContext(ThemeContext)
+    const {theme} = useContext(ThemeContext);
+    const {colors} = theme;
+
     // console.log(JSON.stringify(theme));
 
     return (
@@ -19,8 +21,8 @@ const Button = (props) => {
                 ["btn-border"]: props.border                
             })} 
             style={{
-                border: props.border ? `solid ${theme.colors[props.filter].hex} 1px` : 'none',
-                backgroundColor: props.fill ? theme.colors[props.filter].hex : 'transparent'
+                border: props.border ? `solid ${colors[props.filter].hex} 1px` : 'none',
+                backgroundColor: props.fill ? colors[props.filter].hex : 'transparent'
             }}>
             Basic
             {props.children}

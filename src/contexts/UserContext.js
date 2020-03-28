@@ -10,7 +10,7 @@ class UserContextProviderClass extends React.Component {
         super(props); 
         this.state = {
             isAuthorized: false,
-            id: "",
+            _id: "",
             name: "",
             email: "",
             themes: []
@@ -20,7 +20,12 @@ class UserContextProviderClass extends React.Component {
     componentDidMount() {
         if(localStorage.getItem("userId") !== null) {
             axios.get(`/api/user/${localStorage.getItem("userId")}`).then((user) => {
-                this.setState({name: user.data.name, email: user.data.email, themes: user.data.themes});
+                this.setState({
+                    _id: user.data._id, 
+                    name: user.data.name, 
+                    email: user.data.email, 
+                    themes: user.data.themes
+                });
                 // this.props.history.push('/home');                
             })
         }
@@ -33,7 +38,12 @@ class UserContextProviderClass extends React.Component {
                 console.log("...not found");
                 return Promise.reject("ERROR: User not found");
             } else {
-                this.setState({name: founduser.name, emal: founduser.email, themes: founduser.themes});
+                this.setState({
+                    _id: founduser._id,
+                    name: founduser.name, 
+                    emal: founduser.email, 
+                    themes: founduser.themes
+                });
                 localStorage.setItem('userId', founduser._id);
                 return Promise.resolve("SUCCESS: User found, logged in.");
             }
@@ -55,7 +65,12 @@ class UserContextProviderClass extends React.Component {
                     console.log("...not found");
                     return Promise.reject("ERROR: User added was not found");
                 } else {
-                    this.setState({name: founduser.name, emal: founduser.email, themes: founduser.themes});
+                    this.setState({
+                        _id: founduser._id,
+                        name: founduser.name, 
+                        emal: founduser.email, 
+                        themes: founduser.themes
+                    });
                     localStorage.setItem('userId', founduser._id);
                 }
             })
@@ -68,6 +83,7 @@ class UserContextProviderClass extends React.Component {
     render() {
         return (
             <UserContext.Provider value={{
+                _id: this.state._id,
                 name: this.state.name, 
                 email: this.state.email,
                 themes: this.state.themes,

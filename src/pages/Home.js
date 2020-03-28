@@ -8,19 +8,29 @@ import UserContext from '../contexts/UserContext';
 import StyleCard from '../components/StyleCard';
 import CreateForm from '../components/CreateForm';
 
+const axios = require('axios').default;
+
 Modal.setAppElement('#root');
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            modalIsOpen: false
+            modalIsOpen: false,
+            themes: []
         }
+    }
+
+    componentDidMount() {
+        axios.get(`/api/user/${localStorage.getItem("userId")}`).then((user) => {
+            this.setState({
+                themes: user.data.themes
+            })
+        })
     }
     
     closeModal = () => {
         this.setState({modalIsOpen: false});
-
     }
 
     handleCreate = () => {
@@ -30,10 +40,6 @@ class Home extends Component {
     logout = () => {
         localStorage.removeItem('userId');
         this.props.history.push('/landing'); 
-    }
-
-    handleClick = () => {
-        console.log("click!");
     }
 
     render() {
@@ -63,6 +69,7 @@ class Home extends Component {
                     >
                     <h2 className="modal-title">Create New</h2>
                     <CreateForm
+                        _id={this.props._id}
                         name={this.props.name}/>
                     
                 </Modal>
@@ -80,11 +87,10 @@ class Home extends Component {
                         <h1 className="bold-title">My Styles</h1>
                         <span className="small-text">Recent</span>
                         <div className="style-swipe">
-                            {this.props.themes.map(theme => {
+                            {this.state.themes.map(theme => {
                                 return(
                                     <StyleCard
-                                        themeId={theme}
-                                        onClick={this.handleClick}/>
+                                        themeId={theme}/>
                                 )
                             })}
                         </div>
@@ -109,6 +115,6 @@ class Home extends Component {
 export default withContext(
     {
       context: UserContext,
-      mapValueToProps: (value) => ({name: value.name, email: value.email, themes: value.themes, logout: value.logout})
+      mapValueToProps: (value) => ({_id: value._id, name: value.name, email: value.email, themes: value.themes, logout: value.logout})
     }
   )(Home);

@@ -6,15 +6,10 @@ import Landing from './pages/Landing';
 import Create from './pages/Create';
 import Home from './pages/Home';
 
-import { ColorContextProvider } from './contexts/ColorContext';
-import { FontContextProvider } from './contexts/FontContext';
-import { ThemeContextProvider } from './contexts/ThemeContext';
-
 import sampleConfig from './helpers/sui.json';
 import { UserContextProvider } from './contexts/UserContext';
 
 class App extends Component {
-
 
   constructor(props) {
     super(props);

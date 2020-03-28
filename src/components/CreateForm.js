@@ -1,49 +1,9 @@
 import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
-import withContext from '../helpers/withContext';
-import {compose} from 'recompose';
 import '../styles/Form.css';
-import ThemeContext from '../contexts/ThemeContext';
-import ColorContext from '../contexts/ColorContext';
-import FontContext from '../contexts/FontContext';
+
+import {withRouter} from 'react-router-dom';
 
 const axios = require('axios').default;
-
-const emptyColors = [
-    {
-        type: "Primary", 
-        hex: "", 
-        rgb: "",
-        swatch: []
-    }, 
-    {
-        type: "Secondary", 
-        hex: "", 
-        rgb: "",
-        swatch: []
-    }, 
-    {
-        type: "Tertiary", 
-        hex: "", 
-        rgb: "",
-        swatch: []
-    } 
-]
-
-const emptyFonts = [
-    {
-        type: "Primary", 
-        name: "", 
-        url: "",
-        weights: []
-    },
-    {
-        type: "Secondary", 
-        name: "", 
-        url: "",
-        weights: []
-    }
-]
 
 class CreateForm extends Component {
     constructor(props) {
@@ -53,8 +13,40 @@ class CreateForm extends Component {
             creator: this.props.name,
             privacy: "",
             theme: {
-                colors:[],
-                fonts:[]
+                colors: [
+                    {
+                        type: "Primary", 
+                        hex: "", 
+                        rgb: "",
+                        swatch: []
+                    }, 
+                    {
+                        type: "Secondary", 
+                        hex: "", 
+                        rgb: "",
+                        swatch: []
+                    }, 
+                    {
+                        type: "Tertiary", 
+                        hex: "", 
+                        rgb: "",
+                        swatch: []
+                    } 
+                ],
+                fonts: [
+                    {
+                        type: "Primary", 
+                        name: "", 
+                        url: "",
+                        weights: []
+                    },
+                    {
+                        type: "Secondary", 
+                        name: "", 
+                        url: "",
+                        weights: []
+                    }
+                ]
             }
         }
     }
@@ -68,12 +60,12 @@ class CreateForm extends Component {
             theme: this.state.theme
         }
         axios.post('/api/themes', newTheme, {
-            header: {
-                ['user-id']: this.props.user.id
+            headers: {
+                'user-id': this.props._id
             }
         }).then((response) => {            
             // After posting the newTheme to db, add its _id to the logged in user. 
-            this.props.history.push('/create?id=${response.id}')
+            this.props.history.push(`/create?id=${response.data._id}`);
         }).catch((error) => {
             console.log(error);
         })
@@ -128,20 +120,4 @@ class CreateForm extends Component {
     }
 }
 
-export default compose(
-    withRouter,
-    withContext(
-        {
-            context: ColorContext,
-            mapValueToProps: (value) => ({setColors: value.setColors})
-        },
-        {
-            context: FontContext,
-            mapValueToProps: (value) => ({setFonts: value.setFonts})
-        },
-        {
-            context: ThemeContext,
-            mapValueToProps: (value) =>  ({theme: value.theme, setTheme: value.setTheme})
-        }
-    )
-)(CreateForm);
+export default withRouter(CreateForm);

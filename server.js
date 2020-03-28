@@ -14,6 +14,9 @@ mongoose
   .then(() => console.log('SuiDB Connected ...'))
   .catch(err => console.log(err));
 
+
+
+
 // Routes
 
 const User = require('./models/User');
@@ -27,15 +30,6 @@ app.get('*/api/users', (req, res) => {
 app.get('*/api/user/:id', (req, res) => {
   User.findById(req.params.id)
       .then((user) => res.json(user));
-});
-
-// @route UPDATE api/user/:id (update a users theme list)
-app.put('*/api/user/:id', (req, res) => {
-  var conditions = {_id: req.params.id};
-
-  User.update(conditions, {
-    $push: {themes: req.body.theme}
-  }).then((user) => res.json(user));
 });
 
 // @route POST api/users (create a user)
@@ -56,6 +50,10 @@ app.delete('*/api/users/:id', (req, res) => {
       .then(() => res.json({success: true})))
       .catch(err => res.status(404).json({success: false}));
 })
+
+
+
+
 
 const Theme = require('./models/Theme');
 
@@ -91,7 +89,6 @@ app.put('*/api/theme/:id', (req, res) => {
   })
 });
 
-
 // @route POST api/themes (create a theme)
 app.post('*/api/themes', (req, res) => {
   const newTheme = new Theme({
@@ -100,14 +97,16 @@ app.post('*/api/themes', (req, res) => {
     privacy: req.body.privacy,
     theme: req.body.theme
   })
-  newTheme.save().then(theme => res.json(theme));
+  newTheme.save().then((theme) => {
+    var conditions = {_id: req.header('user-id')};
+    User.update(conditions, {
+      $push: {themes: theme._id}
+    }).then((user) => res.json(user)).catch((err) => console.log(err));
 
-  //TODO
-  var conditions = {_id: req.header['user-id']};
+    return res.json(theme);    
+  });
 
-  User.update(conditions, {
-    $push: {themes: req.body.theme}
-  }).then((user) => res.json(user));
+
 })
 
 
