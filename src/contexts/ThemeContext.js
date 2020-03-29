@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Blob from 'blob';
 const axios = require('axios').default;
 const ThemeContext = React.createContext();
 export const ThemeContextConsumer = ThemeContext.Consumer;
@@ -103,6 +103,22 @@ export class ThemeContextProvider extends React.Component {
         })
     }
 
+    jsonDownload = async() => {
+
+        console.log("downloading json..");
+
+        const fileName = "file";
+        const json = JSON.stringify(this.state.theme);
+        const blob = new Blob([json],{type:'application/json'});
+        const href = await URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = fileName + ".json";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
     render() {
         return (
             <ThemeContext.Provider value={{
@@ -110,6 +126,7 @@ export class ThemeContextProvider extends React.Component {
                 updateTheme: this.updateTheme,
                 setTheme: this.setTheme,
                 saveTheme: this.saveTheme,
+                jsonDownload: this.jsonDownload
             }}>
                 {this.props.children}
             </ThemeContext.Provider>

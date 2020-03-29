@@ -2,13 +2,14 @@
     width: 100%; 
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
 .section-label-container {
     display: flex;
+    margin-left: 5px;
 }
 
 .label-icon-container {
@@ -21,4 +22,8 @@
     color:black;
     font-size: 12px;
     margin-left: 5px;
+}
+
+.export-icon {
+    width: 17px;
 }

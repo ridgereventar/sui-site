@@ -82,6 +82,7 @@ class Home extends Component {
                         <div className="profile-icon"/>
                     </div>
                 </div>
+                {/* <img src="/image/2c4f00551063c8805f3bc6edb26912fd.png" alt="" width="99" height="99"></img> */}
                 <div className="home-container">
                     <div className="mystyles-container">
                         <h1 className="bold-title">My Styles</h1>

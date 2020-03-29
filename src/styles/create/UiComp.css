@@ -104,3 +104,13 @@
     display: flex;
     justify-content: space-between;
 }
+
+#export-icon {
+    width: 200px;
+}
+
+.export-panel {
+    width: 386px; 
+    height: 355px;
+    background-color: white;
+}
