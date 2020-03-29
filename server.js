@@ -40,7 +40,7 @@ app.post('*/api/users', (req, res) => {
     password: req.body.password,
     themes: req.body.themes 
   });
-  newUser.save().then(user => res.json(user));
+  newUser.save().then(user => res.json(user)).catch((error) => console.log(error))
 })
 
 // @route DELETE api/users (delete a user)

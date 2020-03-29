@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 import '../styles/create/StyleGuide.css';
 
@@ -6,54 +8,62 @@ import SectionLabel from './SectionLabel';
 import ColorDisplay from './ColorDisplay';
 import FontDisplay from './FontDisplay';
 
-import ColorContext, { ColorContextConsumer } from '../contexts/ColorContext';
-import FontContext, { FontContextConsumer } from '../contexts/FontContext';
-import withContext from '../helpers/withContext';
+import ColorContext from '../contexts/ColorContext';
+import FontContext from '../contexts/FontContext';
+import ThemeContext from '../contexts/ThemeContext';
 
 import styleIcon from '../images/styleguideicon.png';
 
-class Styleguide extends Component {
+const Styleguide = (props) => {
 
-  constructor(props) {
-    super(props);
+  const {themeName} = useContext(ThemeContext);
+  const {fonts} = useContext(FontContext);
+  const {colors} = useContext(ColorContext);
+
+  const handleDownload = () => {
+    const input = document.getElementById('styleguide');
+    input.style.height = "max-content";
+
+    var divHeight = input.offsetHeight;
+    var divWidth = input.offsetWidth;
+    var ratio = divHeight/divWidth;
+    html2canvas(input).then((canvas) => {
+      const data = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p','in', [612, divHeight]);
+      var width = pdf.internal.pageSize.getWidth();
+      var height = height = ratio * width
+      pdf.addImage(data, 'PNG', 0, 0, width, height);
+      pdf.save(`${themeName}.pdf`);
+    })
+    input.style.height = `712px`;
+
   }
 
-  render() {
+  return (
+      <div className="style-guide-container">
+        <SectionLabel url={styleIcon} label="Style Guide"/>
 
-    return (
-        <div className="style-guide-container">
-    
-          <SectionLabel url={styleIcon} label="Style Guide"/>
+        <div id="styleguide" className="style-guide">
 
-          <div className="style-guide">
+            <h1 className="setting-label"> Colors </h1>
+            {colors.map((color, index) => {
+              return (
+                <ColorDisplay key={index} color={color}/>
+              )
+            })}
 
-              <h1 className="setting-label"> Colors </h1>
-              {this.props.colors.map((color, index) => {
-                return (
-                  <ColorDisplay key={index} color={color}/>
+            <h1 className="setting-label">Fonts</h1>                
+            {fonts.map((font, index) => {
+              return (
+                  <FontDisplay key={index} font={font}/>
                 )
-              })}
+            })}              
 
-              <h1 className="setting-label">Fonts</h1>                
-              {this.props.fonts.map((font, index) => {
-                return (
-                    <FontDisplay key={index} font={font}/>
-                  )
-              })}              
-
-          </div>
         </div>
-    );
-  }
+        <button onClick={handleDownload}>download pdf</button>
+      </div>
+  );
+  
 }
 
-export default withContext(
-  {
-      context: ColorContext,
-      mapValueToProps: (value) =>  ({colors: value.colors, addColor: value.addColor, updateColor: value.updateColor})
-  },
-  {
-      context: FontContext,
-      mapValueToProps: (value) =>  ({fonts: value.fonts, addFont: value.addFont, updateFont: value.updateFont})
-  }
-)(Styleguide); 
+export default Styleguide; 
