@@ -44,7 +44,8 @@ const initialState = {
                 weights: []
             }
         ]
-    }
+    },
+    imageId: ""
 }
 
 export class ThemeContextProvider extends React.Component {
@@ -95,7 +96,8 @@ export class ThemeContextProvider extends React.Component {
             themeName: this.state.themeName,
             creator: this.state.creator,
             privacy: this.state.privacy, 
-            theme: this.state.theme
+            theme: this.state.theme,
+            themeId: this.state.themeId
         }).then((response) => {
             console.log(response);
         }).catch((error) => {

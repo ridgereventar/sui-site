@@ -47,7 +47,8 @@ class CreateForm extends Component {
                         weights: []
                     }
                 ]
-            }
+            },
+            themeId: ""
         }
     }
     
@@ -57,7 +58,8 @@ class CreateForm extends Component {
             themeName: this.state.themeName,
             creator: this.state.creator,
             privacy: this.state.privacy,
-            theme: this.state.theme
+            theme: this.state.theme,
+            imageId: this.state.imageId
         }
         axios.post('/api/themes', newTheme, {
             headers: {

@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const crypto = require('crypto');
+const cors = require('cors');
 const multer = require('multer'); 
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 
 // Middleware
 app.use(methodOverride('_method'));
+app.use(cors());
 
 // Mongo Connection
 const db = "mongodb+srv://ridgereventar:ratnever21@sui-cluster-n8na3.azure.mongodb.net/test?retryWrites=true&w=majority";
@@ -45,11 +47,39 @@ const storage = new GridFsStorage({
     });
   }
 });
-const upload = multer({storage});
+const upload = multer({storage}).single('file');
+
+
+
+
+
+
 
 // @route POST /upload (uploading a single file to mongodb)
-app.post('*/upload', upload.single('file'), (req, res) => {
-  res.redirect(req.get('referer'));
+app.post('*/upload', (req, res) => {
+  upload(req, res, function(err) {
+    if(err instanceof multer.MulterError) {
+      return res.status(500).json(err);
+    } else if (err) {
+      return res.status(500).json(err);
+    }
+    var themeid = req.header('theme-id');
+    Theme.findOne({_id: themeid}, (err, foundTheme) => {
+      if(err) {
+        console.log(err);
+        res.status(500).send();
+      } else {
+          if(!foundTheme) {
+            res.status(404).send();
+          } else {
+            foundTheme.imageId = req.file.id;
+            foundTheme.save().then(theme => res.json(theme));
+          }
+      }
+    })
+
+    return res.status(200).send(req.file);
+  })
 });
 
 // @route GET /files (get ALL files in db)
@@ -102,6 +132,8 @@ app.get('*/image/:id', (req, res) => {
 
 
 
+
+
 // Routes
 
 const User = require('./models/User');
@@ -140,6 +172,7 @@ app.delete('*/api/users/:id', (req, res) => {
 
 
 
+
 const Theme = require('./models/Theme');
 
 // @route GET api/themes (get ALL themes from db)
@@ -168,6 +201,7 @@ app.put('*/api/theme/:id', (req, res) => {
           foundTheme.creator = req.body.creator;
           foundTheme.privacy = req.body.privacy;
           foundTheme.theme = req.body.theme;
+          foundTheme.imageId = req.body.imageId;
           foundTheme.save().then(theme => res.json(theme));
         }
     }
@@ -180,7 +214,8 @@ app.post('*/api/themes', (req, res) => {
     themeName: req.body.themeName,
     creator: req.body.creator,
     privacy: req.body.privacy,
-    theme: req.body.theme
+    theme: req.body.theme,
+    themeId: req.body.themeId
   })
   newTheme.save().then((theme) => {
     var conditions = {_id: req.header('user-id')};

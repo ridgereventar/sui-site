@@ -10,17 +10,36 @@ import exportIcon from '../images/exporticon.png';
 import InputWindow from './InputWindow';
 import TypoWindow from './TypoWindow';
 import ThemeContext from '../contexts/ThemeContext';
+const axios = require('axios').default;
 
 const UiComp = (props) => {
 
     const [showInputTab, setShowInputTab] = useState(true);
+    const [selectedFile, setSelectedFile] = useState(null);
+
     const {jsonDownload} = useContext(ThemeContext);
+    const {_id} = useContext(ThemeContext);
 
     const toggleTab = (choice) => {
         setShowInputTab(choice);
     }
 
+    const handleFileChange = (event) => {
+        setSelectedFile(event.target.files[0]);
+        console.log(event.target.files[0]);
+    }
+
     const handleImgUpload = (event) => {
+        event.preventDefault();
+        var data = new FormData();
+        data.append('file', selectedFile);
+        axios.post('/upload', data, {
+            headers: {
+                'theme-id': _id 
+            }
+        }).then(res => {
+            console.log(res);
+        })
 
     }
 
@@ -45,12 +64,13 @@ const UiComp = (props) => {
             <div className="export-panel">
                 <button onClick={jsonDownload}>Download JSON</button>
                 
-                <form action="/upload" method="POST" encType="multipart/form-data" onSubmit={handleImgUpload}>
+                <form onSubmit={handleImgUpload}>
                     <label for="file">Choose file</label>
                     <input 
                         type="file"
                         name="file"
                         id="file"
+                        onChange={handleFileChange}
                         />
                     <input type="submit" value="submit"/>
 
