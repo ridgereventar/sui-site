@@ -18,7 +18,7 @@ const UiComp = (props) => {
     const [selectedFile, setSelectedFile] = useState(null);
 
     const {jsonDownload} = useContext(ThemeContext);
-    const {_id} = useContext(ThemeContext);
+    const {updateImageId} = useContext(ThemeContext);
 
     const toggleTab = (choice) => {
         setShowInputTab(choice);
@@ -33,12 +33,9 @@ const UiComp = (props) => {
         event.preventDefault();
         var data = new FormData();
         data.append('file', selectedFile);
-        axios.post('/upload', data, {
-            headers: {
-                'theme-id': _id 
-            }
-        }).then(res => {
-            console.log(res);
+        axios.post('/upload', data, {}).then(res => {
+            console.log(res.data.id);
+            updateImageId(res.data.id);
         })
 
     }
@@ -65,7 +62,7 @@ const UiComp = (props) => {
                 <button onClick={jsonDownload}>Download JSON</button>
                 
                 <form onSubmit={handleImgUpload}>
-                    <label for="file">Choose file</label>
+                    <label htmlFor="file">Choose file</label>
                     <input 
                         type="file"
                         name="file"

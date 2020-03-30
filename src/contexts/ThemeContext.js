@@ -64,6 +64,7 @@ export class ThemeContextProvider extends React.Component {
         if(searchParams.has('id')) {
 
             axios.get(`api/theme/${searchParams.get('id')}`).then((res) => {
+                console.log(res.data);
                 this.setState(res.data);
             }).catch(error => {
                 console.log(error);
@@ -91,13 +92,18 @@ export class ThemeContextProvider extends React.Component {
         })
     }
  
+    updateImageId = (newImageId) => {
+        console.log("updating image id...");
+        this.setState({imageId: newImageId});
+    }
+
     saveTheme = () => {
         axios.put(`/api/theme/${this.state._id}`, {
             themeName: this.state.themeName,
             creator: this.state.creator,
             privacy: this.state.privacy, 
             theme: this.state.theme,
-            themeId: this.state.themeId
+            imageId: this.state.imageId
         }).then((response) => {
             console.log(response);
         }).catch((error) => {
@@ -122,10 +128,12 @@ export class ThemeContextProvider extends React.Component {
     }
 
     render() {
+        console.log(this.state);
         return (
             <ThemeContext.Provider value={{
                 ...this.state,
                 updateTheme: this.updateTheme,
+                updateImageId: this.updateImageId,
                 setTheme: this.setTheme,
                 saveTheme: this.saveTheme,
                 jsonDownload: this.jsonDownload

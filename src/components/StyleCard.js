@@ -53,7 +53,8 @@ class StyleCard extends Component {
                         weights: []
                     }
                 ]
-            }
+            },
+            imageId: ""
         }
     }
 
@@ -63,7 +64,8 @@ class StyleCard extends Component {
                 themeName: theme.data.themeName,
                 creator: theme.data.creator,
                 privacy: theme.data.privacy,
-                theme: theme.data.theme
+                theme: theme.data.theme,
+                imageId: theme.data.imageId
             });
         }).catch(error => {
             console.log(error);
