@@ -81,7 +81,7 @@ class CreateForm extends Component {
     render() {
 
         return (
-            <form className="" onSubmit={this.handleSubmit}>
+            <form className="create-form" onSubmit={this.handleSubmit}>
                 <label className="form-label" htmlFor="themeName">Theme Name</label>
                 <input
                     className="form-input"
@@ -91,7 +91,9 @@ class CreateForm extends Component {
                     name="themeName"
                     onChange={this.handleChange}
                     />
-                
+
+                <span className="form-label">Privacy: </span>
+                <br></br>
                 <input
                     className=""
                     type="radio"
@@ -100,9 +102,8 @@ class CreateForm extends Component {
                     value="public"
                     onChange={this.handleChange}
                     />
-                <label className="form-label" htmlFor="public">Public</label>
-                <br/>
-
+                <label className="radio-label" htmlFor="public">Public</label>
+                <br></br>
                 <input
                     className=""
                     type="radio"
@@ -111,11 +112,10 @@ class CreateForm extends Component {
                     value="private"
                     onChange={this.handleChange}
                     />
-                <label className="form-label" htmlFor="private">Private</label>
-                <br/>
-
+                <label className="radio-label" htmlFor="private">Private</label>
+                <br></br>
                 
-                <input type="submit" value="Submit"/>
+                <input className="form-btn" id="create-submit-btn" type="submit" value="Create"/>
             </form>
         
         );

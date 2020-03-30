@@ -120,3 +120,8 @@
     color: white;
     margin-left: 15px;
 }
+
+.create-form-container {
+    display: flex;
+    justify-content: center;
+}

@@ -52,7 +52,7 @@ class Home extends Component {
                     style={
                         {
                             content: {
-                                height: '500px',
+                                height: '350px',
                                 width: '650px',
                                 borderRadius: '5px',
                                 border: 'none',
@@ -68,9 +68,12 @@ class Home extends Component {
                     }
                     >
                     <h2 className="modal-title">Create New</h2>
-                    <CreateForm
-                        _id={this.props._id}
-                        name={this.props.name}/>
+                    <div className="create-form-container">
+                        <CreateForm
+                            _id={this.props._id}
+                            name={this.props.name}/>
+                    </div>
+                    
                     
                 </Modal>
 
