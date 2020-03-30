@@ -5,6 +5,7 @@ import '../styles/StyleCard.css';
 import MiniColorDisplay from './MiniColorDisplay';
 import MiniFontDisplay from './MiniFontDisplay';
 
+import imgPlaceHolder from '../images/imgplaceholder.png'
 import uisample from '../images/uisample.png';
 import { withRouter } from 'react-router-dom';
 
@@ -75,11 +76,15 @@ class StyleCard extends Component {
     handleClick = () => {
         this.props.history.push(`/create?id=${this.props.themeId}`);
     }
-    
+
+
     render() {
         return (
             <div className="style-card-wrapper">
-                <div className="style-card-container" style={{backgroundImage: `url(${uisample})`}} onClick={this.handleClick}>
+                <div 
+                    className="style-card-container" 
+                    style={{backgroundImage: `url(${this.state.imageId ?  `/image/${this.state.imageId})` : imgPlaceHolder}`}} 
+                    onClick={this.handleClick}>
                     
                     <div className="style-guide-preview">
                         {this.state.theme.colors.map((color, index) => {
