@@ -63,8 +63,14 @@ const UiComp = (props) => {
 
             <SectionLabel id="export-icon" url={exportIcon} label="Export" exporticon={true}/>
             <div className="export-panel">
-                <button onClick={jsonDownload}>Download JSON</button>
-                <button onClick={handleDownload}>download pdf</button>
+                <div className="download-btn" onClick={jsonDownload}>
+                    <span className="download-label">Download JSON</span>
+                    <div className="json-icon"></div>
+                </div>
+                <div className="download-btn" onClick={handleDownload}>
+                    <span className="download-label">Download PDF</span>
+                    <div className="pdf-icon"></div>
+                </div>
             </div>
         </div>
     );
