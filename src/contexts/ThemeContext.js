@@ -114,9 +114,6 @@ export class ThemeContextProvider extends React.Component {
     }
 
     jsonDownload = async() => {
-
-        console.log("downloading json..");
-
         const fileName = "file";
         const json = JSON.stringify(this.state.theme);
         const blob = new Blob([json],{type:'application/json'});
@@ -130,7 +127,6 @@ export class ThemeContextProvider extends React.Component {
     }
 
     render() {
-        // console.log(this.state);
         return (
             <ThemeContext.Provider value={{
                 ...this.state,

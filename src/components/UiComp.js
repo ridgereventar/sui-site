@@ -1,4 +1,6 @@
 import React, {useState, useContext} from 'react';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 import '../styles/create/UiComp.css'; 
 
@@ -15,12 +17,32 @@ const axios = require('axios').default;
 const UiComp = (props) => {
 
     const [showInputTab, setShowInputTab] = useState(true);
-
+    
+    const {themeName} = useContext(ThemeContext);
     const {jsonDownload} = useContext(ThemeContext);
 
     const toggleTab = (choice) => {
         setShowInputTab(choice);
     }
+
+    const handleDownload = () => {
+        const input = document.getElementById('styleguide');
+        input.style.height = "max-content";
+    
+        var divHeight = input.offsetHeight;
+        var divWidth = input.offsetWidth;
+        var ratio = divHeight/divWidth;
+        html2canvas(input).then((canvas) => {
+          const data = canvas.toDataURL('image/png');
+          const pdf = new jsPDF('p','in', [612, divHeight]);
+          var width = pdf.internal.pageSize.getWidth();
+          var height = height = ratio * width
+          pdf.addImage(data, 'PNG', 0, 0, width, height);
+          pdf.save(`${themeName}.pdf`);
+        })
+        input.style.height = `712px`;
+    
+      }
 
     return(
         <div className="ui-comp-container">
@@ -42,6 +64,7 @@ const UiComp = (props) => {
             <SectionLabel id="export-icon" url={exportIcon} label="Export" exporticon={true}/>
             <div className="export-panel">
                 <button onClick={jsonDownload}>Download JSON</button>
+                <button onClick={handleDownload}>download pdf</button>
             </div>
         </div>
     );
