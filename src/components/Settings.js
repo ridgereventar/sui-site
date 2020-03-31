@@ -12,7 +12,7 @@ import ColorContext from '../contexts/ColorContext';
 import FontContext from '../contexts/FontContext';
 import withContext from '../helpers/withContext';
 
-import settingIcon from '../images/settingsicon.png';
+import themeIcon from '../images/themeicon.png';
 import { DEFAULT_FONTS, customStyles } from '../helpers/constants';
 
 class Settings extends Component {
@@ -53,8 +53,8 @@ class Settings extends Component {
         return (
             <div className="settings-container">
                 <SectionLabel
-                    url={settingIcon}
-                    label="Settings"/>
+                    url={themeIcon}
+                    label="Theme Values"/>
 
                 <div className="settings-panel color-panel">
                     <h1 className="setting-label"> Colors</h1>

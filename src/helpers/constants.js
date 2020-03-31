@@ -73,7 +73,7 @@ export const customStyles = {
     option: (provided, state) => ({
         ...provided,
         color: 'black',
-        "font-family": state.label,
+        fontFamily: state.label,
         padding: 5
     }),
     control: base => ({

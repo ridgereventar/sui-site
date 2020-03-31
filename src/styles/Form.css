@@ -139,3 +139,69 @@ input:-webkit-autofill, select:-webkit-autofill:focus {
     width: 140px;
     background: linear-gradient(#35E2FF, #049EE3);
 }
+
+/* Settings Form */
+
+.settings-form {
+    width: 95%;
+}
+
+.privacy-label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.choose-container {
+    display: flex;
+    height: 35px;
+    align-items: center;
+    border: solid 0.5px #414141;
+    border-radius: 5px;
+}
+
+.choose-label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.choose-file-input {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+    z-index: -1;
+}
+
+.choose-btn {
+    width: 80px;
+    padding: 8px 0px;
+    display: block;
+    background-color: #414141;
+    border-radius: 5px 0px 0px 5px;
+    text-align: center;
+    line-height: 150%;
+    font-size: .85em;
+    font-weight: 600;
+}
+
+.choose-btn:hover {
+    background: linear-gradient(#35E2FF, #049EE3);
+}
+
+.filename-container {
+    width: 85%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding-left: 10px;
+}
+
+#settings-submit-btn {
+    float: right;
+    margin-top: 30px;
+    width: 140px;
+    background: linear-gradient(#35E2FF, #049EE3);
+}

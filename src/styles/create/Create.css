@@ -14,6 +14,24 @@
   justify-content: space-between;
 }
 
+.header-sect1 {
+  width: 33.33%;
+}
+
+.header-sect2 {
+  width: 33.33%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.header-sect3 {
+  width: 33.33%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 .create-header-icon {
   width: 26px; 
   height: 26px; 
@@ -23,9 +41,27 @@
   margin-left: 15px;
 }
 
+
+.profile-icon-create {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-image: url(../../images/profileicongrey.png);
+  background-size: contain;
+  margin-right: 12px;
+}
+
+.auto-save {
+  width: 130px;
+  color: white;
+  font-size: 13px;
+}
+
+
 .theme-name {
   color: #BDBDBD;
   font-weight: 500;
+  margin-left: 5px;
 }
 
 .playground-window {
@@ -36,11 +72,54 @@
   background-color: #F3F3F3;
 }
 
+.playground-window .panel {
+  width: 600px;
+}
 
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
 
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
 
+.ReactModal__Overlay--before-close{
+  opacity: 0;
+}
 
+.settings-btn {
+  height: 18px;
+  width: 18px; 
+  margin-top: 2px;
+  margin-left: 10px;
+  background-image: url('../../images/settingsicongrey.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  -webkit-transition: -webkit-transform 1.5s ease-in-out;
+  transition:         transform 1.5s ease-in-out;
+}
 
+.settings-btn:hover {
+  cursor: pointer;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  background-image: url('../../images/settingsicon.png');
+}
 
+.theme-name:hover {
+  cursor: pointer;
+}
 
+.theme-name:hover ~ .settings-btn{ 
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  background-image: url('../../images/settingsicon.png');
+}
+
+.settings-form-container {
+  display: flex; 
+  justify-content: center;
+}
 
