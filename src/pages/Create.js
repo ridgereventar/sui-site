@@ -1,5 +1,4 @@
-import React, { Component, useContext, useState} from 'react';
-import AnimateHeight from 'react-animate-height'; 
+import React, { useContext, useState} from 'react';
 import Modal from 'react-modal';
 
 import '../styles/create/Create.css';
@@ -17,7 +16,7 @@ import SettingsForm from '../components/SettingsForm';
 
 
 const Create = () => {
-    const {themeName} = useContext(ThemeContext);
+    const {themeName, isSaving} = useContext(ThemeContext);
     const {didUpdate} = useContext(ThemeContext);
 
     const [isOpen, setIsOpen] = useState(false);
@@ -51,8 +50,12 @@ const Create = () => {
                 </div>
                 <div className="header-sect3">
                     <span className={cx(
-                        "auto-save",
-                    )}>Auto Saving...</span>
+                        "auto-save", {
+                            ['is-saving']: isSaving,
+                            ['is-exiting']: !isSaving
+                        })}
+                        >Auto saving...
+                    </span>
                     <div className="profile-icon-create"></div>
                 </div>
             </div>

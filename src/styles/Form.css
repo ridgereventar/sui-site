@@ -67,6 +67,10 @@ input:-webkit-autofill, select:-webkit-autofill:focus {
     font-weight: 700;
 }
 
+.form-btn:hover {
+    cursor: pointer;
+}
+
 #form-login-btn {
     background: linear-gradient(#35E2FF, #049EE3);
 }
@@ -97,6 +101,10 @@ input:-webkit-autofill, select:-webkit-autofill:focus {
 
 #login-link {
     color: #4BC3E9;
+}
+
+#login-link:hover {
+    cursor: pointer;
 }
 
 .input-error-msg {

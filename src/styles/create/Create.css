@@ -55,8 +55,21 @@
   width: 130px;
   color: white;
   font-size: 13px;
+  opacity: 0;
 }
 
+.is-saving {
+  opacity: 1;
+}
+
+.is-exiting {
+  animation: hide 3s;
+}
+
+@keyframes hide { 
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
 
 .theme-name {
   color: #BDBDBD;

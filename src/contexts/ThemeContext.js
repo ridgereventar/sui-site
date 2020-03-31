@@ -45,7 +45,8 @@ const initialState = {
             }
         ]
     },
-    imageId: ""
+    imageId: "",
+    isSaving: false
 }
 
 export class ThemeContextProvider extends React.Component {
@@ -73,7 +74,9 @@ export class ThemeContextProvider extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        this.saveTheme();
+        // if(!prevState.isSaving) {
+        //     this.saveTheme();
+        // }
     }
 
     init = () => {
@@ -87,6 +90,8 @@ export class ThemeContextProvider extends React.Component {
                 ...this.state.theme,
                 ...newTheme
             }
+        }, () =>{
+            this.saveTheme();
         })
     }
  
@@ -96,10 +101,13 @@ export class ThemeContextProvider extends React.Component {
         this.setState({
             ...this.state, 
             ...newAttr
+        }, () => {
+            this.saveTheme();
         });
     }
 
     saveTheme = () => {
+        this.setState({isSaving: true});
         axios.put(`/api/theme/${this.state._id}`, {
             themeName: this.state.themeName,
             creator: this.state.creator,
@@ -110,6 +118,8 @@ export class ThemeContextProvider extends React.Component {
             console.log(response);
         }).catch((error) => {
             console.log(error);
+        }).finally(() => {
+            this.setState({isSaving: false});
         })
     }
 
