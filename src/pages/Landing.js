@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Route, NavLink, Switch } from "react-router-dom";
 import '../styles/Landing.css';
 
+import Lottie from 'lottie-web-react';
+
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
 import WelcomeMsg from '../components/WelcomeMsg';
@@ -9,6 +11,21 @@ import WelcomeMsg from '../components/WelcomeMsg';
 import Fade from 'react-reveal/Fade';
 import withContext from '../helpers/withContext';
 import UserContext from '../contexts/UserContext';
+
+let watchAnimationData = require('../helpers/suiAnimFinalv1.json');
+const renderer = 'svg';
+const rendererSettings = {
+  preserveAspectRatio:  'xMinYMin slice',
+}
+
+// const defaultOptions = {
+//   loop: true, 
+//   autoplay: true, 
+//   animationData: animationData, 
+//   renderSettings: {
+//     preserveAspectRatio: 'xMidYMid slice'
+//   }
+// }
 
 class Landing extends Component {
 
@@ -68,8 +85,28 @@ class Landing extends Component {
                     </Switch>
             
                   </div>
-                  <div className="welcome-anim-container">
-                    <div className="graphic"></div>
+                  <div id="anim-container" className="welcome-anim-container">
+                    <Lottie
+                      className="sui-lottie"
+                      options={{
+                        renderer: renderer,
+                        loop: false,
+                        autoplay: true, 
+                        assetsPath: '../helpers/images',
+                        animationData: watchAnimationData,
+                        rendererSettings: rendererSettings
+                      }}
+                      playingState='play'>
+
+                    </Lottie>
+                    {/* <Lottie
+                      options={defaultOptions}
+                      height={400}
+                      width={400}
+                      >
+
+                    </Lottie> */}
+                    {/* <div className="graphic"></div> */}
                   </div>
                 </div>
 

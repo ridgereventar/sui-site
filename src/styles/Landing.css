@@ -149,3 +149,9 @@
   border-radius: 40px 0 0 40px;
   background-image: url(../images/bluegradient.png);
 }
+
+.sui-lottie {
+  margin-left: -700px;
+  height: 900px;
+  width: 1395px;
+}
