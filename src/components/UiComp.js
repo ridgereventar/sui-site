@@ -61,7 +61,7 @@ const UiComp = (props) => {
                 {showInputTab ? <InputWindow/> : <TypoWindow/>}
             </div>
 
-            <SectionLabel id="export-icon" url={exportIcon} label="Export" exporticon={true}/>
+            <SectionLabel id="export-icon" url={exportIcon} label="Export" exporticon={true} lowTier={true}/>
             <div className="export-panel">
                 <div className="download-btn" onClick={jsonDownload}>
                     <span className="download-label">Download JSON</span>

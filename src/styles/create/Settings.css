@@ -13,14 +13,15 @@
 }
   
 .settings-panel::-webkit-scrollbar {
-    width: 8px;
+    width: 12px;
     background-color: white;
 }
   
 .settings-panel::-webkit-scrollbar-thumb {
     visibility: hidden;
     border-radius: 10px;
-    background-color: #E4E4E4;
+    background-color: #eee;
+    border: solid 3px white;
 }
   
 .settings-panel:hover::-webkit-scrollbar-thumb {

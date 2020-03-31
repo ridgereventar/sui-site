@@ -4,7 +4,12 @@ import cx from 'classnames';
 
 const SectionLabel = (props) => {
     return (
-        <div className="section-header">
+        <div className={cx(
+            "section-header",
+            {
+                ["low-tier-header"]: props.lowTier
+            }
+        )}>
             <div className="section-label-container">
                 <div className={cx(
                     "label-icon-container",

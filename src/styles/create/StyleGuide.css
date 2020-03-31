@@ -13,4 +13,20 @@
     overflow-y: auto;
 }
 
+.style-guide::-webkit-scrollbar {
+    width: 12px;
+    background-color: white;
+}
+  
+.style-guide::-webkit-scrollbar-thumb {
+    visibility: hidden;
+    border-radius: 10px;
+    background-color: #eee;
+    border: solid 3px white;
+}
+  
+.style-guide:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+}
+
 
