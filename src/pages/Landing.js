@@ -99,27 +99,81 @@ class Landing extends Component {
                       playingState='play'>
 
                     </Lottie>
-                    {/* <Lottie
-                      options={defaultOptions}
-                      height={400}
-                      width={400}
-                      >
-
-                    </Lottie> */}
-                    {/* <div className="graphic"></div> */}
+                    <Fade top>
+                      <div className="learn-more"></div>
+                    </Fade>
                   </div>
                 </div>
 
               </div>
 
               <div className="intro-container">
+                <Fade bottom>
+                    <h1 className="intro-h1">Branding &#38; Development <br/> Made Easy</h1>
+                    <p className="develop-p">SUi provides a platform that unifies both the design and development process into one. </p>
+                </Fade>
+              </div>
+
+              <div className="design-container">
+                
+                <Fade bottom>
+                  <div className="temp-container">
+                    <div className="design-sample">
+                    </div>
+                  </div>
+                  
+                </Fade>
+
+                <Fade right>
+                  <div className="design-info-container">
+                    <div className="title-icon-container">
+                      <div className="design-icon"></div>
+                      <span className="design-text">DESIGN</span>
+                    </div>
+                    <p className="design-p">Style Guides are an integral component when 
+                    <br/> establishing brand identity and consistency.  </p>
+                  </div>
+                </Fade>
+
+              </div>
+              
+              <div className="develop-container">
+
+                <Fade left>
+                  <div className="develop-info-container">
+                    <div className="dev-title-icon-container">
+                      <span className="develop-text">DEVELOP</span>
+                      <div className="develop-icon"></div>
+                    </div>
+                    <p className="develop-p">Style Guides are an integral component when 
+                    <br/> establishing brand identity and consistency.  </p>
+                  </div>
+                </Fade>
+
+
+                <Fade bottom>
+                  <div className="temp-container">
+                    <div className="develop-sample">
+                    </div>
+                  </div>
+                </Fade>
+
+                  
+
+              </div>
+
+              <div className="footer">
+
+              </div>
+
+              {/* <div className="intro-container">
                 <Fade right>
                   <div className="intro-slideout">
 
                   </div>
                 </Fade>
 
-              </div>
+              </div> */}
    
               
 

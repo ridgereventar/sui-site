@@ -78,10 +78,11 @@
 .welcome-text-container {
   height: 100%;
   width: 45%;
-  /* background-color: red; */
+  /* background-color: yellowgreen; */
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .welcome-box {
@@ -90,9 +91,42 @@
   background-image: url(../images/welcometxt.png);
   background-size: contain;
   background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-top: 150px;
 }
 
-#welcometxt {
+.welcome-desc {
+  margin-top: 60px;
+  font-size: 20px;
+  display: block;
+}
+
+.play-btn {
+  margin-top: 15px;
+  width: 180px;
+  height: 40px;
+  background-image: linear-gradient(#68D9EC, #2AAAE4);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.play-icon {
+  width: 20px;
+  height: 20px; 
+  background-image: url('../images/playicon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+}
+
+.play-label {
+  color: white;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+/* #welcometxt {
   font-family: 'Noto Sans SC', sans-serif;
   margin: 0;
   font-size: 5.2vw;
@@ -116,42 +150,171 @@
   font-weight: 900;
   font-size: 10vw;
   
-}
+} */
 
 .welcome-anim-container {
   height: 100%; 
   width: 55%; 
   /* background-color: blue; */
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
 }
 
-.graphic {
-  height: 95%; 
-  width: 100%;
-  background-image: url(../images/landinggraphic.png);
+
+.sui-lottie {
+  margin-left: -700px;
+  height: 875px;
+  width: 1395px;
+  z-index: -1;
+
+}
+
+svg {
+  z-index: -1;
+}
+
+.learn-more {
+  width: 70px; 
+  height: 25px; 
+  background-image: url('../images/learnmore.png');
   background-size: contain;
   background-repeat: no-repeat;
+  margin-left: 48px;
+  margin-top: -20px;
 }
 
 .intro-container {
   width:100%; 
-  height: 100vh;
-  background-color: white;
+  height: 400px;
+  /* background-color: #eee; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 100px;
+}
+
+.intro-h1 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.design-container {
+  width: auto; 
+  height: 600px;
+  background-color: #E1F9FF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 250px;
+  /* padding-left:  */
+}
+
+.temp-container {
+  height: 100%;
+  width: 60%; 
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.design-sample {
+  width: 680px; 
+  height: 530px; 
+  /* background-color: red; */
+  background-image: url('../images/designsample.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-bottom: -2px;
+}
+
+.design-info-container {
+  width: 500px; 
+  height: 180px; 
+  /* background-color: lightpink; */
+}
+
+.title-icon-container {
+  width: 100%;
+  height: 50%;
+  /* background-color: lightblue; */
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
-.intro-slideout {
-  width: 92%;
-  height: 92%; 
-  border-radius: 40px 0 0 40px;
-  background-image: url(../images/bluegradient.png);
+.design-icon {
+  width: 30px;
+  height: 30px;
+  background-image: url('../images/designicon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.sui-lottie {
-  margin-left: -700px;
-  height: 900px;
-  width: 1395px;
+.design-text {
+  font-size: 40px;
+  font-weight: 600;
+  margin-left: 20px;
+}
+
+.design-p {
+  text-align: right;
+  font-size: 20px;
+}
+
+
+.develop-container {
+  width: auto; 
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 250px;
+}
+
+.develop-info-container {
+  width: 500px; 
+  height: 180px; 
+}
+
+.dev-title-icon-container {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.develop-text {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.develop-icon {
+  width: 33px;
+  height: 33px;
+  background-image: url('../images/devicon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 20px;
+}
+
+.develop-p {
+  font-size: 20px;
+}
+
+.develop-sample {
+  width: 630px; 
+  height: 525px; 
+  background-image: url('../images/devsample.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-bottom: -12px;
+}
+
+
+.footer {
+  width: 100%;
+  height: 160px;
+  background-color: #282828;
 }
