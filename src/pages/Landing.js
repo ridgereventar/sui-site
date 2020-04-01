@@ -145,8 +145,8 @@ class Landing extends Component {
                       <span className="develop-text">DEVELOP</span>
                       <div className="develop-icon"></div>
                     </div>
-                    <p className="develop-p">Style Guides are an integral component when 
-                    <br/> establishing brand identity and consistency.  </p>
+                    <p className="develop-p">Effortlessly generate customized react components
+                    <br/>that are ready to be used in your own projects.</p>
                   </div>
                 </Fade>
 
