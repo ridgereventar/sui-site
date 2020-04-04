@@ -18,7 +18,7 @@
 .ui-tab {
     width: 50%; 
     height: 35px; 
-    background-color: white;
+    background-color: #E9E9E9;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,9 +28,6 @@
     cursor: pointer;
 }
 
-#ui-tab-typo {
-    background-color: #E9E9E9;
-}
 
 .tab-label {
     font-size: 11px;
@@ -77,6 +74,10 @@
 
 .selected-filter {
     border: solid #C0C0C0 0.5px;
+    background-color: white;
+}
+
+.selected-tab {
     background-color: white;
 }
 
@@ -172,4 +173,12 @@
 
 .download-btn:hover .pdf-icon {
     background-image: url('../../images/pdfblue.png');
+}
+
+.typography-window-wrapper {
+    padding: 35px 20px;
+}
+
+.typo-body {
+    text-align: right;
 }

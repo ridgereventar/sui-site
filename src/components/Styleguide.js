@@ -22,14 +22,14 @@ const Styleguide = (props) => {
 
         <div id="styleguide" className="style-guide">
 
-            <h1 className="setting-label"> Colors </h1>
+            <h1 className="styleguide-label"> Colors </h1>
             {colors.map((color, index) => {
               return (
                 <ColorDisplay key={index} color={color}/>
               )
             })}
 
-            <h1 className="setting-label">Fonts</h1>                
+            <h1 className="styleguide-label">Fonts</h1>                
             {fonts.map((font, index) => {
               return (
                   <FontDisplay key={index} font={font}/>

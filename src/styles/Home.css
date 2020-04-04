@@ -125,3 +125,39 @@
     display: flex;
     justify-content: center;
 }
+
+/* modal slider */
+
+.modal-slider {
+    background: linear-gradient(#35E2FF, #049EE3);
+    box-shadow: 0px 6px 9px #2D2D2D;
+    height: 130px;
+    margin-top: 100px;
+}
+
+.modal-slider--overlay.ReactModal__Overlay--after-open {
+    background-color: transparent;
+}
+
+.account-option {
+    width: 100%;
+    height: 64px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 65px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.account-option:hover {
+    color: #014758;
+    cursor: pointer;
+}
+
+.option-divider {
+    width: 85%;
+    height: 1px;
+    background-color: #3BA5BF;
+    margin: 0 auto;
+}

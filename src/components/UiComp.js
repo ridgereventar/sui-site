@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import cx from 'classnames';
 
 import '../styles/create/UiComp.css'; 
 
@@ -40,7 +41,7 @@ const UiComp = (props) => {
           pdf.addImage(data, 'PNG', 0, 0, width, height);
           pdf.save(`${themeName}.pdf`);
         })
-        input.style.height = `712px`;
+        input.style.height = `792px`;
     
       }
 
@@ -51,10 +52,23 @@ const UiComp = (props) => {
             <div className="ui-panel">
 
                 <div className="ui-tab-container">
-                    <div id="ui-tab-input-nav" className="ui-tab" onClick={() => toggleTab(true)}>
+                    <div id="ui-tab-input-nav" 
+                         className={cx(
+                            "ui-tab",
+                            {
+                                ["selected-tab"]: showInputTab
+                            }
+                         )} 
+                         onClick={() => toggleTab(true)}>
                         <span className="tab-label">Input / Navigation</span>
                     </div>
-                    <div id="ui-tab-typo" className="ui-tab" onClick={() => toggleTab(false)}>
+                    <div id="ui-tab-typo" 
+                        className={cx(
+                            "ui-tab",
+                            {
+                                ["selected-tab"]: !showInputTab
+                            }  
+                        )} onClick={() => toggleTab(false)}>
                         <span className="tab-label"> Typography </span>
                     </div>
                 </div>

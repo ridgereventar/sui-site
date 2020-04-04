@@ -105,10 +105,10 @@ class StyleCard extends Component {
                 <div className="info-slide-out-container">
                     <div className="info-slide-out">
                         <span className="card-name">{this.state.themeName}</span>
-                        <div className="like-btn">
+                        {/* <div className="like-btn">
                             <div className="heart"></div>
                             <span className="like-label">Like</span>
-                        </div>
+                        </div> */}
                     </div>
                 </div>            
             </div>

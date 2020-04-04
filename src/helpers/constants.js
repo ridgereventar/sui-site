@@ -44,26 +44,6 @@ export const DEFAULT_FONTS = {
         title: 'Verdana',
         weights: [700,500,300]
 
-    },
-    opensans: {
-        id: 'opensans', 
-        title: 'Open Sans',
-        url: 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800&display=swap'
-    },
-    lato: {
-        id: 'lato',
-        title: 'Lato', 
-        url: 'https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i,900&display=swap'
-    },
-    roboto: {
-        id: 'roboto',
-        title: 'Roboto',
-        url: 'https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900&display=swap'
-    },
-    oswald: {
-        id: 'oswald',
-        title: 'Oswald', 
-        url: 'https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap'
     }
  }
 

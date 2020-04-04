@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
+import ModalSlider from 'react-modal-slider';
+import 'react-modal-slider/lib/main.css';
 
 import '../styles/Home.css';
 import withContext from '../helpers/withContext';
@@ -7,16 +9,16 @@ import UserContext from '../contexts/UserContext';
 
 import StyleCard from '../components/StyleCard';
 import CreateForm from '../components/CreateForm';
+import AccountSlider from '../components/AccountSlider';
 
 const axios = require('axios').default;
-
-Modal.setAppElement('#root');
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
             modalIsOpen: false,
+            sliderIsOpen: false,
             themes: []
         }
     }
@@ -35,6 +37,14 @@ class Home extends Component {
 
     handleCreate = () => {
         this.setState({modalIsOpen: true});
+    }
+
+    closeSlider = () => {
+        this.setState({sliderIsOpen: false})
+    }
+
+    openSlider = () => {
+        this.setState({sliderIsOpen: true})
     }
 
     logout = () => {
@@ -73,16 +83,25 @@ class Home extends Component {
                             _id={this.props._id}
                             name={this.props.name}/>
                     </div>
-                    
-                    
                 </Modal>
+
+                <ModalSlider
+                    isOpen={this.state.sliderIsOpen}
+                    directionFrom={'right'}
+                    onRequestClose={this.closeSlider}
+                    setAppElement={'#root'}
+                    width={'250px'}
+                    className={'modal-slider'}
+                    overlayClassName={'modal-slider-overlay'}>
+                        <AccountSlider/>
+                </ModalSlider>
 
                 <div className="landing-header">
                     <div className="landing-logo"></div>
                     <div className="account-header-container">
-                        <button onClick={this.logout}>Logout</button>
+                        {/* <button onClick={this.logout}>Logout</button> */}
                         <span className="account-name">{this.props.name}</span>
-                        <div className="profile-icon"/>
+                        <div className="profile-icon" onClick={this.openSlider}/>
                     </div>
                 </div>
                 {/* <img src="/image/2c4f00551063c8805f3bc6edb26912fd.png" alt="" width="99" height="99"></img> */}

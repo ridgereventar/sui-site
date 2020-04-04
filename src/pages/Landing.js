@@ -55,7 +55,7 @@ class Landing extends Component {
                   <div className="landing-nav">
                     <ul className="landing-nav-links">
                       <li>
-                        <NavLink className="nav-link" to="/explore">
+                        <NavLink className="nav-link" to="/landing">
                           Explore
                         </NavLink>
                       </li>
