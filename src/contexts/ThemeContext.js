@@ -124,7 +124,7 @@ export class ThemeContextProvider extends React.Component {
     }
 
     jsonDownload = async() => {
-        const fileName = "file";
+        const fileName = "theme";
         const json = JSON.stringify(this.state.theme);
         const blob = new Blob([json],{type:'application/json'});
         const href = await URL.createObjectURL(blob);
