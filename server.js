@@ -55,7 +55,7 @@ const upload = multer({storage}).single('file');
 
 
 
-// @route POST /upload (uploading a single file to mongodb)
+// @route POST /upload (uploading a single file)
 app.post('*/upload', (req, res) => {
   upload(req, res, function(err) {
     if(err instanceof multer.MulterError) {
@@ -63,21 +63,6 @@ app.post('*/upload', (req, res) => {
     } else if (err) {
       return res.status(500).json(err);
     }
-    // var themeid = req.header('theme-id');
-    // Theme.findOne({_id: themeid}, (err, foundTheme) => {
-    //   if(err) {
-    //     console.log(err);
-    //     res.status(500).send();
-    //   } else {
-    //       if(!foundTheme) {
-    //         res.status(404).send();
-    //       } else {
-    //         foundTheme.imageId = req.file.id;
-    //         foundTheme.save().then(theme => res.json(theme));
-    //       }
-    //   }
-    // })
-
     return res.status(200).send(req.file);
   })
 });
