@@ -114,7 +114,7 @@ class SignupForm extends Component {
     }
 
     handleLoginClick = () => {
-        this.props.history.push('/landing/login', {signupShown: true})
+        this.props.history.push('/login', {signupShown: true})
     }
 
     render() {

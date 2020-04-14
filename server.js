@@ -118,9 +118,6 @@ app.get('*/image/:id', (req, res) => {
 
 
 
-
-// Routes
-
 const User = require('./models/User');
 
 // @route GET api/users (get ALL users from db)
@@ -152,7 +149,6 @@ app.delete('*/api/users/:id', (req, res) => {
       .then(() => res.json({success: true})))
       .catch(err => res.status(404).json({success: false}));
 })
-
 
 
 

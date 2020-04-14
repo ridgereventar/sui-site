@@ -42,7 +42,7 @@ class Landing extends Component {
     }
 
     handleLoginClick = () => {
-      this.props.history.push('/landing/login', {signupShown: this.state.signupDisplayed});
+      this.props.history.push('/login', {signupShown: this.state.signupDisplayed});
     }
 
     render() {
@@ -55,7 +55,7 @@ class Landing extends Component {
                   <div className="landing-nav">
                     <ul className="landing-nav-links">
                       <li>
-                        <NavLink className="nav-link" to="/landing">
+                        <NavLink className="nav-link" to="/">
                           Explore
                         </NavLink>
                       </li>
@@ -65,7 +65,7 @@ class Landing extends Component {
                         </span>
                       </li>
                       <li>
-                        <NavLink className="nav-link" to="/landing/signup">
+                        <NavLink className="nav-link" to="/signup">
                           <button id="signupBtn" onClick={this.handleSignupClick}>Sign up</button>
                         </NavLink>
                       </li>
@@ -76,12 +76,12 @@ class Landing extends Component {
                 <div className="welcome-container">
                   <div className="welcome-text-container">
                     <Switch>
-                      <Route path="/landing" exact component={WelcomeMsg}/>
-                      <Route path="/landing/login" exact component={(props) => <LoginForm login={this.props.login} 
+                      <Route path="/" exact component={WelcomeMsg}/>
+                      <Route path="/login" exact component={(props) => <LoginForm login={this.props.login} 
                                                                                           name={this.props.name}
                                                                                           email={this.props.email}
                                                                                           signup={this.state.signupDisplayed}/>} />
-                      <Route path="/landing/signup" exact component={(props) => <SignupForm signup={this.props.signup}/>}/>
+                      <Route path="/signup" exact component={(props) => <SignupForm signup={this.props.signup}/>}/>
                     </Switch>
             
                   </div>

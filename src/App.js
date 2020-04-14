@@ -21,7 +21,8 @@ class App extends Component {
         <UserContextProvider>
             <Switch>
                 <Route path="/" exact component={Landing}/>
-                <Route path="/landing" component={Landing}/>
+                <Route path="/login" exact component={Landing}/>
+                <Route path="/signup" exact component={Landing}/>
                 <Route path="/create" exact component={Create}/>
                 <Route path="/home" exact component={Home}/>
             </Switch>

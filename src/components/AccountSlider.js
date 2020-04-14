@@ -8,7 +8,7 @@ const AccountSlider = (props) => {
 
     const logout = () => {
         localStorage.removeItem('userId');
-        props.history.push('/landing'); 
+        props.history.push('/'); 
     }
 
     return (

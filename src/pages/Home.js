@@ -47,11 +47,6 @@ class Home extends Component {
         this.setState({sliderIsOpen: true})
     }
 
-    logout = () => {
-        localStorage.removeItem('userId');
-        this.props.history.push('/landing'); 
-    }
-
     render() {
         return (
             <div className="home-wrapper">
@@ -99,7 +94,6 @@ class Home extends Component {
                 <div className="landing-header">
                     <div className="landing-logo"></div>
                     <div className="account-header-container">
-                        {/* <button onClick={this.logout}>Logout</button> */}
                         <span className="account-name">{this.props.name}</span>
                         <div className="profile-icon" onClick={this.openSlider}/>
                     </div>
