@@ -116,8 +116,8 @@ class LoginForm extends Component {
             <div className={cx(
                     "login-form-container",
                     {
-                        ["fade-in"]: !this.props.location.state.signupShown,
-                        ["height-shrink"]: this.props.location.state.signupShown
+                        ["fade-in"]: !this.props.signup,
+                        ["height-shrink"]: this.props.signup
                     } 
                 )}>
                 <div className="login-contents-container">

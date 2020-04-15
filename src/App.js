@@ -6,7 +6,6 @@ import Landing from './pages/Landing';
 import Create from './pages/Create';
 import Home from './pages/Home';
 
-import sampleConfig from './helpers/sui.json';
 import { UserContextProvider } from './contexts/UserContext';
 
 class App extends Component {

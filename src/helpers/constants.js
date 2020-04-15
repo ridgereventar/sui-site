@@ -1,3 +1,5 @@
+// Objects used through out the application
+
 export const initialState = {
     _id: "",
     themeName: "",
@@ -90,9 +92,14 @@ export const DEFAULT_FONTS = {
         weights: [700,500,300]
 
     }
- }
+}
 
- 
+export const animOptions = {
+    renderer: 'svg',
+    loop: false,
+    autoplay: true, 
+    animationData: require('./suiAnimFinalv1.json')
+}
 
 export const customStyles = {
     option: (provided, state) => ({
@@ -133,5 +140,21 @@ export const modalStyles = {
         backgroundColor: '#1F1F1F',
         margin: '0 auto',
         marginTop: '5px'
+    }
+}
+
+export const createModalStyles = {
+    content: {
+        height: '350px',
+        width: '650px',
+        borderRadius: '5px',
+        border: 'none',
+        backgroundColor: '#1F1F1F',
+        position: 'absolute',
+        top: '0',
+        bottom: '0',
+        right: '0',
+        left: '0',
+        margin: 'auto'
     }
 }

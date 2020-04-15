@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import Modal from 'react-modal';
 import ModalSlider from 'react-modal-slider';
 import 'react-modal-slider/lib/main.css';
@@ -10,41 +11,42 @@ import UserContext from '../contexts/UserContext';
 import StyleCard from '../components/StyleCard';
 import CreateForm from '../components/CreateForm';
 import AccountSlider from '../components/AccountSlider';
+import {createModalStyles} from '../helpers/constants';
 
 const axios = require('axios').default;
 
 class Home extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            modalIsOpen: false,
-            sliderIsOpen: false,
-            themes: []
+            createModalOpen: false,     // handles create modal open/close
+            accountModalOpen: false,    // handles account modal open/close
+            themes: []                  // stores users themeId array when mounted
         }
     }
 
     componentDidMount() {
+        // When the Home component mounts after a login or signup we use the userId from localStorage to get the users theme array from the database.
         axios.get(`/api/user/${localStorage.getItem("userId")}`).then((user) => {
-            this.setState({
-                themes: user.data.themes
-            })
+            this.setState({themes: user.data.themes});
         })
     }
     
-    closeModal = () => {
-        this.setState({modalIsOpen: false});
+    openCreateModal = () => {
+        this.setState({createModalOpen: true});
     }
 
-    handleCreate = () => {
-        this.setState({modalIsOpen: true});
+    closeCreateModal = () => {
+        this.setState({createModalOpen: false});
     }
 
-    closeSlider = () => {
-        this.setState({sliderIsOpen: false})
+    openAccountModal = () => {
+        this.setState({accountModalOpen: true})
     }
 
-    openSlider = () => {
-        this.setState({sliderIsOpen: true})
+    closeAccountModal = () => {
+        this.setState({accountModalOpen: false})
     }
 
     render() {
@@ -52,38 +54,21 @@ class Home extends Component {
             <div className="home-wrapper">
 
                 <Modal 
-                    isOpen={this.state.modalIsOpen}
-                    onRequestClose={this.closeModal}
-                    style={
-                        {
-                            content: {
-                                height: '350px',
-                                width: '650px',
-                                borderRadius: '5px',
-                                border: 'none',
-                                backgroundColor: '#1F1F1F',
-                                position: 'absolute',
-                                top: '0',
-                                bottom: '0',
-                                right: '0',
-                                left: '0',
-                                margin: 'auto'
-                            }
-                        }
-                    }
-                    >
-                    <h2 className="modal-title">Create New</h2>
-                    <div className="create-form-container">
-                        <CreateForm
-                            _id={this.props._id}
-                            name={this.props.name}/>
-                    </div>
+                    isOpen={this.state.createModalOpen}
+                    onRequestClose={this.closeCreateModal}
+                    style={createModalStyles}>
+                        <h2 className="modal-title">Create New</h2>
+                        <div className="create-form-container">
+                            <CreateForm
+                                _id={this.props._id}
+                                name={this.props.name}/>
+                        </div>
                 </Modal>
 
                 <ModalSlider
-                    isOpen={this.state.sliderIsOpen}
+                    isOpen={this.state.accountModalOpen}
                     directionFrom={'right'}
-                    onRequestClose={this.closeSlider}
+                    onRequestClose={this.closeAccountModal}
                     setAppElement={'#root'}
                     width={'250px'}
                     className={'modal-slider'}
@@ -95,10 +80,9 @@ class Home extends Component {
                     <div className="landing-logo"></div>
                     <div className="account-header-container">
                         <span className="account-name">{this.props.name}</span>
-                        <div className="profile-icon" onClick={this.openSlider}/>
+                        <div className="profile-icon" onClick={this.openAccountModal}/>
                     </div>
                 </div>
-                {/* <img src="/image/2c4f00551063c8805f3bc6edb26912fd.png" alt="" width="99" height="99"></img> */}
                 <div className="home-container">
                     <div className="mystyles-container">
                         <h1 className="bold-title">My Styles</h1>
@@ -117,15 +101,12 @@ class Home extends Component {
                         <div id="explore-btn" className="icon-btn">
                             <h1>Explore</h1>
                         </div>
-                        <div id="create-btn" className="icon-btn" onClick={this.handleCreate}>
+                        <div id="create-btn" className="icon-btn" onClick={this.openCreateModal}>
                             <h1>Create</h1>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
         );
     }  
 }
@@ -133,6 +114,6 @@ class Home extends Component {
 export default withContext(
     {
       context: UserContext,
-      mapValueToProps: (value) => ({_id: value._id, name: value.name, email: value.email, themes: value.themes, logout: value.logout})
+      mapValueToProps: (value) => ({_id: value._id, name: value.name})
     }
-  )(Home);
+)(Home);

@@ -2,10 +2,7 @@ import React, {Component} from 'react';
 import '../styles/Form.css';
 
 import ThemeContext from '../contexts/ThemeContext';
-
 import withContext from '../helpers/withContext'; // a helper designed to consume a context
-import { compose } from 'recompose';              // a function that allows multiple wrappers (need to wrap Settings form with both 'withRouter' and 'ThemeContext') 
-import { withRouter } from 'react-router-dom';
 
 const axios = require('axios').default;
 
@@ -123,16 +120,13 @@ class SettingsForm extends Component {
 }
 
 
-export default compose(
-    withRouter,
-    withContext(
-        {
-            context: ThemeContext,
-            mapValueToProps: (value) =>  ({ theme_id: value._id,
-                                        themeName: value.themeName, 
-                                        privacy: value.privacy, 
-                                        imageId: value.imageId,
-                                        updateThemeAttr: value.updateThemeAttr})
-        }
-    )
+export default withContext(
+    {
+        context: ThemeContext,
+        mapValueToProps: (value) =>  ({ theme_id: value._id,
+                                    themeName: value.themeName, 
+                                    privacy: value.privacy, 
+                                    imageId: value.imageId,
+                                    updateThemeAttr: value.updateThemeAttr})
+    }
 )(SettingsForm);  
