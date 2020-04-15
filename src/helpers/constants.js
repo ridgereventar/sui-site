@@ -1,3 +1,48 @@
+export const initialState = {
+    _id: "",
+    themeName: "",
+    creator: "",
+    privacy: "",
+    theme: {
+        colors: [
+            {
+                type: "Primary", 
+                hex: "", 
+                rgb: "",
+                swatch: []
+            }, 
+            {
+                type: "Secondary", 
+                hex: "", 
+                rgb: "",
+                swatch: []
+            }, 
+            {
+                type: "Tertiary", 
+                hex: "", 
+                rgb: "",
+                swatch: []
+            } 
+        ],
+        fonts: [
+            {
+                type: "Primary", 
+                name: "", 
+                url: "",
+                weights: []
+            },
+            {
+                type: "Secondary", 
+                name: "", 
+                url: "",
+                weights: []
+            }
+        ]
+    },
+    imageId: "",
+    isSaving: false
+}
+
 export const DEFAULT_FONTS = {
     arial: {
         id: 'arial',
@@ -76,3 +121,17 @@ export const customStyles = {
     }),
 }
 
+export const modalStyles = {  
+    overlay: {
+        backgroundColor: 'none'
+    },
+    content: {
+        height: '390px',
+        width: '600px',
+        borderRadius: '0px 0px 15px 15px',
+        border: 'none',
+        backgroundColor: '#1F1F1F',
+        margin: '0 auto',
+        marginTop: '5px'
+    }
+}

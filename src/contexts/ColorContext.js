@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import ThemeContext from './ThemeContext';
 
 const ColorContext = React.createContext();
-
 export const ColorContextConsumer = ColorContext.Consumer;
 
 export const ColorContextProvider = (props) => {
     const {children} = props; 
     const {theme, updateTheme} = useContext(ThemeContext);
     const {colors} = theme;
+
+    // These methods handle hex & rgb conversions for the color swatch algorithm
 
     const hextorgb = (hex) => {
         return ['0x' + hex[1] + hex[2] | 0, '0x' + hex[3] + hex[4] | 0, '0x' + hex[5] + hex[6] | 0];
@@ -23,31 +24,39 @@ export const ColorContextProvider = (props) => {
         return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
     }
 
+    // color swatch algorithm, increases rgb values by fixed constants.
+    const getSwatch = (rgb) => {
+        var swatch = [];
+        for(var i=0; i < 5; i++) {
+            swatch.push(rgbToHex(rgb[0], rgb[1], rgb[2]));
+            rgb = [rgb[0] + 15, rgb[1] + 10, rgb[2] + 2];
+        }
+        return swatch;
+    }
+
+    // These two methods are called inside Settings.js to either add or update a color.
+
     const addColor = (type, hex) => {
+        // First makes a copy of the current colors in the ThemeContext
         const newColors = colors;
         const rgb = hextorgb(hex); 
-        const swatch = [];
-        var nextcolor = rgb;
-        for(var i=0; i < 5; i++) {
-            swatch.push(rgbToHex(nextcolor[0], nextcolor[1], nextcolor[2]));
-            var nextcolor = [nextcolor[0] + 15, nextcolor[1] + 10, nextcolor[2] + 2];
-        }
+        const swatch = getSwatch(rgb);
+        // Pushes a new color, with the generated rgb and swatch
         newColors.push({type, hex, rgb, swatch});
+        // Then calls updateTheme to apply the changes
         updateTheme({colors: newColors});
     }
 
     const updateColor = (index, hex) => {
+        // First makes a copy of the current colors in the ThemeContext
         const newColors = colors;
-        newColors[index].hex = hex;
         const rgb = hextorgb(newColors[index].hex); 
-        const swatch = [];
-        var nextcolor = rgb;
-        for(var i=0; i < 5; i++) {
-            swatch.push(rgbToHex(nextcolor[0], nextcolor[1], nextcolor[2]));
-            var nextcolor = [nextcolor[0] + 15, nextcolor[1] + 10, nextcolor[2] + 2];
-        }
+        const swatch = getSwatch(rgb);
+        // Updates the font object at the given index
+        newColors[index].hex = hex;
         newColors[index].rgb = rgb;
         newColors[index].swatch = swatch;
+        // Then calls updateTheme to apply the changes
         updateTheme({colors: newColors}); 
     }
 

@@ -35,7 +35,7 @@
 .create-header-icon {
   width: 26px; 
   height: 26px; 
-  background-image: url('../../images/sui_logo.png');
+  background-image: url('../images/sui_logo.png');
   background-size: contain;
   background-repeat: no-repeat;
   margin-left: 15px;
@@ -46,7 +46,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-image: url(../../images/profileicongrey.png);
+  background-image: url(../images/profileicongrey.png);
   background-size: contain;
   margin-right: 12px;
 }
@@ -107,7 +107,7 @@
   width: 18px; 
   margin-top: 2px;
   margin-left: 10px;
-  background-image: url('../../images/settingsicongrey.png');
+  background-image: url('../images/settingsicongrey.png');
   background-size: contain;
   background-repeat: no-repeat;
   -webkit-transition: -webkit-transform 1.5s ease-in-out;
@@ -118,7 +118,7 @@
   cursor: pointer;
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
-  background-image: url('../../images/settingsicon.png');
+  background-image: url('../images/settingsicon.png');
 }
 
 .theme-name:hover {
@@ -128,7 +128,7 @@
 .theme-name:hover ~ .settings-btn{ 
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
-  background-image: url('../../images/settingsicon.png');
+  background-image: url('../images/settingsicon.png');
 }
 
 .settings-form-container {
