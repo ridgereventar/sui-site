@@ -1,0 +1,67 @@
+#export-icon {
+    width: 200px;
+}
+
+.export-panel {
+    width: 386px; 
+    height: 180px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.download-btn {
+    width: 180px;
+    height: 45px; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 6px;
+    margin-top: 25px;
+    border: solid 1.5px #D1D1D1;
+    color: #BBBBBB;
+    transition: background-color 0.5s ease;
+}
+
+.download-btn:hover {
+    background-color: #282828;
+    border: solid 1.5px white;
+    cursor: pointer;
+}
+
+.download-btn:hover .download-label {
+    color: #1EE0EF;
+}
+
+.download-btn:hover .json-icon {
+    background-image: url('../images/jsonblue.png');
+}
+
+.download-btn:hover .pdf-icon {
+    background-image: url('../images/pdfblue.png');
+}
+
+.download-label {
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.json-icon {
+    width: 25px; 
+    height: 35px; 
+    background-image: url('../images/pdficon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 8px;    
+}
+
+.pdf-icon {
+    width: 25px; 
+    height: 35px; 
+    background-image: url('../images/jsonbtn.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 8px;  
+}

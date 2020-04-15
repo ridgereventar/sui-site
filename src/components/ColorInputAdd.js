@@ -3,6 +3,7 @@ import '../styles/Color.css';
 
 import ColorPicker from './ColorPicker';
 
+// A color input field that adds an addition hex to the theme.
 class ColorInputAdd extends Component {
 
     constructor(props) {
@@ -12,26 +13,18 @@ class ColorInputAdd extends Component {
         }
     }
 
+    // Updates the new value to be added from the input text field
     onChangeAddHex = (e) => {
         var test = e.target.value;
-        this.setState(state => {
-            return {
-              ...state,
-              newValue: test
-            }
-        })
+        this.setState({newValue: test});
     }
 
+    // Updates the new value to be added from the color picker (this method is passed to a ColorPicker component)
     colorPickerAddHex = (value) => {
-        this.setState(state => {
-            return {
-              ...state,
-              newValue: value
-            }
-        })
+        this.setState({newValue: value})
     }
 
-
+    // Once the new color value is set, it is added to the theme using "addHex" from Settings.js
     render () {
         return (
             <div className="color-input-container">

@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-
 import '../styles/StyleCard.css';
 
 import MiniColorDisplay from './MiniColorDisplay';
 import MiniFontDisplay from './MiniFontDisplay';
 
 import imgPlaceHolder from '../images/imgplaceholder.png'
-import uisample from '../images/uisample.png';
 import { withRouter } from 'react-router-dom';
 
 const axios = require('axios').default;
@@ -15,51 +13,20 @@ class StyleCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            _id: this.props.themeId,
+            _id: this.props.themeId,    // if no image is linked, the styleCard will display 'imgPlaceHolder'
             themeName: "",
             creator: "",
             privacy: "",
             theme: {
-                colors: [
-                    {
-                        type: "Primary", 
-                        hex: "", 
-                        rgb: "",
-                        swatch: []
-                    }, 
-                    {
-                        type: "Secondary", 
-                        hex: "", 
-                        rgb: "",
-                        swatch: []
-                    }, 
-                    {
-                        type: "Tertiary", 
-                        hex: "", 
-                        rgb: "",
-                        swatch: []
-                    } 
-                ],
-                fonts: [
-                    {
-                        type: "Primary", 
-                        name: "", 
-                        url: "",
-                        weights: []
-                    },
-                    {
-                        type: "Secondary", 
-                        name: "", 
-                        url: "",
-                        weights: []
-                    }
-                ]
+                colors: [],
+                fonts: []
             },
             imageId: ""
         }
     }
 
     componentDidMount() {
+        // axios get request grabs the theme from the database using its themeId given from Home.js and updates the styleCards state.
         axios.get(`api/theme/${this.props.themeId}`).then((theme) => {
             this.setState({
                 themeName: theme.data.themeName,
@@ -73,10 +40,10 @@ class StyleCard extends Component {
         })
     }
 
+    // when a style card is clicked, it redirects to create page with the themeId apart of the URL.
     handleClick = () => {
         this.props.history.push(`/create?id=${this.props.themeId}`);
     }
-
 
     render() {
         return (
@@ -105,14 +72,16 @@ class StyleCard extends Component {
                 <div className="info-slide-out-container">
                     <div className="info-slide-out">
                         <span className="card-name">{this.state.themeName}</span>
-                        {/* <div className="like-btn">
+
+                        {/* The following is a like button that would be implemented for style cards in the Explore page (future work) */}
+                        <div className="like-btn">
                             <div className="heart"></div>
                             <span className="like-label">Like</span>
-                        </div> */}
+                        </div>
+
                     </div>
                 </div>            
             </div>
-
         );
     }
 }

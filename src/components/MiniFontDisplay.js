@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Font.css';
 
+// Component for each font icon in the StyleCards 
 const MiniFontDisplay = (props) => {
     return (
         <div className="mini-display-container">

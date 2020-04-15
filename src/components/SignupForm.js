@@ -1,7 +1,9 @@
 import React, {Component} from 'react'; 
 import {withRouter} from 'react-router-dom';
+
 import '../styles/Form.css';
 
+// Same concept as LoginForm.js (see for detailed comments)
 class SignupForm extends Component {
     constructor(props) {
         super(props);
@@ -25,7 +27,11 @@ class SignupForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+
+        // As long as formValid is true, form is ok to submit
         if(this.formValid(this.state)) {
+
+            // calls signup method from UserContext.js then redirects to home page if successfull
             this.props.signup(this.state.name, this.state.email, this.state.password).then(() => {
                 this.props.history.push('/home');
             }).catch((error) => {
@@ -73,10 +79,10 @@ class SignupForm extends Component {
                 formErrors.confirmpw = this.state.password != value ? 'Does not match Password': '';
                 break;
         }
-
-        this.setState({formErrors, [name]: value}, () => console.log(this.state));
+        this.setState({formErrors, [name]: value});
     }
 
+    // Sets the email and password focus states to true/false
     onFocus = (event) => {
         const {name, value} = event.target;
         switch(name) {
@@ -113,6 +119,7 @@ class SignupForm extends Component {
         }
     }
 
+    // Redirect to login route
     handleLoginClick = () => {
         this.props.history.push('/login', {signupShown: true})
     }

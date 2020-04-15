@@ -8,6 +8,8 @@ const axios = require('axios').default;
 class CreateForm extends Component {
     constructor(props) {
         super(props);
+        // The state holds a template theme, which will be pushed to the database. 
+        // Only the creator name is already known, the rest will be user input
         this.state = {
             themeName: "",
             creator: this.props.name,
@@ -61,18 +63,22 @@ class CreateForm extends Component {
             theme: this.state.theme,
             imageId: this.state.imageId
         }
+
+        // Sending the newTheme (from state) through an axios post.
+        // The server will require the user-id (from the header) to link the user to the new theme created.
         axios.post('/api/themes', newTheme, {
             headers: {
                 'user-id': this.props._id
             }
         }).then((response) => {            
-            // After posting the newTheme to db, add its _id to the logged in user. 
+            // After posting the newTheme to the database, route to create page with the new theme's _id in the url. 
             this.props.history.push(`/create?id=${response.data._id}`);
         }).catch((error) => {
             console.log(error);
         })
     }
 
+    // onChange handler for each form input. Assigns the value to the state.
     handleChange = (e) => {
         const{name, value} = e.target;
         this.setState({[name]: value});

@@ -5,6 +5,7 @@ import '../styles/AccountSlider.css';
 
 const AccountSlider = (props) => {
 
+    // logout function is in charge of removing the user Id from local storage and redirecting to landing page.
     const logout = () => {
         localStorage.removeItem('userId');
         props.history.push('/'); 

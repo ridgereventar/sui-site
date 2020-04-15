@@ -14,6 +14,7 @@ import {FontContextProvider} from '../contexts/FontContext';
 import {ColorContextProvider} from '../contexts/ColorContext';
 import SettingsForm from '../components/SettingsForm';
 
+Modal.setAppElement('#root');
 
 const Create = () => {
     const {themeName, isSaving} = useContext(ThemeContext);

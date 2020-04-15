@@ -1,0 +1,69 @@
+.filter-wrapper {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 12px -5px 8px 10px #E1E1E1;
+}
+
+.filter-container {
+    width: 270px; 
+    height: 30px; 
+    display: flex;
+}
+
+#primary-filter {
+    border-radius: 50px 0px 0px 50px;
+}
+
+#tertiary-filter {
+    border-radius: 0px 50px 50px 0px;
+}
+
+.filter-btn {
+    width: 90px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    background-color: #E9E9E9;
+}
+
+.filter-btn:hover {
+    cursor: pointer;
+    border: solid #C0C0C0 0.5px;
+}
+
+.selected-filter {
+    border: solid #C0C0C0 0.5px;
+    background-color: white;
+}
+
+.component-containter {
+    width: 100%;
+    height: 100%;
+    padding: 0px 30px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.component-label {
+    display: block;
+    font-size: 12px;
+    margin-top: 30px;
+}
+
+.component-section {
+    margin-top: 15px;
+}
+
+.component-section-wrapper {
+    width: 100%; 
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+}
+

@@ -1,12 +1,14 @@
 import React, {useContext, useState} from 'react';
-import Select from 'react-select';
-import '../styles/create/UiComp.css'; 
+import '../styles/TypographyWindow.css'; 
 
-import cx from 'classnames';
+import Select from 'react-select';
 import ThemeContext from '../contexts/ThemeContext';
 import { customStyles } from '../helpers/constants';
 
-const TypoWindow = (props) => {
+// Typography components are not fully implemented into SUi at the moment. 
+// The purpose of this window is to simply display what the mapped tags would look like.
+// In the future these mappings will be added to the ThemeContext so that they can map to the components in the sui npm package.
+const TypographyWindow = (props) => {
 
     const {theme} = useContext(ThemeContext);
     const {fonts} = theme;
@@ -95,9 +97,7 @@ const TypoWindow = (props) => {
             Fusce massa nulla, bibendum vel nisi in, rhoncus viverra lorem.</p>
 
         </div>
-
-
     )
 }
 
-export default TypoWindow;
+export default TypographyWindow;

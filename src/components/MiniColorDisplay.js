@@ -1,6 +1,7 @@
 import React from 'react'; 
 import '../styles/Color.css';
 
+// Component for each color icon in the StyleCards 
 const MiniColorDisplay = (props) => {
     return (
         <div className="mini-display-container">

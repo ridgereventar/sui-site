@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
-import cx from 'classnames';
-
-import '../styles/create/UiComp.css'; 
+import '../styles/InputWindow.css'; 
 
 import Button from '../ui/Button';
 import InputText from '../ui/InputText';
 
+import cx from 'classnames';
+
+// InputWindow consists of a filter bar and the Button and InputText componenent samples. 
+// The filter tells each component which index in the color array to render. 
+// Each of the components also consist of customization props. (ex: border, fill, roundness, etc.)
 class InputWindow extends Component {
+
     constructor(props){
         super(props);
         this.state = {
@@ -17,9 +21,9 @@ class InputWindow extends Component {
         }
     }
 
+    // gets the text from the tab selected and adjusts the corresponding state values.
     handleFilter = (event) => {
         let filterSelected = event.target.innerHTML;
-        
         if(filterSelected == "Primary") {
             this.setState({
                 filter: 0,
@@ -119,7 +123,7 @@ class InputWindow extends Component {
 
                     <span className="component-label">Text Fields</span>
                     <div className="component-section-wrapper">
-                        <div className="component-section-col">
+                        <div>
                             <InputText
                                 filter={this.state.filter}
                                 border={true}
@@ -136,7 +140,7 @@ class InputWindow extends Component {
                                 roundness="large"
                                 line={false}/>        
                         </div>
-                        <div className="component-section-col">
+                        <div>
                             <InputText
                                 filter={this.state.filter}
                                 border={false}
@@ -152,7 +156,6 @@ class InputWindow extends Component {
 
                 </div>
             </React.Fragment>
-
         )
     }
 }

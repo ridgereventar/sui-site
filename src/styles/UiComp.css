@@ -1,0 +1,38 @@
+.ui-comp-container {
+    width: 386px; 
+}
+
+.ui-panel {
+    width: 386px; 
+    height: 563px;
+    background-color: white;
+}
+
+.ui-tab-container {
+    width: 100%;
+    height: 35px; 
+    display: flex;
+    background-color: red;
+}
+
+.ui-tab {
+    width: 50%; 
+    height: 35px; 
+    background-color: #E9E9E9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ui-tab:hover {
+    cursor: pointer;
+}
+
+
+.tab-label {
+    font-size: 11px;
+}
+
+.selected-tab {
+    background-color: white;
+}

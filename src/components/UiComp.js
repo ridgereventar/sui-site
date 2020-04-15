@@ -1,59 +1,32 @@
-import React, {useState, useContext} from 'react';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
-import cx from 'classnames';
-
-import '../styles/create/UiComp.css'; 
+import React, {useState} from 'react';
+import '../styles/UiComp.css'; 
 
 import SectionLabel from './SectionLabel';
+import InputWindow from './InputWindow';
+import TypographyWindow from './TypographyWindow';
+import Export from './Export';
+
+import cx from 'classnames';
 
 import uicompIcon from '../images/uicompicon.png';
-import exportIcon from '../images/exporticon.png';
-import InputWindow from './InputWindow';
-import TypoWindow from './TypoWindow';
-import ThemeContext from '../contexts/ThemeContext';
 
-const axios = require('axios').default;
-
+// Ui Component panel that displays the generated components.
 const UiComp = (props) => {
 
+    // tab toggle between inputWindow and TypographyWindow
     const [showInputTab, setShowInputTab] = useState(true);
     
-    const {themeName} = useContext(ThemeContext);
-    const {jsonDownload} = useContext(ThemeContext);
-
     const toggleTab = (choice) => {
         setShowInputTab(choice);
     }
-
-    const handleDownload = () => {
-        const input = document.getElementById('styleguide');
-        input.style.height = "max-content";
-    
-        var divHeight = input.offsetHeight;
-        var divWidth = input.offsetWidth;
-        var ratio = divHeight/divWidth;
-        html2canvas(input).then((canvas) => {
-          const data = canvas.toDataURL('image/png');
-          const pdf = new jsPDF('p','in', [612, divHeight]);
-          var width = pdf.internal.pageSize.getWidth();
-          var height = height = ratio * width
-          pdf.addImage(data, 'PNG', 0, 0, width, height);
-          pdf.save(`${themeName}.pdf`);
-        })
-        input.style.height = `792px`;
-    
-      }
 
     return(
         <div className="ui-comp-container">
             <SectionLabel url={uicompIcon} label="Ui Components"/>
 
             <div className="ui-panel">
-
                 <div className="ui-tab-container">
-                    <div id="ui-tab-input-nav" 
-                         className={cx(
+                    <div className={cx(
                             "ui-tab",
                             {
                                 ["selected-tab"]: showInputTab
@@ -72,23 +45,13 @@ const UiComp = (props) => {
                         <span className="tab-label"> Typography </span>
                     </div>
                 </div>
-                {showInputTab ? <InputWindow/> : <TypoWindow/>}
+                {showInputTab ? <InputWindow/> : <TypographyWindow/>}
             </div>
 
-            <SectionLabel id="export-icon" url={exportIcon} label="Export" exporticon={true} lowTier={true}/>
-            <div className="export-panel">
-                <div className="download-btn" onClick={jsonDownload}>
-                    <span className="download-label">Download JSON</span>
-                    <div className="json-icon"></div>
-                </div>
-                <div className="download-btn" onClick={handleDownload}>
-                    <span className="download-label">Download PDF</span>
-                    <div className="pdf-icon"></div>
-                </div>
-            </div>
+            <Export/>
+
         </div>
     );
-    
 }
 
 export default UiComp;

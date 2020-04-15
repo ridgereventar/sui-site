@@ -1,7 +1,11 @@
 import React from 'react'; 
-import '../styles/create/SectionLabel.css';
+import '../styles/SectionLabel.css';
+
 import cx from 'classnames';
 
+// cx() method from 'classnames' library allows for dynamic classes. 
+// if the component is given a prop lowTier = true, then the 'low-tier-header' class will be added.
+// if its given a prop exporticon = true, it will style the icon a bit differently. 
 const SectionLabel = (props) => {
     return (
         <div className={cx(

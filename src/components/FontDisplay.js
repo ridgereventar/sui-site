@@ -5,6 +5,7 @@ const sampleText = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ",
                     "abcdefghjiklmnopqrstuvwxyz", 
                     "123456789 (.,;:?!@)"]
 
+// Component for each font display block on the main Style Guide.
 const FontDisplay = (props) => {
     return (
         <div className="font-display-container">

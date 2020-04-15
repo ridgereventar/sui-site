@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Color.css';
 
+// Component for each color display block on the main Style Guide.
 const ColorDisplay = (props) => {
     return (
         <React.Fragment>

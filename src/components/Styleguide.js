@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import '../styles/create/StyleGuide.css';
+import '../styles/StyleGuide.css';
 
 import SectionLabel from './SectionLabel';
 import ColorDisplay from './ColorDisplay';
@@ -11,6 +11,7 @@ import FontContext from '../contexts/FontContext';
 
 import styleIcon from '../images/styleguideicon.png';
 
+// The main style guide component, maps the color's to ColorDisplay's and fonts to FontDisplay's
 const Styleguide = (props) => {
 
   const {fonts} = useContext(FontContext);
@@ -39,7 +40,6 @@ const Styleguide = (props) => {
         </div>
       </div>
   );
-  
 }
 
 export default Styleguide; 

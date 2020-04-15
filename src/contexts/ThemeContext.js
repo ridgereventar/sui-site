@@ -1,5 +1,7 @@
 import React from 'react';
 import Blob from 'blob';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 const axios = require('axios').default;
 const ThemeContext = React.createContext();
 export const ThemeContextConsumer = ThemeContext.Consumer;
@@ -136,6 +138,24 @@ export class ThemeContextProvider extends React.Component {
         document.body.removeChild(link);
     }
 
+    pdfDownload = () => {
+        const input = document.getElementById('styleguide');
+        input.style.height = "max-content";
+    
+        var divHeight = input.offsetHeight;
+        var divWidth = input.offsetWidth;
+        var ratio = divHeight/divWidth;
+        html2canvas(input).then((canvas) => {
+          const data = canvas.toDataURL('image/png');
+          const pdf = new jsPDF('p','in', [612, divHeight]);
+          var width = pdf.internal.pageSize.getWidth();
+          var height = height = ratio * width
+          pdf.addImage(data, 'PNG', 0, 0, width, height);
+          pdf.save(`${this.state.themeName}.pdf`);
+        })
+        input.style.height = `792px`;
+    }
+
     render() {
         return (
             <ThemeContext.Provider value={{
@@ -144,7 +164,8 @@ export class ThemeContextProvider extends React.Component {
                 updateThemeAttr: this.updateThemeAttr,
                 setTheme: this.setTheme,
                 saveTheme: this.saveTheme,
-                jsonDownload: this.jsonDownload
+                jsonDownload: this.jsonDownload,
+                pdfDownload: this.pdfDownload
             }}>
                 {this.props.children}
             </ThemeContext.Provider>
