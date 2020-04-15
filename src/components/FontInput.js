@@ -1,5 +1,5 @@
 import React from 'react'; 
-import '../styles/create/FontInput.css';
+import '../styles/Font.css';
 
 import Select from 'react-select';
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'; 
-import '../styles/create/ColorInput.css';
+import '../styles/Color.css';
 
 import ColorPicker from './ColorPicker';
 

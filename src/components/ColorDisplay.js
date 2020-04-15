@@ -1,6 +1,5 @@
 import React from 'react';
-
-import '../styles/create/ColorDisplay.css';
+import '../styles/Color.css';
 
 const ColorDisplay = (props) => {
     return (

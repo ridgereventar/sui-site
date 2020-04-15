@@ -1,0 +1,108 @@
+/* FontDisplay  */
+
+.font-display-container {
+    width: 100%; 
+    height: 80px; 
+    display: flex;
+    align-items: center;
+}
+  
+.font-display-icon-container {
+    width:60px; 
+}
+  
+.font-display-icon {
+    font-size: 48px;
+    margin: 0;
+}
+  
+.font-display-info-container {
+    width:100px;
+    height: max-content;
+    margin-left: 30px;
+}
+  
+.font-display-type {
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0;
+}
+  
+.font-display-name {
+    color:black;
+    font-size: 16px;
+}
+  
+.divider-vert{
+    width: 2px;
+    height: 70px; 
+    border-radius: 20px;
+    background-color: #D8D8D8;
+}
+  
+.font-display-weight-container{
+    width: max-content;
+    height: max-content; 
+    margin-left: 10px;
+}
+  
+.font-display-weight{
+    display: block;
+    color: black;
+    font-size: 14px;
+    line-height: 21px;
+}
+  
+.font-display-sample-container {
+    font-size: 12px;
+    margin-left: 25px;
+}
+  
+.font-display-sample{
+    color: black;
+    font-size: 12px;
+    line-height: 21px;
+    margin: 0;
+}
+
+/* FontInput */
+
+.font-input-container {
+    width: 100%; 
+    height: max-content;
+    display: flex;
+    align-items: center; 
+    margin-bottom: 5px;
+}
+  
+.font-input-icon {
+    width: 35px;
+    font-size: 45px;
+    margin: 0;
+}
+
+.font-select-container {
+    width: 200px;
+    height: 100%; 
+    margin-left: 40px;
+}
+
+.font-type-label {
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* MiniFontDisplay */
+
+.mini-font-icon {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.mini-font-name {
+    width: 65px;
+    margin-left: 10px;
+    font-size: 10px;
+    overflow-wrap: break-word;
+    white-space: normal;
+}

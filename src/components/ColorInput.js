@@ -1,27 +1,24 @@
-import React, {Component} from 'react'; 
-import '../styles/create/ColorInput.css';
+import React from 'react'; 
+import '../styles/Color.css';
 
 import ColorPicker from './ColorPicker';
 
-class ColorInput extends Component {
-
-    render () {
-        return (
-            <div className="color-input-container">
-                <div className="color-input-circle" style={{backgroundColor: this.props.hex}}></div>
-                <label className="color-input-type">{this.props.type}</label>
-                <input className="hex-input" 
-                    type="text" 
-                    value={this.props.hex} 
-                    onChange={this.props.onChangeHex(this.props.index)}
-                />
-                <ColorPicker
-                    inputAdd={false}
-                    onColorPicked={this.props.onColorPicked}
-                    index={this.props.index}/>
-            </div>
-        )
-    }
+const ColorInput = (props) => {
+    return (
+        <div className="color-input-container">
+            <div className="color-input-circle" style={{backgroundColor: props.hex}}></div>
+            <label className="color-input-type">{props.type}</label>
+            <input className="hex-input" 
+                type="text" 
+                value={props.hex} 
+                onChange={props.onChangeHex(props.index)}
+            />
+            <ColorPicker
+                inputAdd={false}
+                onColorPicked={props.onColorPicked}
+                index={props.index}/>
+        </div>
+    )
 }
 
 export default ColorInput;

@@ -1,0 +1,122 @@
+/* ColorDisplay */
+
+.hex-box {
+    width: 100%; 
+    height: 90px; 
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.color-container {
+    width: 90px; 
+    height: 90px; 
+    border-radius: 100%;
+    background-color: white;
+}
+
+.color-info-container {
+    width: 100px;
+    height: 57px;
+    margin-left: 20px;
+}
+
+.hex-type-label {
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.hex-span {
+    display: block;
+    color: #777777;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.rgb-span {
+    display: block;
+    color: #777777;
+    font-size: 10px;
+}
+
+.gradient-container {
+    width: 250;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.gradient-square {
+    width: 50px; 
+    height: 50px;
+    background-color: white;
+}
+
+/* ColorInput */
+
+.color-input-container {
+    width: 100%; 
+    height: 40px;   
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+  
+.color-input-circle {
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%;
+}
+  
+.color-input-type {
+    width: 75px;
+    color: black;
+    font-size: 14px;
+    margin-left: 10px;
+}
+  
+.hex-input {
+    width: 100px;
+    height: 22px;
+}
+
+.hex-add-btn {
+    width: 40px; 
+    height: 28px;
+    margin-left: 10px;
+    background: none;
+}
+  
+.colorwheel-btn {
+    width: 28px; 
+    height: 28px;
+    margin-left: 5px;
+    background-image: url(../images/colorwheel.png);
+    background-size: 18px 18px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+  
+/* MiniColorDisplay */
+
+.mini-display-container {
+    width: 100%;
+    height: 45px; 
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.mini-color-icon {
+    width: 45px;
+    height: 45px; 
+    border-radius: 100px;
+    background-color: #eee;
+}
+
+.mini-hex-label {
+    font-size: 12px;
+    margin-left: 10px;
+}

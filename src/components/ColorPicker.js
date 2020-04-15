@@ -1,7 +1,7 @@
 import React, {Component} from 'react'; 
 import {ChromePicker} from 'react-color';
 
-import '../styles/create/ColorInput.css';
+import '../styles/Color.css';
 
 class ColorPicker extends Component {
     constructor(props) {

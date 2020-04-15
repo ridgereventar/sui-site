@@ -1,10 +1,9 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 
-import '../styles/Home.css';
+import '../styles/AccountSlider.css';
 
 const AccountSlider = (props) => {
-
 
     const logout = () => {
         localStorage.removeItem('userId');

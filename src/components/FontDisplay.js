@@ -1,5 +1,5 @@
 import React from 'react'; 
-import '../styles/create/FontDisplay.css';
+import '../styles/Font.css';
 
 const sampleText = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ",
                     "abcdefghjiklmnopqrstuvwxyz", 
