@@ -19,5 +19,4 @@ const AccountSlider = (props) => {
         </React.Fragment>
     )
 }
-
 export default withRouter(AccountSlider);
