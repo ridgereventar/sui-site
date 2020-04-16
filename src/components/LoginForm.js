@@ -107,6 +107,7 @@ class LoginForm extends Component {
 
     // Redirect to signup route
     handleSignupClick = () => {
+        this.props.setSignup();
         this.props.history.push('/signup');
     }
 

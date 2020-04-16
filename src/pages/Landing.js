@@ -51,7 +51,7 @@ const Landing = (props) => {
               <div className="welcome-text-container">
                 <Switch>
                   <Route path="/" exact component={WelcomeMsg}/>
-                  <Route path="/login" exact component={(props) => <LoginForm login={login} name={name} email={email} signup={signupDisplayed}/>}/>
+                  <Route path="/login" exact component={(props) => <LoginForm login={login} name={name} email={email} signup={signupDisplayed} setSignup={handleSignupClick}/>}/>
                   <Route path="/signup" exact component={(props) => <SignupForm signup={signup}/>}/>
                 </Switch>
               </div>
