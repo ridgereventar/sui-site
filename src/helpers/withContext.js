@@ -1,3 +1,5 @@
+// This is a script I found that assists in apply several contexts to a component.
+
 import React from 'react';
 
 // Applies context to the provided component. This is called recurvsily below to apply all contexts to the component.

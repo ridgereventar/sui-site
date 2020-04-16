@@ -198,14 +198,13 @@ app.post('*/api/themes', (req, res) => {
     themeId: req.body.themeId
   })
   newTheme.save().then((theme) => {
+    // After posting a new theme we obtain the current users Id from the request header to link the user to the newly made theme. 
     var conditions = {_id: req.header('user-id')};
     User.update(conditions, {
       $push: {themes: theme._id}
     }).then((user) => res.json(user)).catch((err) => console.log(err));
-
     return res.json(theme);    
   });
-
 
 })
 
