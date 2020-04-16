@@ -66,24 +66,19 @@ class UserContextProviderClass extends React.Component {
         }
         // I return an axios post request to obtain either a promise resolve or reject. 
         return axios.post('/api/users', newUser).then((response) => {
-
+            console.log(response.data._id);
             // After the post was successfull, I find the user to set its Id in the localStorage.
-            axios.get('/api/users').then((response) => {
-                let founduser = response.data.find(user => user.email === userEmail && user.password === userPassword);
-                if(founduser == null) {
-                    console.log("...not found");
-                    return Promise.reject("ERROR: User added was not found");
-                } else {
-                    this.setState({
-                        _id: founduser._id,
-                        name: founduser.name, 
-                        emal: founduser.email, 
-                        themes: founduser.themes
-                    });
-                    localStorage.setItem('userId', founduser._id);
-                }
+            axios.get(`/api/user/${response.data._id}`).then((response) => {
+                console.log(response); 
+                this.setState({
+                    _id: response.data._id,
+                    name: response.data.name, 
+                    email: response.data.email, 
+                    themes: response.data.themes
+                });
+                localStorage.setItem('userId', response.data._id);
+                return Promise.resolve("SUCCESS: User added to SUI-DB"); 
             })
-            return Promise.resolve("SUCCESS: User added to SUI-DB"); 
         }).catch((error) => {
             return Promise.reject(error);
         })

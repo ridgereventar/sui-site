@@ -125,8 +125,9 @@ app.get('*/api/users', (req, res) => {
 
 // @route GET api/user/:id (get a user by id from db)
 app.get('*/api/user/:id', (req, res) => {
-  User.findById(req.params.id)
-      .then((user) => res.json(user));
+  if(mongoose.Types.ObjectId.isValid(req.params.id)) {
+    User.findById(req.params.id).then((user) => res.json(user));
+  }
 });
 
 // @route POST api/users (create a user)
